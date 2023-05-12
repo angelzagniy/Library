@@ -1,25 +1,46 @@
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
+
+using Library.Web.Models;
 
 namespace Library.Web;
 
-public class DbInitializer
+public static class DbInitializer
 {
     public static void Initialize(LibraryContext context)
     {
         context.Database.EnsureCreated();
         
-        var databaseCreator = context.GetService<IRelationalDatabaseCreator>();
-
-        // Look for any students.
-        if (context.Books.Any())
+        // Look for any book.
+        if (!context.Books.Any())
         {
-            return; // DB has been seeded
+            context.Books.AddRange(new[]
+            {
+                new Book
+                {
+                    Name = "The Dynasty of Dawn",
+                    Genre = Genre.SkyFi,
+                    Author = "Olivia T. Burrow",
+                    Year = 1998
+                },
+                new Book
+                {
+                    Name = "Year of Menace",
+                    Genre = Genre.Crime,
+                    Author = "Erica P. Nelson",
+                    Year = 2001
+                },
+                new Book
+                {
+                    Name = "The Gun in the Lake",
+                    Genre = Genre.Crime,
+                    Author = "Samantha G. Shaffer",
+                    Year = 2013
+                }
+
+            });
         }
 
-        if (context.Members.Any())
+        if (!context.Members.Any())
         {
-            return;
         }
 
         context.SaveChanges();

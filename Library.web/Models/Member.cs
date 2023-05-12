@@ -1,18 +1,12 @@
-namespace Library.web.Models;
+namespace Library.Web.Models;
 
 public class Member
 {
-    public Member(string name, string surname)
-    {
-        Name = name;
-        Surname = surname;
-    }
-    
     public int Id { get; set; }
     
     public string Name { get; set; }
     
     public string Surname { get; set; }
 
-    public List<Book> Books;
+    public List<Book> Books { get; set; }
 }

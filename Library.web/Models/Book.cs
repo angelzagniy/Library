@@ -1,22 +1,16 @@
-namespace Library.web.Models;
+namespace Library.Web.Models;
 
 public class Book
 {
-    public Book(string name, string genre, int year, int freeCount)
-    {
-        Name = name;
-        Genre = genre;
-        Year = year;
-        FreeCount = freeCount;
-    }
+	public int Id { get; set; }
 
-    public int Id { get; set; }
-    
-    public string Name { get; set; }
-    
-    public string Genre { get; set; }
-    
-    public int Year { get; set; }
-    
-    public int FreeCount { get; set; }
+	public string Name { get; set; }
+
+	public string Author { get; set; }
+
+	public Genre Genre { get; set; }
+
+	public int Year { get; set; }
+
+	public int FreeCount { get; set; }
 }

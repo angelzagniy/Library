@@ -1,0 +1,26 @@
+﻿@model Library.Web.Models.ViewModels.BooksPageViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<table class="table table-hover table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Book book in Model.Books)
+    {
+        <tr>
+            <td>@book.Name</td>
+            <td>@book.Author</td>
+            <td>@book.Year</td>
+        </tr>
+    }
+
+    </tbody>
+</table>
