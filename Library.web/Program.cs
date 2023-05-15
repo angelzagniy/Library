@@ -15,6 +15,7 @@ public class Program
 			.AddDbContext<LibraryContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString(name: "LibraryDatabase")))
 			.AddTransient<IBooksRepository, BooksRepository>()
+			.AddTransient<IMembersRepository, MembersRepository>()
 			.AddControllersWithViews();
 
 		if (builder.Environment.IsDevelopment())
