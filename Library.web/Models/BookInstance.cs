@@ -13,7 +13,7 @@ public class BookInstance
 	/// <summary>
 	/// Book ID (ISBN). Required foreign key.
 	/// </summary>
-	public string BookId { get; set; }
+	public string ISBN { get; set; }
 
 	/// <summary>
 	/// Reference navigation to book (principal in one-to-many relationship).
