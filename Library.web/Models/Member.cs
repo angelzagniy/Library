@@ -8,5 +8,5 @@ public class Member
     
     public string Surname { get; set; }
 
-    public List<Book> Books { get; set; }
+    public List<BookInstance> Books { get; set; }
 }

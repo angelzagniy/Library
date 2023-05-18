@@ -18,7 +18,7 @@ public class MembersRepository : IMembersRepository
     public async Task<IReadOnlyList<Member>> ListMembersAsync(
         string name = null,
         string surname = null,
-        List<Book> books = null)
+        List<BookInstance> books = null)
     {
         return await _dbContext.Members.ToListAsync();
     }

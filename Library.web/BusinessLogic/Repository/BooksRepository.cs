@@ -20,6 +20,8 @@ internal class BooksRepository : IBooksRepository
 		string author = null,
 		Genre genre = Genre.Any)
 	{
-		return await _dbContext.Books.ToListAsync();
+		return await _dbContext.Books
+			.Include(book=>book.BookInstances)
+			.ToListAsync();
 	}
 }
