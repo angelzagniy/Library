@@ -15,7 +15,7 @@ public class Book
 	/// <summary>
 	/// Author
 	/// </summary>
-	public string Author { get; set; }
+	public Guid AuthorId { get; set; }
 
 	/// <summary>
 	/// Genre. 
@@ -26,6 +26,8 @@ public class Book
 	/// Publish year. 
 	/// </summary>
 	public int Year { get; set; }
+
+	public Author Author { get; set; } = null!;
 	
 	/// <summary>
 	/// Book instances (paper copies).
