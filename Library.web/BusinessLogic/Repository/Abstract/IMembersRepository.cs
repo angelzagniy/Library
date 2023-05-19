@@ -17,6 +17,5 @@ public interface IMembersRepository
     /// <returns>A collection of books matching filtering criteria, if specified.</returns>
     Task<IReadOnlyList<Member>> ListMembersAsync(
         string name = null,
-        string surname = null,
         List<BookInstance> books = null);
 }

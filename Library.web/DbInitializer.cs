@@ -7,23 +7,25 @@ public static class DbInitializer
 	public static void Initialize(LibraryContext context)
 	{
 		context.Database.EnsureCreated();
+
+		Member memberOne = null;
 		
-		// Create members
 		if (!context.Members.Any())
 		{
-			context.Members.AddRange(
-				new Member
-				{
-					Name = "Debra Kyle"
-				},
-				new Member
-				{
-					Name = "John McQueen"
-				},
-				new Member
-				{
-					Name = "Tyron Bruno"
-				});
+			memberOne = new()
+			{
+				Name = "Sylvia R. Torres"
+			};
+			Member memberTwo = new()
+			{
+				Name = "Patricia M. Rook"
+			};
+			Member memberThree = new()
+			{
+				Name = "Ellen D. Hollars"
+			};
+
+			context.Members.AddRange(memberOne, memberTwo, memberThree);
 		}
 
 		// Look for any book.
@@ -79,7 +81,8 @@ public static class DbInitializer
 			context.BookInstances.AddRange(
 				new BookInstance
 				{
-					ISBN = bookOne.ISBN
+					ISBN = bookOne.ISBN,
+					MemberId = memberOne.Id
 				},
 				new BookInstance
 				{

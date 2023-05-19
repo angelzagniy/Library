@@ -17,9 +17,11 @@ public class MembersRepository : IMembersRepository
     /// <inheritdoc />
     public async Task<IReadOnlyList<Member>> ListMembersAsync(
         string name = null,
-        string surname = null,
         List<BookInstance> books = null)
     {
-        return await _dbContext.Members.ToListAsync();
+        IQueryable<Member> members = _dbContext.Members;
+
+        return await members
+            .ToListAsync();
     }
 }

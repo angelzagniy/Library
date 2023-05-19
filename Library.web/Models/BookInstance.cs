@@ -14,9 +14,13 @@ public class BookInstance
 	/// Book ID (ISBN). Required foreign key.
 	/// </summary>
 	public string ISBN { get; set; }
+	
+	public Guid MemberId { get; set; }
 
 	/// <summary>
 	/// Reference navigation to book (principal in one-to-many relationship).
 	/// </summary>
 	public Book Book { get; set; } = null!;
+	
+	public Member Member { get; set; }
 }

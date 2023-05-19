@@ -50,5 +50,12 @@ public class LibraryContext : DbContext
 		modelBuilder.Entity<Member>().HasKey(m => m.Id);
 		modelBuilder.Entity<Member>().Property(m => m.Id).ValueGeneratedOnAdd();
 		modelBuilder.Entity<Member>().Property(member => member.Name).IsRequired();
+		
+		// Model Member to BookInstance one-to-many relationship.
+		modelBuilder.Entity<Member>()
+			.HasMany(member => member.BookInstances)
+			.WithOne(bookInstance => bookInstance.Member)
+			.HasForeignKey(bookInstance => bookInstance.MemberId)
+			.IsRequired(false);
 	}
 }
