@@ -16,11 +16,25 @@ internal class BooksRepository : IBooksRepository
 
 	/// <inheritdoc />
 	public async Task<IReadOnlyList<Book>> ListBooksAsync(
-		string name = null,
+		string title = null,
 		string author = null,
 		Genre genre = Genre.Any)
 	{
-		return await _dbContext.Books
+		IQueryable<Book> books = _dbContext.Books;
+
+		// Add filter by book title
+		if (!string.IsNullOrEmpty(title))
+		{
+			books = books.Where(book => book.Title.Contains(title));
+		}
+
+		// Add filter by genre
+		if (genre != Genre.Any)
+		{
+			books = books.Where(book => book.Genre == genre);
+		}
+
+		return await books
 			.Include(book => book.BookInstances)
 			.Include(book => book.Author)
 			.ToListAsync();
