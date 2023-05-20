@@ -15,7 +15,11 @@ public class BookInstance
 	/// </summary>
 	public string ISBN { get; set; }
 	
-	public Guid MemberId { get; set; }
+	/// <summary>
+	/// Optional reference to library member.
+	/// If set, the instance is taken by the specified member.
+	/// </summary>
+	public Guid? MemberId { get; set; }
 
 	/// <summary>
 	/// Reference navigation to book (principal in one-to-many relationship).

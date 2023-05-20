@@ -25,7 +25,6 @@ public static class DbInitializer
 			};
 
 			context.Members.AddRange(memberOne, memberTwo, memberThree);
-			context.SaveChanges();
 			
 			// Create authors
 			Author authorOne = new ()
@@ -42,7 +41,6 @@ public static class DbInitializer
 			};
 			
 			context.Authors.AddRange(authorOne, authorTwo, authorThree);
-			context.SaveChanges();
 			
 			// Create books with references to authors.
 			Book bookOne = new()
@@ -73,7 +71,6 @@ public static class DbInitializer
 			};
 
 			context.Books.AddRange(bookOne, bookTwo, bookThree);
-			context.SaveChanges();
 
 			// Create book instances (paper copies) with references to books
 			context.BookInstances.AddRange(
