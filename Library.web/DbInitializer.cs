@@ -8,11 +8,10 @@ public static class DbInitializer
 	{
 		context.Database.EnsureCreated();
 
-		Member memberOne = null;
-		
-		if (!context.Members.Any())
+		// Look for any book.
+		if (!context.Books.Any())
 		{
-			memberOne = new()
+			Member memberOne = new()
 			{
 				Name = "Sylvia R. Torres"
 			};
@@ -26,11 +25,8 @@ public static class DbInitializer
 			};
 
 			context.Members.AddRange(memberOne, memberTwo, memberThree);
-		}
-
-		// Look for any book.
-		if (!context.Books.Any())
-		{
+			context.SaveChanges();
+			
 			// Create authors
 			Author authorOne = new ()
 			{
@@ -46,6 +42,7 @@ public static class DbInitializer
 			};
 			
 			context.Authors.AddRange(authorOne, authorTwo, authorThree);
+			context.SaveChanges();
 			
 			// Create books with references to authors.
 			Book bookOne = new()
@@ -76,6 +73,7 @@ public static class DbInitializer
 			};
 
 			context.Books.AddRange(bookOne, bookTwo, bookThree);
+			context.SaveChanges();
 
 			// Create book instances (paper copies) with references to books
 			context.BookInstances.AddRange(
@@ -109,8 +107,7 @@ public static class DbInitializer
 					ISBN = bookThree.ISBN
 				});
 
+			context.SaveChanges();
 		}
-
-		context.SaveChanges();
 	}
 }

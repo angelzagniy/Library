@@ -14,9 +14,11 @@ public class BooksController : Controller
 		_booksRepository = booksRepository;
 	}
 
-	public async Task<ActionResult<BooksPageViewModel>> Index()
+	public async Task<ActionResult<BooksPageViewModel>> Index(
+		string title)
 	{
-		IReadOnlyList<Book> books = await _booksRepository.ListBooksAsync();
+		IReadOnlyList<Book> books = await _booksRepository.ListBooksAsync(
+			title);
 		
 		BooksPageViewModel viewModel = new (
 			"Books",
