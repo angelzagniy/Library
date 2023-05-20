@@ -11,4 +11,11 @@ public class BooksPageViewModel : PageViewModel
 	}
 	
 	public IReadOnlyList<Book> Books { get;  }
+
+	public string TitleFilter { get; set; }
+	
+	public string AuthorFilter { get; set; }
+	
+	public Genre? GenreFilter { get; set; }
+
 }

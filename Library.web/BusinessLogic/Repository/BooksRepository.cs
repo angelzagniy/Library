@@ -39,4 +39,23 @@ internal class BooksRepository : IBooksRepository
 			.Include(book => book.Author)
 			.ToListAsync();
 	}
+
+	/// <inheritdoc />
+	public async Task AddBookAsync(
+		Book book,
+		int instancesCount)
+	{
+		await _dbContext.Books.AddAsync(book);
+
+		for (int i = 0; i < instancesCount; i++)
+		{
+			await _dbContext.BookInstances.AddAsync(
+				new BookInstance
+				{
+					ISBN = book.ISBN
+				});
+		}
+		
+		await _dbContext.SaveChangesAsync();
+	}
 }

@@ -47,7 +47,7 @@ public static class DbInitializer
 			{
 				ISBN = "0-8566-8267-5",
 				Title = "The Dynasty of Dawn",
-				Genre = Genre.SkyFi,
+				Genre = Genre.SinceFiction,
 				AuthorId = authorOne.Id,
 				Year = 1998
 			};

@@ -32,6 +32,7 @@ public class LibraryContext : DbContext
 
 		modelBuilder.Entity<BookInstance>().HasKey(bookInstance => bookInstance.Id);
 		modelBuilder.Entity<BookInstance>().Property(bookInstance => bookInstance.Id).ValueGeneratedOnAdd();
+		modelBuilder.Entity<BookInstance>().Property(bookInstance => bookInstance.MemberId).IsRequired(false);
 
 		modelBuilder.Entity<Member>().HasKey(member => member.Id);
 		modelBuilder.Entity<Member>().Property(member => member.Id).ValueGeneratedOnAdd();

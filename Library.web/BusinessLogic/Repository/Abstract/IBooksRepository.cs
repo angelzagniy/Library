@@ -18,4 +18,9 @@ public interface IBooksRepository
 		string title = null,
 		string author = null,
 		Genre genre = Genre.Any);
+
+	/// <summary>
+	/// Adds book to the repository.
+	/// </summary>
+	Task AddBookAsync(Book book, int instancesCount);
 }
