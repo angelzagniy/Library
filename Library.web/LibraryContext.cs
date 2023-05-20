@@ -12,11 +12,11 @@ public class LibraryContext : DbContext
 
 	public DbSet<Author> Authors { get; set; }
 
+	public DbSet<Member> Members { get; set; }
+
 	public DbSet<Book> Books { get; set; }
 
 	public DbSet<BookInstance> BookInstances { get; set; }
-
-	public DbSet<Member> Members { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -33,6 +33,10 @@ public class LibraryContext : DbContext
 		modelBuilder.Entity<BookInstance>().HasKey(bookInstance => bookInstance.Id);
 		modelBuilder.Entity<BookInstance>().Property(book => book.Id).ValueGeneratedOnAdd();
 
+		modelBuilder.Entity<Member>().HasKey(member => member.Id);
+		modelBuilder.Entity<Member>().Property(member => member.Id).ValueGeneratedOnAdd();
+		modelBuilder.Entity<Member>().Property(member => member.Name).IsRequired();
+
 		// Model Book to BookInstance one-to-many relationship.
 		modelBuilder.Entity<Book>()
 			.HasMany(book => book.BookInstances)
@@ -47,10 +51,6 @@ public class LibraryContext : DbContext
 			.HasForeignKey(book => book.AuthorId)
 			.IsRequired();
 
-		modelBuilder.Entity<Member>().HasKey(m => m.Id);
-		modelBuilder.Entity<Member>().Property(m => m.Id).ValueGeneratedOnAdd();
-		modelBuilder.Entity<Member>().Property(member => member.Name).IsRequired();
-		
 		// Model Member to BookInstance one-to-many relationship.
 		modelBuilder.Entity<Member>()
 			.HasMany(member => member.BookInstances)
