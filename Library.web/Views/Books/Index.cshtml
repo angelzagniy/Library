@@ -3,75 +3,74 @@
 @{
     ViewData["Title"] = Model.Title;
 }
-<div class="container">
-    <div class="row">
-        <h2>Books</h2>
-    </div>
-    <div class="row mb-3 align-items-center">
-        <div class="col-11">
-            <form class="row" method="get" asp-action="Index">
-                <div class="col-auto">
-                    <label class="col-form-label col-form-label-sm" for="title">Title</label>
-                </div>
-                <div class="col-3">
-                    <input id="title" name="title" type="text"
-                           class="form-control form-control-sm"
-                           value="@Model.TitleFilter">
-                </div>
-                <div class="col-auto">
-                    <label class="col-form-label col-form-label-sm" for="author">Author</label>
-                </div>
-                <div class="col-auto">
-                    <input id="author" name="author" type="text"
-                           class="form-control form-control-sm"
-                           value="@Model.AuthorFilter">
-                </div>
-                <div class="col-auto">
-                    <label class="col-sm-2 col-form-label col-form-label-sm" for="genreSelect">Genre</label>
-                </div>
-                <div class="col-auto">
-                    <select id="genreSelect" name="genre" class="form-select form-select-sm"
-                            asp-for="GenreFilter"
-                            asp-items="Html.GetEnumSelectList<Genre>()">
-                    </select>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-sm btn-info">Search</button>
-                </div>
-            </form>
-        </div>
-        <div class="col">
-            <a class="btn btn-sm btn-success" asp-controller="Books" asp-action="Add">Add New</a>
-        </div>
-    </div>
 
-    <div class="row align-content-end">
-        <div class="col">
-            <table class="table table-secondary table-hover table-striped">
-                <thead>
+<div class="row mb-3">
+    <h2>Books</h2>
+</div>
+<div class="row mb-3 align-items-center">
+    <div class="col-11">
+        <form class="row" method="get" asp-action="Index">
+            <div class="col-auto">
+                <label class="col-form-label col-form-label-sm" for="title">Title</label>
+            </div>
+            <div class="col-3">
+                <input id="title" name="title" type="text"
+                       class="form-control form-control-sm"
+                       value="@Model.TitleFilter">
+            </div>
+            <div class="col-auto">
+                <label class="col-form-label col-form-label-sm" for="author">Author</label>
+            </div>
+            <div class="col-auto">
+                <input id="author" name="author" type="text"
+                       class="form-control form-control-sm"
+                       value="@Model.AuthorFilter">
+            </div>
+            <div class="col-auto">
+                <label class="col-sm-2 col-form-label col-form-label-sm" for="genreSelect">Genre</label>
+            </div>
+            <div class="col-auto">
+                <select id="genreSelect" name="genre" class="form-select form-select-sm"
+                        asp-for="GenreFilter"
+                        asp-items="Html.GetEnumSelectList<Genre>()">
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-sm btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <a class="btn btn-sm btn-primary" asp-controller="Books" asp-action="Add">Add New</a>
+    </div>
+</div>
+
+<div class="row align-content-end">
+    <div class="col">
+        <table class="table table-secondary table-hover table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ISBN</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Year</th>
+                <th scope="col">Available/Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (Book book in Model.Books)
+            {
                 <tr>
-                    <th scope="col">ISBN</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Genre</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Available/Total</th>
+                    <td>@book.ISBN</td>
+                    <td>@book.Title</td>
+                    <td>@book.Author?.Name</td>
+                    <td>@Html.DisplayFor(item => book.Genre) </td>
+                    <td>@book.Year</td>
+                    <td>@book.BookInstances.Count(instance => instance.MemberId is null) / @book.BookInstances.Count</td>
                 </tr>
-                </thead>
-                <tbody>
-                @foreach (Book book in Model.Books)
-                {
-                    <tr>
-                        <td>@book.ISBN</td>
-                        <td>@book.Title</td>
-                        <td>@book.Author?.Name</td>
-                        <td>@Html.DisplayFor(item => book.Genre) </td>
-                        <td>@book.Year</td>
-                        <td>@book.BookInstances.Count(instance => instance.MemberId is null) / @book.BookInstances.Count</td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        </div>
+            }
+            </tbody>
+        </table>
     </div>
 </div>
