@@ -19,4 +19,11 @@ internal class AuthorsRepository : IAuthorsRepository
 	{
 		return await _dbContext.Authors.ToListAsync();
 	}
+	
+	/// <inheritdoc />
+	public async Task AddAuthorAsync(Author author)
+	{
+		await _dbContext.Authors.AddAsync(author);
+		await _dbContext.SaveChangesAsync();
+	}
 }

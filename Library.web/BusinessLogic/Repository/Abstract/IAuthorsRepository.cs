@@ -11,4 +11,6 @@ public interface IAuthorsRepository
 	/// Lists authors.
 	/// </summary>
 	Task<IReadOnlyList<Author>> ListAuthorsAsync();
+
+	Task AddAuthorAsync(Author author);
 }

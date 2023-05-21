@@ -1,16 +1,16 @@
 @using Library.Web.Models.ViewModels
-@model Library.Web.Models.ViewModels.MembersPageViewModel
+@model Library.Web.Models.ViewModels.AuthorPageViewModel
 
 @{
     ViewData["Title"] = Model.Title;
 }
 
 <div class="row mb-3">
-    <h2>Members</h2>
+    <h2>Authors</h2>
 </div>
 <div class="row mb-3 align-items-center">
     <div class="col">
-        <a class="btn btn-sm btn-outline-success" asp-controller="Members" asp-action="Add">Add New</a>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Authors" asp-action="Add">Add New</a>
     </div>
 </div>
 
@@ -22,11 +22,11 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (Member member in Model.Members)
+    @foreach (Author author in Model.Authors)
     {
         <tr>
-            <td>@member.Id</td>
-            <td>@member.Name</td>
+            <td>@author.Id</td>
+            <td>@author.Name</td>
             <td></td>
         </tr>
     }
