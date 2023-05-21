@@ -24,4 +24,11 @@ public class MembersRepository : IMembersRepository
         return await members
             .ToListAsync();
     }
+
+    /// <inheritdoc />
+    public async Task AddMemberAsync(Member member)
+    {
+        await _dbContext.Members.AddAsync(member);
+        await _dbContext.SaveChangesAsync();
+    }
 }

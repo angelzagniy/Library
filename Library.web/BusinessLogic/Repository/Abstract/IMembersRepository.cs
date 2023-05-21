@@ -18,4 +18,6 @@ public interface IMembersRepository
     Task<IReadOnlyList<Member>> ListMembersAsync(
         string name = null,
         List<BookInstance> books = null);
+
+    Task AddMemberAsync(Member member);
 }

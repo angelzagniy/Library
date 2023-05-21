@@ -24,4 +24,24 @@ public class MembersController : Controller
 
         return View(viewModel);
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> Add()
+    {
+        AddMemberViewModel model = new();
+
+        return View(model);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Add(AddMemberViewModel newMember)
+    {
+        await _membersRepository.AddMemberAsync(
+            new Member
+            {
+                Name = newMember.Name
+            });
+
+        return RedirectToAction("Index");
+    }
 }

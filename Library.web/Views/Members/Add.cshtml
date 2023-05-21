@@ -1,0 +1,23 @@
+@model Library.Web.Models.ViewModels.AddMemberViewModel
+
+@{
+    ViewData["Title"] = "Add Member";
+}
+
+<div class="container">
+    <form method="post" asp-action="Add" class="g-2">
+        <div class="row mb-2">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label col-form-label-sm"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Name" class="form-control form-control-sm">
+            </div>
+        <div class="row">
+            <div class="col-auto text-end">
+                <button type="submit" class="btn btn-sm btn-info">Submit</button>
+            </div>
+        </div>
+        </div>
+    </form>
+</div>
