@@ -51,6 +51,10 @@ public class BooksController : Controller
 			InstancesCount = 5,
 			Authors = authors
 				.Select(author => new SelectListItem(author.Name, author.Id.ToString()))
+				.ToArray(),
+			Genres = Enum.GetValues<Genre>()
+				.Where(g=>g != Genre.Any)
+				.Select(genre => new SelectListItem(genre.ToString(), genre.ToString()))
 				.ToArray()
 		};
 
@@ -58,19 +62,25 @@ public class BooksController : Controller
 	}
 
 	[HttpPost]
+	[ValidateAntiForgeryToken]
 	public async Task<IActionResult> Add(AddBookViewModel newBook)
 	{
-		await _booksRepository.AddBookAsync(
-			new Book
-			{
-				ISBN = newBook.ISBN,
-				Title = newBook.Title,
-				AuthorId = newBook.AuthorId,
-				Genre = newBook.Genre,
-				Year = newBook.Year
-			},
-			newBook.InstancesCount);
+		if (ModelState.IsValid)
+		{
+			await _booksRepository.AddBookAsync(
+				new Book
+				{
+					ISBN = newBook.ISBN,
+					Title = newBook.Title,
+					AuthorId = newBook.AuthorId!.Value,
+					Genre = newBook.Genre!.Value,
+					Year = newBook.Year
+				},
+				newBook.InstancesCount);
 
-		return RedirectToAction("Index");
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View(newBook);
 	}
 }

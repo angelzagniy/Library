@@ -1,26 +1,31 @@
-@using Library.Web.Models.ViewModels
 @model Library.Web.Models.ViewModels.MembersPageViewModel
 
 @{
     ViewData["Title"] = Model.Title;
 }
 
-<table class="table table-hover table-striped">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (Member member in Model.Members)
-    {
-        <tr>
-            <td>@member.Id</td>
-            <td>@member.Name</td>
-            <td></td>
-        </tr>
-    }
+<div class="row mb-3">
+    <h2>Library Members</h2>
+</div>
+<div class="row align-content-end">
+    <div class="col">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (Member member in Model.Members)
+            {
+                <tr>
+                    <td>@member.Id</td>
+                    <td>@member.Name</td>
+                </tr>
+            }
 
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
+</div>
