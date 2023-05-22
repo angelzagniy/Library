@@ -42,4 +42,17 @@ public class MembersRepository : IMembersRepository
 			.ThenInclude(book => book.Author)
 			.FirstOrDefaultAsync();
 	}
+
+	public async Task<string> ReleaseBookInstance(Guid id)
+	{
+		BookInstance instance = await _dbContext.BookInstances.FindAsync(id);
+
+		if (instance is { MemberId: not null })
+		{
+			instance.MemberId = null;
+			await _dbContext.SaveChangesAsync();
+		}
+
+		return instance?.ISBN;
+	}
 }

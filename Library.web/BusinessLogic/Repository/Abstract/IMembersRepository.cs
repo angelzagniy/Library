@@ -27,4 +27,6 @@ public interface IMembersRepository
     /// Gets member by ID.
     /// </summary>
     Task<Member> GetAsync(Guid id);
+
+    Task<string> ReleaseBookInstance(Guid id);
 }

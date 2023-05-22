@@ -36,6 +36,12 @@
             <div class="col-6">
                 <span class="text-dark"><b>@instance.Book.Title</b> (by @instance.Book.Author.Name)</span>
             </div>
+            <div class="col">
+                <a class="btn btn-sm btn-primary"
+                   asp-action="Release" asp-route-id="@instance.Id">
+                    Release
+                </a>
+            </div>
         </div>
     }
     <div class="row">

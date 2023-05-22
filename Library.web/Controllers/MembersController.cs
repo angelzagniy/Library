@@ -57,4 +57,12 @@ public class MembersController : Controller
 
 		return View(member);
 	}
+
+	[HttpGet]
+	public async Task<IActionResult> Release(Guid id)
+	{
+		await _membersRepository.ReleaseBookInstance(id);
+
+		return RedirectToAction(nameof(Index));
+	}
 }
