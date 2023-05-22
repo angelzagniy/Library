@@ -26,7 +26,7 @@ public class AuthorsController: Controller
     }
     
     [HttpGet]
-    public async Task<IActionResult> Add()
+    public IActionResult Add()
     {
         AddAuthorViewModel model = new();
 
@@ -36,12 +36,17 @@ public class AuthorsController: Controller
     [HttpPost]
     public async Task<IActionResult> Add(AddAuthorViewModel newAuthor)
     {
-        await _authorsRepository.AddAuthorAsync(
-            new Author
-            {
-                Name = newAuthor.Name
-            });
+        if (ModelState.IsValid)
+        {
+            await _authorsRepository.AddAuthorAsync(
+                new Author
+                {
+                    Name = newAuthor.Name
+                });
 
-        return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(newAuthor);
     }
 }

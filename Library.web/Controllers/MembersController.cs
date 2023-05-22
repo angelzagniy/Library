@@ -26,7 +26,7 @@ public class MembersController : Controller
     }
     
     [HttpGet]
-    public async Task<IActionResult> Add()
+    public IActionResult Add()
     {
         AddMemberViewModel model = new();
 
@@ -36,12 +36,17 @@ public class MembersController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(AddMemberViewModel newMember)
     {
-        await _membersRepository.AddMemberAsync(
-            new Member
-            {
-                Name = newMember.Name
-            });
+        if (ModelState.IsValid)
+        {
+            await _membersRepository.AddMemberAsync(
+                new Member
+                {
+                    Name = newMember.Name
+                });
 
-        return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(newMember);
     }
 }
