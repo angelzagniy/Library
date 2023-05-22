@@ -34,6 +34,16 @@ internal class BooksRepository : IBooksRepository
 			books = books.Where(book => book.Genre == genre);
 		}
 
+		if (!string.IsNullOrEmpty(author))
+		{
+			List<Guid> authors = await _dbContext.Authors
+				.Where(a => a.Name.Contains(author))
+				.Select(a => a.Id)
+				.ToListAsync();
+
+			books = books.Where(book => authors.Contains(book.AuthorId));
+		}
+
 		return await books
 			.Include(book => book.BookInstances)
 			.Include(book => book.Author)
