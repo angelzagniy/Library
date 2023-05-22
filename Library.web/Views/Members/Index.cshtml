@@ -20,7 +20,7 @@
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
-        <th scope="col">Actions</th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
@@ -29,7 +29,12 @@
         <tr>
             <td>@member.Id</td>
             <td>@member.Name</td>
-            <td></td>
+            <td>
+                <a class="btn btn-sm btn-outline-success"
+                   asp-controller="Members" asp-action="Get" asp-route-id="@member.Id">
+                    <span class="bi-pencil-square"></span>
+                </a>
+            </td>
         </tr>
     }
 

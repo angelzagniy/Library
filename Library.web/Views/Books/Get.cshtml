@@ -10,7 +10,7 @@
     </div>
     <div class="row mb-2">
         <div class="col-2">
-            <label asp-for="ISBN" class="col-form-label col-form-label-sm"></label>
+            <span class="col-form-label col-form-label-sm">ISBN</span>
         </div>
         <div class="col-4">
             <span class="text-info">@Model.ISBN</span>
@@ -52,26 +52,58 @@
     <div class="row mb-2 mt-2">
         <h4>Instances</h4>
     </div>
-    @foreach (BookInstance instance in Model.BookInstances)
-    {
-        <div class="row mb-2">
-            <div class="col-3">
-                <span class="col-form-label col-form-label-sm">@instance.Id</span>
-            </div>
-            <div class="col">
-                @if (instance.Member != null)
+
+    <div class="row mb-2">
+        <div class="col-8">
+            <table class="table table-secondary table-hover table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Taken By</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (BookInstance instance in Model.BookInstances)
                 {
-                    <span class="text-dark">Taken by @instance.Member.Name</span>
+                    <tr>
+                        <td>
+                            <span class="col-form-label col-form-label-sm">@instance.Id</span>
+                        </td>
+                        <td>
+                            @if (instance.Member != null)
+                            {
+                                <span class="text-dark">
+                                    Taken by
+                                    <a asp-controller="Members" asp-action="Get" asp-route-id="@instance.MemberId">@instance.Member.Name</a>
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="text-dark">
+                                    <i>Available</i>
+                                </span>
+                            }
+                        </td>
+                        <td>
+                            @if (instance.Member != null)
+                            {
+                                <a class="btn btn-sm btn-primary"
+                                   asp-action="Release" asp-route-id="@instance.Id">
+                                    Release
+                                </a>
+                            }
+                        </td>
+                    </tr>
                 }
-                else
-                {
-                    <span class="text-dark"><i>Available</i></span>
-                }
-            </div>
+
+                </tbody>
+            </table>
         </div>
-    }
+
+    </div>
     <div class="row">
-        <div class="col-6 g-2 text-end">
+        <div class="col-8 g-2 text-end">
             <a class="btn btn-sm btn-secondary" asp-action="Index">Back to books</a>
         </div>
     </div>

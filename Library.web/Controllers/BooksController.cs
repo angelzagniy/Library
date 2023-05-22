@@ -44,7 +44,7 @@ public class BooksController : Controller
 	public async Task<IActionResult> Get(string id)
 	{
 		Book book = await _booksRepository.GeBookAsync(id);
-		
+
 		return View(book);
 	}
 
@@ -61,7 +61,7 @@ public class BooksController : Controller
 				.Select(author => new SelectListItem(author.Name, author.Id.ToString()))
 				.ToArray(),
 			Genres = Enum.GetValues<Genre>()
-				.Where(g=>g != Genre.Any)
+				.Where(g => g != Genre.Any)
 				.Select(genre => new SelectListItem(genre.ToString(), genre.ToString()))
 				.ToArray()
 		};
@@ -90,5 +90,15 @@ public class BooksController : Controller
 		}
 
 		return View(newBook);
+	}
+
+	[HttpGet]
+	public async Task<IActionResult> Release(Guid id)
+	{
+		string isbn = await _booksRepository.ReleaseBookInstance(id);
+
+		return !string.IsNullOrEmpty(isbn)
+			? RedirectToAction(nameof(Get), new { id = isbn })
+			: RedirectToAction(nameof(Index));
 	}
 }

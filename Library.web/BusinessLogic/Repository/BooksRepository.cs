@@ -80,4 +80,18 @@ internal class BooksRepository : IBooksRepository
 			.ThenInclude(bi => bi.Member)
 			.FirstOrDefaultAsync();
 	}
+
+	/// <inheritdoc />
+	public async Task<string> ReleaseBookInstance(Guid instanceId)
+	{
+		BookInstance instance = await _dbContext.BookInstances.FindAsync(instanceId);
+
+		if (instance is { MemberId: not null })
+		{
+			instance.MemberId = null;
+			await _dbContext.SaveChangesAsync();
+		}
+
+		return instance?.ISBN;
+	}
 }

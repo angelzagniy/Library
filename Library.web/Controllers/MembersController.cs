@@ -7,46 +7,54 @@ namespace Library.Web.Controllers;
 
 public class MembersController : Controller
 {
-    private readonly IMembersRepository _membersRepository;
+	private readonly IMembersRepository _membersRepository;
 
-    public MembersController(IMembersRepository membersRepository)
-    {
-        _membersRepository = membersRepository;
-    }
-    
-    public async Task<ActionResult<MembersPageViewModel>> Index()
-    {
-        IReadOnlyList<Member> members = await _membersRepository.ListMembersAsync();
-		
-        MembersPageViewModel viewModel = new (
-            "Members",
-            members);
+	public MembersController(IMembersRepository membersRepository)
+	{
+		_membersRepository = membersRepository;
+	}
 
-        return View(viewModel);
-    }
-    
-    [HttpGet]
-    public IActionResult Add()
-    {
-        AddMemberViewModel model = new();
+	public async Task<ActionResult<MembersPageViewModel>> Index()
+	{
+		IReadOnlyList<Member> members = await _membersRepository.ListMembersAsync();
 
-        return View(model);
-    }
+		MembersPageViewModel viewModel = new(
+			"Members",
+			members);
 
-    [HttpPost]
-    public async Task<IActionResult> Add(AddMemberViewModel newMember)
-    {
-        if (ModelState.IsValid)
-        {
-            await _membersRepository.AddMemberAsync(
-                new Member
-                {
-                    Name = newMember.Name
-                });
+		return View(viewModel);
+	}
 
-            return RedirectToAction(nameof(Index));
-        }
+	[HttpGet]
+	public IActionResult Add()
+	{
+		AddMemberViewModel model = new();
 
-        return View(newMember);
-    }
+		return View(model);
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> Add(AddMemberViewModel newMember)
+	{
+		if (ModelState.IsValid)
+		{
+			await _membersRepository.AddMemberAsync(
+				new Member
+				{
+					Name = newMember.Name
+				});
+
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View(newMember);
+	}
+
+	[HttpGet]
+	public async Task<IActionResult> Get(Guid id)
+	{
+		Member member = await _membersRepository.GetAsync(id);
+
+		return View(member);
+	}
 }

@@ -28,4 +28,9 @@ public interface IBooksRepository
 	/// Gets book by ISBN.
 	/// </summary>
 	Task <Book> GeBookAsync(string isbn);
+
+	/// <summary>
+	/// Releases book instance (returns a book) ID.
+	/// </summary>
+	Task<string> ReleaseBookInstance(Guid instanceId);
 }

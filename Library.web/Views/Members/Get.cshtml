@@ -1,0 +1,46 @@
+﻿@model Member
+
+<div class="container">
+    <div class="row mb-3">
+        <h2>Manage Book</h2>
+    </div>
+    <div class="row mb-2">
+        <div class="col-2">
+            <span class="col-form-label col-form-label-sm">ID</span>
+        </div>
+        <div class="col-4">
+            <span class="text-info">@Model.Id</span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-2">
+            <span class="col-form-label col-form-label-sm">Full Name</span>
+        </div>
+        <div class="col-4">
+            <span class="">@Model.Name</span>
+        </div>
+    </div>
+
+    <div class="row mb-2 mt-2">
+        <h4>Taken Books</h4>
+    </div>
+    @foreach (BookInstance instance in Model.BookInstances)
+    {
+        <div class="row mb-2">
+            <div class="col-2">
+                <span class="col-form-label col-form-label-sm">@instance.ISBN</span>
+            </div>
+            <div class="col-3">
+                <span class="col-form-label col-form-label-sm">@instance.Id</span>
+            </div>
+            <div class="col-6">
+                <span class="text-dark"><b>@instance.Book.Title</b> (by @instance.Book.Author.Name)</span>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-11 g-2 text-end">
+            <a class="btn btn-sm btn-secondary" asp-action="Index">Back to members</a>
+        </div>
+    </div>
+</div>
