@@ -68,4 +68,16 @@ internal class BooksRepository : IBooksRepository
 		
 		await _dbContext.SaveChangesAsync();
 	}
+
+
+	/// <inheritdoc />
+	public async Task<Book> GeBookAsync(string isbn)
+	{
+		return await _dbContext.Books
+			.Where(book => book.ISBN == isbn)
+			.Include(book => book.Author)
+			.Include(book => book.BookInstances)
+			.ThenInclude(bi => bi.Member)
+			.FirstOrDefaultAsync();
+	}
 }

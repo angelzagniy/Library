@@ -23,4 +23,9 @@ public interface IBooksRepository
 	/// Adds book to the repository.
 	/// </summary>
 	Task AddBookAsync(Book book, int instancesCount);
+	
+	/// <summary>
+	/// Gets book by ISBN.
+	/// </summary>
+	Task <Book> GeBookAsync(string isbn);
 }

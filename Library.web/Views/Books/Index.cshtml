@@ -8,7 +8,7 @@
     <h2>Books</h2>
 </div>
 <div class="row mb-2 align-items-center">
-    <div class="col-11">
+    <div class="col-10">
         <form class="row" method="get" asp-action="Index">
             <div class="col-auto">
                 <label class="col-form-label col-form-label-sm" for="title">Title</label>
@@ -40,7 +40,7 @@
             </div>
         </form>
     </div>
-    <div class="col text-end">
+    <div class="col-2 text-end">
         <a class="btn btn-sm btn-outline-success" asp-controller="Books" asp-action="Add">Add New</a>
     </div>
 </div>
@@ -56,6 +56,7 @@
                 <th scope="col">Genre</th>
                 <th scope="col">Year</th>
                 <th scope="col">Available/Total</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -68,6 +69,12 @@
                     <td>@Html.DisplayFor(item => book.Genre) </td>
                     <td>@book.Year</td>
                     <td>@book.BookInstances.Count(instance => instance.MemberId is null) / @book.BookInstances.Count</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-success" 
+                           asp-controller="Books" asp-action="Get" asp-route-id="@book.ISBN">
+                            <span class="bi-pencil-square"></span>
+                        </a>
+                    </td>
                 </tr>
             }
             </tbody>

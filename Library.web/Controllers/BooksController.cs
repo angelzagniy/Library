@@ -41,6 +41,14 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
+	public async Task<IActionResult> Get(string id)
+	{
+		Book book = await _booksRepository.GeBookAsync(id);
+		
+		return View(book);
+	}
+
+	[HttpGet]
 	public async Task<IActionResult> Add()
 	{
 		IReadOnlyCollection<Author> authors = await _authorsRepository.ListAuthorsAsync();
