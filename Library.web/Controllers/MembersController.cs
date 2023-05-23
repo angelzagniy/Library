@@ -8,10 +8,14 @@ namespace Library.Web.Controllers;
 public class MembersController : Controller
 {
 	private readonly IMembersRepository _membersRepository;
+	private readonly IBooksRepository _booksRepository;
 
-	public MembersController(IMembersRepository membersRepository)
+	public MembersController(
+		IMembersRepository membersRepository,
+		IBooksRepository booksRepository)
 	{
 		_membersRepository = membersRepository;
+		_booksRepository = booksRepository;
 	}
 
 	public async Task<ActionResult<MembersPageViewModel>> Index()
@@ -59,9 +63,9 @@ public class MembersController : Controller
 	}
 
 	[HttpGet]
-	public async Task<IActionResult> Release(Guid id)
+	public async Task<IActionResult> ReturnBook(Guid id)
 	{
-		await _membersRepository.ReleaseBookInstance(id);
+		await _booksRepository.ReleaseBookInstance(id);
 
 		return RedirectToAction(nameof(Index));
 	}

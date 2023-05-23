@@ -65,13 +65,13 @@ internal class BooksRepository : IBooksRepository
 					ISBN = book.ISBN
 				});
 		}
-		
+
 		await _dbContext.SaveChangesAsync();
 	}
 
 
 	/// <inheritdoc />
-	public async Task<Book> GeBookAsync(string isbn)
+	public async Task<Book> GetBookAsync(string isbn)
 	{
 		return await _dbContext.Books
 			.Where(book => book.ISBN == isbn)
@@ -93,5 +93,31 @@ internal class BooksRepository : IBooksRepository
 		}
 
 		return instance?.ISBN;
+	}
+
+	/// <inheritdoc />
+	public async Task<BookInstance> GetBookInstanceAsync(Guid id)
+	{
+		return await _dbContext.BookInstances
+			.Where(bookInstance => bookInstance.Id == id)
+			.Include(bookInstance => bookInstance.Book)
+			.ThenInclude(book => book.Author)
+			.FirstOrDefaultAsync();
+	}
+
+	/// <inheritdoc />
+	public async Task<bool> LendBookAsync(Guid bookInstanceId, Guid memberId)
+	{
+		BookInstance instance = await _dbContext.BookInstances.FindAsync(bookInstanceId);
+
+		if (instance == null)
+		{
+			return false;
+		}
+
+		instance.MemberId = memberId;
+		await _dbContext.SaveChangesAsync();
+
+		return true;
 	}
 }

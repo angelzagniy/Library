@@ -27,10 +27,20 @@ public interface IBooksRepository
 	/// <summary>
 	/// Gets book by ISBN.
 	/// </summary>
-	Task <Book> GeBookAsync(string isbn);
+	Task <Book> GetBookAsync(string isbn);
 
 	/// <summary>
 	/// Releases book instance (returns a book) ID.
 	/// </summary>
 	Task<string> ReleaseBookInstance(Guid instanceId);
+
+	/// <summary>
+	/// Retrieves a book instance.
+	/// </summary>
+	Task<BookInstance> GetBookInstanceAsync(Guid id);
+
+	/// <summary>
+	/// Assigns book instance to a member (lends a book).
+	/// </summary>
+	Task<bool> LendBookAsync(Guid bookInstanceId, Guid memberId);
 }

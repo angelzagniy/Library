@@ -1,4 +1,5 @@
-﻿using Library.Web.BusinessLogic.Repository.Abstract;
+﻿using Library.Web.BusinessLogic.Abstract;
+using Library.Web.BusinessLogic.Repository.Abstract;
 using Library.Web.Models;
 using Library.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +11,16 @@ public class BooksController : Controller
 {
 	private readonly IBooksRepository _booksRepository;
 	private readonly IAuthorsRepository _authorsRepository;
+	private readonly IBooksVMBuilder _booksVmBuilder;
 
 	public BooksController(
 		IBooksRepository booksRepository,
-		IAuthorsRepository authorsRepository)
+		IAuthorsRepository authorsRepository,
+		IBooksVMBuilder booksVmBuilder)
 	{
 		_booksRepository = booksRepository;
 		_authorsRepository = authorsRepository;
+		_booksVmBuilder = booksVmBuilder;
 	}
 
 	[HttpGet]
@@ -41,9 +45,15 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
+	public IActionResult Reset()
+	{
+		return RedirectToAction(nameof(Index));
+	}
+
+	[HttpGet]
 	public async Task<IActionResult> Get(string id)
 	{
-		Book book = await _booksRepository.GeBookAsync(id);
+		Book book = await _booksRepository.GetBookAsync(id);
 
 		return View(book);
 	}
@@ -93,12 +103,40 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
-	public async Task<IActionResult> Release(Guid id)
+	public async Task<IActionResult> ReturnBook(Guid id)
 	{
 		string isbn = await _booksRepository.ReleaseBookInstance(id);
 
 		return !string.IsNullOrEmpty(isbn)
 			? RedirectToAction(nameof(Get), new { id = isbn })
 			: RedirectToAction(nameof(Index));
+	}
+
+	[HttpGet]
+	public async Task<IActionResult> LendBook(Guid id)
+	{
+		LendBookViewModel viewModel = await _booksVmBuilder.BuildLendBookViewModelAsync(id);
+
+		return View(viewModel);
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> LendBook(LendBookViewModel model)
+	{
+		if (ModelState.IsValid)
+		{
+			await _booksRepository.LendBookAsync(model.BookInstance.Id, model.SelectedMemberId!.Value);
+
+			return RedirectToAction(
+				nameof(Get),
+				new
+				{
+					id = model.BookInstance.ISBN
+				});
+		}
+
+		LendBookViewModel viewModel = await _booksVmBuilder.BuildLendBookViewModelAsync(model.BookInstance.Id);
+
+		return View(viewModel);
 	}
 }

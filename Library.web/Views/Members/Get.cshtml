@@ -27,25 +27,24 @@
     @foreach (BookInstance instance in Model.BookInstances)
     {
         <div class="row mb-2">
-            <div class="col-2">
-                <span class="col-form-label col-form-label-sm">@instance.ISBN</span>
-            </div>
             <div class="col-3">
-                <span class="col-form-label col-form-label-sm">@instance.Id</span>
+                <span class="col-form-label col-form-label-sm">S/N: @instance.Id</span>
             </div>
-            <div class="col-6">
-                <span class="text-dark"><b>@instance.Book.Title</b> (by @instance.Book.Author.Name)</span>
+            <div class="col-4">
+                <span class="text-dark">
+                    <b>@instance.Book.Title</b> (by @instance.Book.Author.Name)
+                </span>
             </div>
-            <div class="col">
+            <div class="col-1 text-end">
                 <a class="btn btn-sm btn-primary"
-                   asp-action="Release" asp-route-id="@instance.Id">
-                    Release
+                   asp-action="ReturnBook" asp-route-id="@instance.Id">
+                    Return
                 </a>
             </div>
         </div>
     }
     <div class="row">
-        <div class="col-11 g-2 text-end">
+        <div class="col-8 g-2 text-end">
             <a class="btn btn-sm btn-secondary" asp-action="Index">Back to members</a>
         </div>
     </div>

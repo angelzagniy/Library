@@ -8,46 +8,8 @@
     <div class="row mb-3">
         <h2>Manage Book</h2>
     </div>
-    <div class="row mb-2">
-        <div class="col-2">
-            <span class="col-form-label col-form-label-sm">ISBN</span>
-        </div>
-        <div class="col-4">
-            <span class="text-info">@Model.ISBN</span>
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-2">
-            <span class="col-form-label col-form-label-sm">Title</span>
-        </div>
-        <div class="col-4">
-            <span class="">@Model.Title</span>
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-2">
-            <span class="col-form-label col-form-label-sm">Genre</span>
-        </div>
-        <div class="col-4">
-            <span class="">@Html.ValueFor(m => Model.Genre)</span>
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-2">
-            <span class="col-sm-2 col-form-label col-form-label-sm">Author</span>
-        </div>
-        <div class="col-4">
-            <span class="">@Model.Author.Name</span>
-        </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-2">
-            <span class="col-form-label col-form-label-sm">Year</span>
-        </div>
-        <div class="col-4">
-            <span class="text-dark">@Model.Year</span>
-        </div>
-    </div>
+   
+    @await Html.PartialAsync("BookInfo", Model)
 
     <div class="row mb-2 mt-2">
         <h4>Instances</h4>
@@ -89,14 +51,20 @@
                             @if (instance.Member != null)
                             {
                                 <a class="btn btn-sm btn-primary"
-                                   asp-action="Release" asp-route-id="@instance.Id">
-                                    Release
+                                   asp-action="ReturnBook" asp-route-id="@instance.Id">
+                                    Return
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-sm btn-primary"
+                                   asp-action="LendBook" asp-route-id="@instance.Id">
+                                    Lend
                                 </a>
                             }
                         </td>
                     </tr>
                 }
-
                 </tbody>
             </table>
         </div>

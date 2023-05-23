@@ -9,7 +9,7 @@
 </div>
 <div class="row mb-2 align-items-center">
     <div class="col-10">
-        <form class="row" method="get" asp-action="Index">
+        <form class="row" method="get">
             <div class="col-auto">
                 <label class="col-form-label col-form-label-sm" for="title">Title</label>
             </div>
@@ -36,7 +36,10 @@
                 </select>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-sm btn-outline-success">Search</button>
+                <button type="submit" class="btn btn-sm btn-outline-success"
+                        asp-action="Index">Search</button>
+                <button type="submit" class="btn btn-sm btn-outline-danger"
+                        asp-action="Reset">Reset</button>
             </div>
         </form>
     </div>

@@ -1,14 +1,14 @@
 ﻿@model Library.Web.Models.ViewModels.AddBookViewModel
 
 @{
-    ViewData["Title"] = "Add Book";
+    ViewData["Title"] = Model.Title;
 }
 
 <div class="container">
     <div class="row mb-3">
-        <h2>Add Book</h2>
+        <h2>@Model.Title</h2>
     </div>
-    <form method="post" asp-action="Add" class="g-2">
+    <form method="post" class="g-2">
         <div class="row mb-2">
             <div class="col-2">
                 <label asp-for="ISBN" class="col-form-label col-form-label-sm"></label>

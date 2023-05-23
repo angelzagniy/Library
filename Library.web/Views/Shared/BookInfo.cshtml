@@ -1,0 +1,42 @@
+﻿@model Book
+
+<div class="row mb-2">
+    <div class="col-2">
+        <span class="col-form-label col-form-label-sm">ISBN</span>
+    </div>
+    <div class="col-4">
+        <span class="text-info">@Model.ISBN</span>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-2">
+        <span class="col-form-label col-form-label-sm">Title</span>
+    </div>
+    <div class="col-4">
+        <span class="">@Model.Title</span>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-2">
+        <span class="col-form-label col-form-label-sm">Genre</span>
+    </div>
+    <div class="col-4">
+        <span class="">@Html.ValueFor(m => Model.Genre)</span>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-2">
+        <span class="col-sm-2 col-form-label col-form-label-sm">Author</span>
+    </div>
+    <div class="col-4">
+        <span class="">@Model.Author.Name</span>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-2">
+        <span class="col-form-label col-form-label-sm">Year</span>
+    </div>
+    <div class="col-4">
+        <span class="text-dark">@Model.Year</span>
+    </div>
+</div>

@@ -1,3 +1,5 @@
+using Library.Web.BusinessLogic.Abstract;
+using Library.Web.BusinessLogic.Managers;
 using Library.Web.BusinessLogic.Repository;
 using Library.Web.BusinessLogic.Repository.Abstract;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,7 @@ public class Program
 		builder.Services
 			.AddDbContext<LibraryContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString(name: "LibraryDatabase")))
+			.AddTransient<IBooksVMBuilder, BooksVmBuilder>()
 			.AddTransient<IBooksRepository, BooksRepository>()
 			.AddTransient<IAuthorsRepository, AuthorsRepository>()
 			.AddTransient<IMembersRepository, MembersRepository>()
