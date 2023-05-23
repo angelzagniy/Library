@@ -15,9 +15,7 @@ public class MembersRepository : IMembersRepository
 	}
 
 	/// <inheritdoc />
-	public async Task<IReadOnlyList<Member>> ListMembersAsync(
-		string name = null,
-		List<BookInstance> books = null)
+	public async Task<IReadOnlyList<Member>> ListMembersAsync(string name = null)
 	{
 		IQueryable<Member> members = _dbContext.Members;
 

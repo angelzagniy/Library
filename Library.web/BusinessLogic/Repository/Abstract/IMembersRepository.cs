@@ -12,11 +12,8 @@ public interface IMembersRepository
     /// Lists books.
     /// </summary>
     /// <param name="name">Optional name filter.</param>
-    /// <param name="books">Optional list of taken books.</param>
     /// <returns>A collection of books matching filtering criteria, if specified.</returns>
-    Task<IReadOnlyList<Member>> ListMembersAsync(
-        string name = null,
-        List<BookInstance> books = null);
+    Task<IReadOnlyList<Member>> ListMembersAsync(string name = null);
 
     /// <summary>
     /// Adds member.
