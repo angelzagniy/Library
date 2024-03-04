@@ -2,6 +2,7 @@ using Library.Web.BusinessLogic.Abstract;
 using Library.Web.BusinessLogic.Managers;
 using Library.Web.BusinessLogic.Repository;
 using Library.Web.BusinessLogic.Repository.Abstract;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.Web;
@@ -11,7 +12,7 @@ public class Program
 	public static void Main(string[] args)
 	{
 		WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-		
+
 		// Add services to the container.
 		builder.Services
 			.AddDbContext<LibraryContext>(options =>
@@ -19,8 +20,17 @@ public class Program
 			.AddTransient<IBooksVMBuilder, BooksVmBuilder>()
 			.AddTransient<IBooksRepository, BooksRepository>()
 			.AddTransient<IAuthorsRepository, AuthorsRepository>()
-			.AddTransient<IMembersRepository, MembersRepository>()
-			.AddControllersWithViews();
+			.AddTransient<IMembersRepository, MembersRepository>();
+
+		builder.Services.AddControllersWithViews();
+
+		builder.Services
+			.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+			.AddCookie(options =>
+			{
+				options.LoginPath = "/Home/Login";
+				options.SlidingExpiration = true;
+			});
 
 		if (builder.Environment.IsDevelopment())
 		{
@@ -47,21 +57,22 @@ public class Program
 
 		app.UseRouting();
 
+		app.UseAuthentication();
 		app.UseAuthorization();
 
 		app.MapControllerRoute(
 			name: "default",
 			pattern: "{controller=Home}/{action=Index}/{id?}");
-		
+
 		CreateDbIfNotExists(app);
-		
+
 		app.Run();
 	}
 
 	private static void CreateDbIfNotExists(IHost host)
 	{
 		using IServiceScope scope = host.Services.CreateScope();
-		
+
 		IServiceProvider services = scope.ServiceProvider;
 		try
 		{
