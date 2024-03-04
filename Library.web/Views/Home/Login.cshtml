@@ -1,0 +1,40 @@
+﻿@model Library.Web.Models.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container justify-content-center">
+    <div class="row mb-3">
+        <h2>Login</h2>
+    </div>
+
+    <form method="post" class="g-2">
+        <div class="row mb-2">
+            <div class="col-1">
+                <label asp-for="Username" class="col-form-label col-form-label-sm"></label>
+            </div>
+            <div class="col-2">
+                <input asp-for="Username" class="form-control form-control-sm">
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-1">
+                <label asp-for="Password" class="col-form-label col-form-label-sm"></label>
+            </div>
+            <div class="col-2">
+                <input asp-for="Password" type="password" class="form-control form-control-sm">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="row">
+                <div class="col-3 g-2 text-end">
+                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                    <a class="btn btn-sm btn-secondary" asp-action="Index">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
