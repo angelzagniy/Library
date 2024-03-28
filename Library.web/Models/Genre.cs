@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Library.Web.Models;
 
+/// <summary>
+/// Book genres.
+/// </summary>
 public enum Genre
 {
 	Any = 0,

@@ -5,7 +5,7 @@ public class Book
 	/// <summary>
 	/// International Standard Book Number. Unique book identifier.
 	/// </summary>
-	public string ISBN { get; set; }
+    public string ISBN { get; set; }
 
 	/// <summary>
 	/// Book title.
@@ -27,10 +27,13 @@ public class Book
 	/// </summary>
 	public int Year { get; set; }
 
+	/// <summary>
+	/// Reference to the book's author.
+	/// </summary>
 	public Author Author { get; set; } = null!;
 	
 	/// <summary>
-	/// Book instances (paper copies).
+	/// Book instances (paper copies) owned by the library.
 	/// </summary>
 	public ICollection<BookInstance> BookInstances { get; } = new List<BookInstance>(); 
 }
