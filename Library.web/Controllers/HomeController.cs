@@ -1,9 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Library.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Logging;
 
 namespace Library.Web.Controllers;
 
@@ -38,12 +41,26 @@ public class HomeController : Controller
 		string password,
 		string returnUrl)
 	{
-		if (username == "Admin" && password == "Admin")
+		string name = null;
+		string role = null;
+
+		if (username == "admin" && password == "admin")
+		{
+			name = "Admin";
+			role = "Admin";
+		}
+		else if (username == "jdoe" && password == "jdoe")
+		{
+			name = "John Doe";
+			role = "User";
+		}
+
+		if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(role))
 		{
 			List<Claim> claims =
 			[
-				new Claim(type: ClaimTypes.Name, value: username),
-				new Claim(type: ClaimTypes.Role, value: "Admin")
+				new Claim(type: ClaimTypes.Name, value: name),
+				new Claim(type: ClaimTypes.Role, value: role)
 			];
 
 			ClaimsIdentity claimsIdentity = new(claims, authenticationType: "Login");
@@ -53,11 +70,18 @@ public class HomeController : Controller
 				new ClaimsPrincipal(claimsIdentity));
 
 			return string.IsNullOrEmpty(returnUrl)
-				? RedirectToAction("Index") 
+				? RedirectToAction("Index")
 				: Redirect(returnUrl);
 		}
 
 		return View(new LoginViewModel());
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> Logout()
+	{
+		await HttpContext.SignOutAsync();
+		return RedirectToAction(nameof(Index));
 	}
 
 	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -18,21 +18,72 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Books" asp-action="Index">Books</a>
+                        <a class="nav-link" asp-controller="Books" asp-action="Index">Books</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Members" asp-action="Index">Members</a>
+                        <a class="nav-link" asp-controller="Members" asp-action="Index">Members</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Authors" asp-action="Index">Authors</a>
+                        <a class="nav-link" asp-controller="Authors" asp-action="Index">Authors</a>
                     </li>
                 </ul>
+            </div>
+            <div class="d-sm-flex m-auto me-5">
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <ul class="navbar-nav me-auto">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="bi-gear m-1"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <span class="bi-people me-1"></span>Users
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <form method="post" asp-controller="Home" asp-action="Logout">
+                                        <button class="dropdown-item">
+                                            <span class="bi-box-arrow-up-right me-1"></span>Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <a class="navbar-text" asp-controller="Home" asp-action="Login">
+                        <span class="bi-box-arrow-in-up-right me-1"></span>Login
+                    </a>
+                }
             </div>
         </div>
     </nav>
