@@ -1,9 +1,15 @@
+using System;
 using Library.Web.BusinessLogic.Abstract;
 using Library.Web.BusinessLogic.Managers;
 using Library.Web.BusinessLogic.Repository;
 using Library.Web.BusinessLogic.Repository.Abstract;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Library.Web;
 
@@ -30,6 +36,7 @@ public class Program
 			{
 				options.LoginPath = "/Home/Login";
 				options.SlidingExpiration = true;
+				options.ExpireTimeSpan = new TimeSpan(0, 0, minutes: 30, 0);
 			});
 
 		if (builder.Environment.IsDevelopment())
