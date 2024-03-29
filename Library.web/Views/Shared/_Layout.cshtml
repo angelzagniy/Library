@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Library</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -88,17 +88,19 @@
         </div>
     </nav>
 </header>
-<div class="container">
-    <main role="main" class="bg-light">
-        @RenderBody()
-    </main>
-</div>
 
-<footer class="border-top footer text-muted">
+<main class="flex-shrink-0">
+    <div class="container mt-3">
+        @RenderBody()
+    </div>
+</main>
+
+<footer class="footer mt-auto border-top bg-light py-2">
     <div class="container">
-        &copy; 2023 - Library
+        <span class="text-muted">Library &copy; 2023 - @DateTime.Today.Year Angelina Zagnii.</span>
     </div>
 </footer>
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>

@@ -4,78 +4,81 @@
     ViewData["Title"] = Model.Title;
 }
 
-<div class="container">
+<h1>Інформаційна система "Бібліотека"</h1>
+<h4>Загній Ангеліна, КН-20</h4>
+<h5>2023</h5>
+<p class="lead">
+    Створення програмного забезпечення для автоматизації роботи бібліотеки
+</p>
 
-    <h1>Інформаційна система "Бібліотека"</h1>
-    <h4>Загній Ангеліна, КН-20</h4>
-    <h5>2023</h5>
-    <p class="lead">
-        Створення програмного забезпечення для автоматизації роботи бібліотеки
+@if (!User.Identity?.IsAuthenticated ?? true)
+{
+    <p>
+        <a class="btn btn-sm btn-link" asp-controller="Home" asp-action="Login">Увійти</a>
     </p>
+}
 
-    <h4>Деталі проекту</h4>
+<h4>Деталі проекту</h4>
 
-    <div class="accordion accordion-flush" id="projectDetails">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button type="button"
-                        class="accordion-button collapsed"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
-                        aria-expanded="false"
-                        aria-controls="collapseOne">
-                    Модель даних
-                </button>
-            </h2>
-            <div id="collapseOne" 
-                 class="accordion-collapse collapse"
-                 aria-labelledby="headingOne"
-                 data-bs-parent="#projectDetails">
-                <div class="accordion-body">
-                    <img src="images/data_model.png" alt="Data model"/>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button type="button"
-                        class="accordion-button collapsed"  
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" 
-                        aria-expanded="false"
-                        aria-controls="collapseTwo">
-                    Gant Chart 
-                </button>
-            </h2>
-            <div id="collapseTwo" 
-                 class="accordion-collapse collapse"
-                 aria-labelledby="headingTwo"
-                 data-bs-parent="#projectDetails">
-                <div class="accordion-body">
-                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-                <button type="button" 
-                        class="accordion-button collapsed"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree">
-                    Accordion Item #3
-                </button>
-            </h2>
-            <div id="collapseThree"
-                 class="accordion-collapse collapse"
-                 aria-labelledby="headingThree"
-                 data-bs-parent="#projectDetails">
-                <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
+<div class="accordion accordion-flush pb-3" id="projectDetails">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button type="button"
+                    class="accordion-button collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="false"
+                    aria-controls="collapseOne">
+                Модель даних
+            </button>
+        </h2>
+        <div id="collapseOne"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingOne"
+             data-bs-parent="#projectDetails">
+            <div class="accordion-body">
+                <img src="images/data_model.png" alt="Data model"/>
             </div>
         </div>
     </div>
-
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+            <button type="button"
+                    class="accordion-button collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo">
+                Gant Chart
+            </button>
+        </h2>
+        <div id="collapseTwo"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingTwo"
+             data-bs-parent="#projectDetails">
+            <div class="accordion-body">
+                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button type="button"
+                    class="accordion-button collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree">
+                Accordion Item #3
+            </button>
+        </h2>
+        <div id="collapseThree"
+             class="accordion-collapse collapse"
+             aria-labelledby="headingThree"
+             data-bs-parent="#projectDetails">
+            <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+        </div>
+    </div>
 </div>
