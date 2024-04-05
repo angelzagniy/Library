@@ -1,4 +1,5 @@
-﻿using Library.Web.BusinessLogic.Security;
+﻿using System;
+using Library.Web.BusinessLogic.Security;
 using NUnit.Framework;
 
 namespace Library.Tests;
