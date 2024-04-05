@@ -2,7 +2,7 @@
 @model Library.Web.Models.ViewModels.LoginViewModel
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = "Log in";
 }
 
 <div class="container justify-content-center">
@@ -17,7 +17,7 @@
             </div>
             <div class="col-2">
                 <input asp-for="Username" class="form-control form-control-sm">
-                <span asp-validation-for="Username" class="text-danger"></span>
+                @* <span asp-validation-for="Username" class="text-danger"></span> *@
             </div>
         </div>
         <div class="row mb-2">
@@ -26,8 +26,11 @@
             </div>
             <div class="col-2">
                 <input asp-for="Password" type="password" class="form-control form-control-sm">
-                <span asp-validation-for="Password" class="text-danger"></span>
+                @* <span asp-validation-for="Password" class="text-danger"></span> *@
             </div>
+        </div>
+        <div class="row mb-2">
+            <div asp-validation-summary="All" class="text-danger"></div>
         </div>
         <div class="row mb-2">
             <div class="row">

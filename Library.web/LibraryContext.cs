@@ -81,6 +81,9 @@ public class LibraryContext : DbContext
 		modelBuilder.Entity<User>().Property(user => user.Username)
 			.IsRequired()
 			.HasMaxLength(100);
+		modelBuilder.Entity<User>().Property(user => user.Role)
+			.IsRequired()
+			.HasMaxLength(20);
 		
 		modelBuilder.Entity<User>().HasIndex(user => user.Username).IsUnique();
 	}

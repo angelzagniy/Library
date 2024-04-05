@@ -2,6 +2,9 @@
 using System.Diagnostics;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Library.Web.BusinessLogic.Repository.Abstract;
+using Library.Web.BusinessLogic.Security;
+using Library.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Library.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -13,11 +16,14 @@ namespace Library.Web.Controllers;
 public class HomeController : Controller
 {
 	private readonly ILogger<HomeController> _logger;
+	private readonly IUserRepository _userRepository;
 
 	public HomeController(
-		ILogger<HomeController> logger)
+		ILogger<HomeController> logger,
+		IUserRepository userRepository)
 	{
 		_logger = logger;
+		_userRepository = userRepository;
 	}
 
 	public ActionResult<HomePageViewModel> Index()
@@ -30,51 +36,59 @@ public class HomeController : Controller
 	[HttpGet]
 	public IActionResult Login()
 	{
-		LoginViewModel viewModel = new();
+		LoginViewModel pageViewModel = new();
 
-		return View(viewModel);
+		return View(pageViewModel);
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Login(
-		string username,
-		string password,
-		string returnUrl)
+	public async Task<IActionResult> Login(LoginViewModel model)
 	{
-		string name = null;
-		string role = null;
-
-		if (username == "admin" && password == "admin")
+		if (!ModelState.IsValid)
 		{
-			name = "Admin";
-			role = "Admin";
-		}
-		else if (username == "jdoe" && password == "jdoe")
-		{
-			name = "John Doe";
-			role = "User";
+			return View(model);
 		}
 
-		if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(role))
+		User user = await _userRepository.FindUserAsync(model.Username);
+
+		if (user == null)
 		{
-			List<Claim> claims =
-			[
-				new Claim(type: ClaimTypes.Name, value: name),
-				new Claim(type: ClaimTypes.Role, value: role)
-			];
-
-			ClaimsIdentity claimsIdentity = new(claims, authenticationType: "Login");
-
-			await HttpContext.SignInAsync(
-				CookieAuthenticationDefaults.AuthenticationScheme,
-				new ClaimsPrincipal(claimsIdentity));
-
-			return string.IsNullOrEmpty(returnUrl)
-				? RedirectToAction("Index")
-				: Redirect(returnUrl);
+			ModelState.AddModelError(nameof(model.Username), $"Unknown user [{model.Username}]");
+			return View(model);
 		}
 
-		return View(new LoginViewModel());
+		if (!CryptoUtilities.IsPasswordValid(model.Password, user.Password, user.Salt))
+		{
+			ModelState.AddModelError(nameof(model.Password), $"Authentication failed.");
+			return View(model);
+		}
+
+		// if (username == "admin" && password == "admin")
+		// {
+		// 	name = "Admin";
+		// 	role = "Admin";
+		// }
+		// else if (username == "jdoe" && password == "jdoe")
+		// {
+		// 	name = "John Doe";
+		// 	role = "User";
+		// }
+
+		List<Claim> claims =
+		[
+			new Claim(type: ClaimTypes.Name, user.Name),
+			new Claim(type: ClaimTypes.Role, user.Role)
+		];
+
+		ClaimsIdentity claimsIdentity = new(claims, authenticationType: "Login");
+
+		await HttpContext.SignInAsync(
+			CookieAuthenticationDefaults.AuthenticationScheme,
+			new ClaimsPrincipal(claimsIdentity));
+
+		return string.IsNullOrEmpty(model.ReturnUrl)
+			? RedirectToAction("Index")
+			: Redirect(model.ReturnUrl);
 	}
 
 	[HttpPost]

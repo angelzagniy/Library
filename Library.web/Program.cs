@@ -26,7 +26,8 @@ public class Program
 			.AddTransient<IBooksVMBuilder, BooksVmBuilder>()
 			.AddTransient<IBooksRepository, BooksRepository>()
 			.AddTransient<IAuthorsRepository, AuthorsRepository>()
-			.AddTransient<IMembersRepository, MembersRepository>();
+			.AddTransient<IMembersRepository, MembersRepository>()
+			.AddTransient<IUserRepository, UserRepository>();
 
 		builder.Services.AddControllersWithViews();
 
