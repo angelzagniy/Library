@@ -1,4 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
+    bool isAdmin = User.IsInRole("Admin");
+}
+
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -36,10 +42,10 @@
                 </ul>
             </div>
             <div class="d-sm-flex m-auto me-5">
-                @if (User.Identity?.IsAuthenticated ?? false)
+                @if (isAuthenticated)
                 {
                     <ul class="navbar-nav me-auto">
-                        @if (User.IsInRole("Admin"))
+                        @if (isAdmin)
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
