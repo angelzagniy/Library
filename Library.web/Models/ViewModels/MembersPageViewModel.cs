@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Library.Web.Models.ViewModels;
 
 public class MembersPageViewModel : PageViewModel

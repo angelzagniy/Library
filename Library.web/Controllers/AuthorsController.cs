@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Repository.Abstract;
 using Library.Web.Models;
 using Library.Web.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Web.Controllers;
@@ -26,6 +29,7 @@ public class AuthorsController: Controller
     }
     
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public IActionResult Add()
     {
         AddAuthorViewModel model = new();
