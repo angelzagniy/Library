@@ -26,14 +26,29 @@ public class UserRepository : IUserRepository
 	}
 
 	/// <inheritdoc />
-	public Task<IReadOnlyList<User>> ListUsersAsync()
+	public async Task<IReadOnlyList<User>> ListUsersAsync(string name = null)
 	{
-		throw new NotImplementedException();
+		IQueryable<User> users = _dbContext.Users;
+		
+		if (!string.IsNullOrEmpty(name))
+		{
+			users = users.Where(user => user.Name.Contains(name));
+		}
+		return await users.ToListAsync();
 	}
 
 	/// <inheritdoc />
-	public Task<User> GetUserAsync(Guid id)
+	public async Task<User> GetUserAsync(Guid id)
 	{
-		throw new NotImplementedException();
+		return await _dbContext.Users
+			.Where(user => user.Id == id)
+			.Include(user => user.Name)
+			.FirstOrDefaultAsync();
+	}
+
+	public async Task AddUserAsync(User user)
+	{
+		await _dbContext.Users.AddAsync(user);
+		await _dbContext.SaveChangesAsync();
 	}
 }

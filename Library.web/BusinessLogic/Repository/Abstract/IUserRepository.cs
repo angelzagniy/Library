@@ -15,10 +15,12 @@ public interface IUserRepository
 	/// <summary>
 	/// Fetches all users from the database.
 	/// </summary>
-	Task<IReadOnlyList<User>> ListUsersAsync();
+	Task<IReadOnlyList<User>> ListUsersAsync(string name);
 	
 	/// <summary>
 	/// Gets user by ID.
 	/// </summary>
 	Task<User> GetUserAsync(Guid id);
+	
+	Task AddUserAsync(User user);
 }
