@@ -22,5 +22,13 @@ public interface IUserRepository
 	/// </summary>
 	Task<User> GetUserAsync(Guid id);
 	
+	/// <summary>
+	/// Adds user to the database.
+	/// </summary>
 	Task AddUserAsync(User user);
+
+	/// <summary>
+	/// Deletes a user from the database.
+	/// </summary>
+	Task DeleteUserAsync(User user);
 }

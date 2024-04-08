@@ -75,12 +75,23 @@ public class LibraryContext : DbContext
 		
 		modelBuilder.Entity<User>().HasKey(user => user.Id);
 		modelBuilder.Entity<User>().Property(user => user.Id).ValueGeneratedOnAdd();
+		
 		modelBuilder.Entity<User>().Property(user => user.Name)
 			.IsRequired()
 			.HasMaxLength(100);
+		
+		modelBuilder.Entity<User>().Property(user => user.Password)
+			.IsRequired()
+			.HasMaxLength(128);
+
+		modelBuilder.Entity<User>().Property(user => user.Salt)
+			.IsRequired()
+			.HasMaxLength(128);
+
 		modelBuilder.Entity<User>().Property(user => user.Username)
 			.IsRequired()
 			.HasMaxLength(100);
+		
 		modelBuilder.Entity<User>().Property(user => user.Role)
 			.IsRequired()
 			.HasMaxLength(20);

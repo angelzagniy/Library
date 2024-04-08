@@ -21,19 +21,23 @@
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-sm btn-outline-success"
-                        asp-action="Index">Search</button>
+                        asp-action="Index">
+                    Search
+                </button>
                 <button type="submit" class="btn btn-sm btn-outline-danger"
-                        asp-action="Reset">Reset</button>
+                        asp-action="Reset">
+                    Reset
+                </button>
             </div>
         </form>
     </div>
-<div class="row mb-2 align-items-center">
-    <div class="col-12 text-end">
-        <a class="btn btn-sm btn-outline-success" asp-controller="Users" asp-action="Add">
-            <span class="bi-person-add"></span>
-        </a>
+    <div class="row mb-2 align-items-center">
+        <div class="col-12 text-end">
+            <a class="btn btn-sm btn-outline-success" asp-controller="Users" asp-action="Add">
+                <span class="bi-person-add"></span>
+            </a>
+        </div>
     </div>
-</div>
 </div>
 
 <table class="table table-hover table-striped">
@@ -54,9 +58,17 @@
             <td>@user.Name</td>
             <td>@user.Username</td>
             <td>@user.Role</td>
-            <td></td>
+            <td>
+                @if (!user.IsBuiltIn)
+                {
+                    <a class="btn btn-sm btn-danger"
+                       asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">
+                        <span class="bi-trash"></span>
+                    </a>
+                }
+            </td>
         </tr>
     }
-    
+
     </tbody>
 </table>

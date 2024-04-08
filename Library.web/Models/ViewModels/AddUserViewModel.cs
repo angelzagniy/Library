@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Library.Web.BusinessLogic.Security;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Library.Web.Models.ViewModels;
 
@@ -16,7 +19,20 @@ public class AddUserViewModel
     [Required(ErrorMessage = "Role is required.")]
     public string Role { get; init; }
     
+    /// <summary>
+    /// Available roles.
+    /// </summary>
+    public IReadOnlyList<SelectListItem> Roles { get; init; } =
+    [
+        new SelectListItem(text: KnownRoles.User, value: KnownRoles.User, selected: true),
+        new SelectListItem(text: KnownRoles.Admin, value: KnownRoles.Admin)
+    ];
+
     [Display(Name = "Password")]
     [Required(ErrorMessage = "Password is required.")]
     public string Password { get; init; }
+    
+    [Display(Name = "Repeat password")]
+    [Required(ErrorMessage = "Password is required.")]
+    public string RepeatPassword { get; init; }
 }

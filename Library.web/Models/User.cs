@@ -36,4 +36,10 @@ public class User
 	/// Password "salt".
 	/// </summary>
 	public string Salt { get; set; }
+	
+	/// <summary>
+	/// Flag indicating whether the user is a built-in user.
+	/// Built-in users cannot be changed or deleted.
+	/// </summary>
+	public bool IsBuiltIn { get; set; }
 }
