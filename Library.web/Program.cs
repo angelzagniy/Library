@@ -36,6 +36,7 @@ public class Program
 			.AddCookie(options =>
 			{
 				options.LoginPath = "/Home/Login";
+				options.AccessDeniedPath = "/Home/AccessDenied";
 				options.SlidingExpiration = true;
 				options.ExpireTimeSpan = new TimeSpan(0, 0, minutes: 30, 0);
 			});
