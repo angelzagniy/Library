@@ -99,7 +99,7 @@ public class UsersController : Controller
 	}
 
 	[HttpGet]
-	[Authorize(Roles = "Admin")]
+	[Authorize(Roles = KnownRoles.Admin)]
 	public async Task<IActionResult> Delete(Guid id)
 	{
 		User user = await _usersRepository.GetUserAsync(id);

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Abstract;
 using Library.Web.BusinessLogic.Repository.Abstract;
+using Library.Web.BusinessLogic.Security;
 using Library.Web.Models;
 using Library.Web.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -28,6 +30,7 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
+	[Authorize]
 	public async Task<ActionResult<BooksPageViewModel>> Index(
 		string title,
 		string author,
@@ -49,12 +52,14 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
+	[Authorize]
 	public IActionResult Reset()
 	{
 		return RedirectToAction(nameof(Index));
 	}
 
 	[HttpGet]
+	[Authorize]
 	public async Task<IActionResult> Get(string id)
 	{
 		Book book = await _booksRepository.GetBookAsync(id);
@@ -63,6 +68,7 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
+	[Authorize(Roles = KnownRoles.Admin)]
 	public async Task<IActionResult> Add()
 	{
 		IReadOnlyCollection<Author> authors = await _authorsRepository.ListAuthorsAsync();
@@ -107,6 +113,7 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
+	[Authorize]
 	public async Task<IActionResult> ReturnBook(Guid id)
 	{
 		string isbn = await _booksRepository.ReleaseBookInstance(id);
@@ -117,6 +124,7 @@ public class BooksController : Controller
 	}
 
 	[HttpGet]
+	[Authorize]
 	public async Task<IActionResult> LendBook(Guid id)
 	{
 		LendBookViewModel viewModel = await _booksVmBuilder.BuildLendBookViewModelAsync(id);

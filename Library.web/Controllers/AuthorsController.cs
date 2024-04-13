@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Repository.Abstract;
+using Library.Web.BusinessLogic.Security;
 using Library.Web.Models;
 using Library.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +18,7 @@ public class AuthorsController: Controller
         _authorsRepository = authorsRepository;
     }
     
+    [Authorize]
     public async Task<ActionResult<MembersPageViewModel>> Index()
     {
         IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync();
@@ -29,7 +31,7 @@ public class AuthorsController: Controller
     }
     
     [HttpGet]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = KnownRoles.Admin)]
     public IActionResult Add()
     {
         AddAuthorViewModel model = new();

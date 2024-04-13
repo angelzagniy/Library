@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = Model.Title;
+    bool isAdmin = User.IsInRole("Admin");
 }
 
 <div class="row mb-2">
@@ -44,9 +45,12 @@
             </div>
         </form>
     </div>
-    <div class="col-2 text-end">
-        <a class="btn btn-sm btn-outline-success" asp-controller="Books" asp-action="Add">Add New</a>
-    </div>
+    @if (isAdmin)
+    {
+        <div class="col-2 text-end">
+            <a class="btn btn-sm btn-outline-success" asp-controller="Books" asp-action="Add">Add New</a>
+        </div>
+    }
 </div>
 
 <div class="row align-content-end">

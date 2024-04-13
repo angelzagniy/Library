@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Repository.Abstract;
 using Library.Web.Models;
 using Library.Web.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Web.Controllers;
@@ -21,6 +22,7 @@ public class MembersController : Controller
 		_booksRepository = booksRepository;
 	}
 
+	[Authorize]
 	public async Task<ActionResult<MembersPageViewModel>> Index()
 	{
 		IReadOnlyList<Member> members = await _membersRepository.ListMembersAsync();
@@ -33,6 +35,7 @@ public class MembersController : Controller
 	}
 
 	[HttpGet]
+	[Authorize]
 	public IActionResult Add()
 	{
 		AddMemberViewModel model = new();
@@ -58,6 +61,7 @@ public class MembersController : Controller
 	}
 
 	[HttpGet]
+	[Authorize]
 	public async Task<IActionResult> Get(Guid id)
 	{
 		Member member = await _membersRepository.GetAsync(id);
@@ -66,6 +70,7 @@ public class MembersController : Controller
 	}
 
 	[HttpGet]
+	[Authorize]
 	public async Task<IActionResult> ReturnBook(Guid id)
 	{
 		await _booksRepository.ReleaseBookInstance(id);
