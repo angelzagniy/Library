@@ -43,9 +43,8 @@
 <table class="table table-hover table-striped">
     <thead>
     <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
         <th scope="col">Login name</th>
+        <th scope="col">Name</th>
         <th scope="col">Role</th>
         <th scope="col">Actions</th>
     </tr>
@@ -54,13 +53,16 @@
     @foreach (User user in Model.Users)
     {
         <tr>
-            <td>@user.Id.ToString()</td>
+            <td><a asp-action="View" asp-route-id="@user.Id">@user.Username</a></td>
             <td>@user.Name</td>
-            <td>@user.Username</td>
             <td>@user.Role</td>
             <td>
                 @if (!user.IsBuiltIn)
                 {
+                    <a class="btn btn-sm btn-primary me-1"
+                       asp-controller="Users" asp-action="Update" asp-route-id="@user.Id">
+                        <span class="bi-pencil"></span>
+                    </a>
                     <a class="btn btn-sm btn-danger"
                        asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">
                         <span class="bi-trash"></span>

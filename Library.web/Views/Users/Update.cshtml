@@ -1,0 +1,44 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Library.Web.Models.ViewModels.UpdateUserViewModel
+
+@{
+    ViewData["Title"] = "Update User";
+}
+
+<div class="container">
+    <div class="row mb-3">
+        <h2>Update User @Model.UserName</h2>
+    </div>
+
+    <form method="post" asp-action="Update" class="g-2">
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="UserName"/>
+        <div class="row mb-2">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label col-form-label-sm"></label>
+            </div>
+            <div class="col-4">
+                <input asp-for="Name" class="form-control form-control-sm">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-2">
+                <label asp-for="Role" class="col-form-label col-form-label-sm"></label>
+            </div>
+            <div class="col-4">
+                <select id="roleSelect" name="Role" class="form-select form-select-sm"
+                        asp-for="Role"
+                        asp-items="Model.Roles">
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 g-2 text-end">
+                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                <a class="btn btn-sm btn-secondary" asp-action="Index">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

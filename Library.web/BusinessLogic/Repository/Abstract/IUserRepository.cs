@@ -28,6 +28,14 @@ public interface IUserRepository
 	Task AddUserAsync(User user);
 
 	/// <summary>
+	/// Updates user in the database.
+	/// </summary>
+	Task UpdateUserAsync(
+		Guid id,
+		string name,
+		string role);
+
+	/// <summary>
 	/// Deletes a user from the database.
 	/// </summary>
 	Task DeleteUserAsync(User user);

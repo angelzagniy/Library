@@ -41,14 +41,15 @@ public class UsersController : Controller
 	}
 
 	[HttpGet]
-	[Authorize(Roles = "Admin")]
+	[Authorize(Roles = KnownRoles.Admin)]
 	public IActionResult Add()
 	{
 		AddUserViewModel model = new();
 
 		return View(model);
 	}
-
+	
+	
 	[HttpPost]
 	public async Task<IActionResult> Add(AddUserViewModel newUser)
 	{
@@ -97,6 +98,35 @@ public class UsersController : Controller
 
 		return View(newUser);
 	}
+	
+	[HttpGet]
+	[Authorize(Roles = KnownRoles.Admin)]
+	public async Task<IActionResult> Update(Guid id)
+	{
+		User user = await _usersRepository.GetUserAsync(id);
+		
+		UpdateUserViewModel model = new()
+		{
+			Id = user.Id,
+			Name = user.Name,
+			UserName = user.Username,
+			Role = user.Role
+		};
+
+		return View(model);
+	}
+	
+	[HttpPost]
+	public async Task<IActionResult> Update(UpdateUserViewModel patch)
+	{
+		if (ModelState.IsValid)
+		{
+			await _usersRepository.UpdateUserAsync(patch.Id, patch.Name, patch.Role);
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View(patch);
+	}
 
 	[HttpGet]
 	[Authorize(Roles = KnownRoles.Admin)]
@@ -109,5 +139,20 @@ public class UsersController : Controller
 		}
 
 		return RedirectToAction(nameof(Index));
+	}
+
+	public async Task<IActionResult> View(Guid id)
+	{
+		User user = await _usersRepository.GetUserAsync(id);
+
+		UserViewModel userViewModel = new()
+		{
+			UserName = user.Name,
+			Name = user.Name,
+			Role = user.Role
+		};
+
+		return View(userViewModel);
+
 	}
 }
