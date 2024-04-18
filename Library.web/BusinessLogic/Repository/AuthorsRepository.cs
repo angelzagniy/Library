@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Repository.Abstract;
 using Library.Web.Models;
@@ -26,6 +27,20 @@ internal class AuthorsRepository : IAuthorsRepository
 	public async Task AddAuthorAsync(Author author)
 	{
 		await _dbContext.Authors.AddAsync(author);
+		await _dbContext.SaveChangesAsync();
+	}
+	
+	public async Task<Author> GetAuthorAsync(Guid id)
+	{
+		return await _dbContext.Authors.FindAsync(id);
+	}
+
+	public async Task UpdateAuthorAsync(Guid id, string name)
+	{
+		Author author = await GetAuthorAsync(id);
+
+		author.Name = name;
+
 		await _dbContext.SaveChangesAsync();
 	}
 }

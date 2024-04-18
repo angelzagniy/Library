@@ -32,8 +32,13 @@
             <tr>
                 <td>@author.Id.ToString()</td>
                 <td>@author.Name</td>
-                <td></td>
-            </tr>
+                <td>
+                    <a class="btn btn-sm btn-primary me-1"
+                       asp-controller="Authors" asp-action="Update" asp-route-id="@author.Id">
+                        <span class="bi-pencil"></span>
+                    </a>
+                </td>
+            </tr> 
         }
 
         </tbody>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Library.Web.Models;
 
@@ -15,4 +16,10 @@ public interface IAuthorsRepository
 	Task<IReadOnlyList<Author>> ListAuthorsAsync();
 
 	Task AddAuthorAsync(Author author);
+
+	Task<Author> GetAuthorAsync(Guid id);
+	
+	Task UpdateAuthorAsync(
+		Guid id,
+		string name);
 }

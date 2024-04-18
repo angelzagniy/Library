@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Repository.Abstract;
@@ -54,5 +55,32 @@ public class AuthorsController: Controller
         }
 
         return View(newAuthor);
+    }
+    
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> Update(Guid id)
+    {
+        Author author = await _authorsRepository.GetAuthorAsync(id);
+		
+        UpdateAuthorViewModel model = new()
+        {
+            Id = author.Id,
+            Name = author.Name
+        };
+
+        return View(model);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Update(UpdateAuthorViewModel patch)
+    {
+        if (ModelState.IsValid)
+        {
+            await _authorsRepository.UpdateAuthorAsync(patch.Id, patch.Name);
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(patch);
     }
 }
