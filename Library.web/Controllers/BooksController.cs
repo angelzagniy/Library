@@ -151,4 +151,34 @@ public class BooksController : Controller
 
 		return View(viewModel);
 	}
+
+	[HttpGet]
+	[Authorize]
+	public async Task<IActionResult> Update(string isbn)
+	{
+		Book book = await _booksRepository.GetBookAsync(isbn);
+		
+		UpdateBookViewModel model = new()
+		{
+			ISBN = book.ISBN,
+			Title = book.Title,
+			AuthorId = book.AuthorId,
+			Genre = book.Genre,
+			Year = book.Year
+		};
+
+		return View(model);
+	}
+    
+	[HttpPost]
+	public async Task<IActionResult> Update(UpdateBookViewModel patch)
+	{
+		if (ModelState.IsValid)
+		{
+			await _booksRepository.UpdateBookAsync(patch.ISBN, patch.Title);
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View(patch);
+	}
 }

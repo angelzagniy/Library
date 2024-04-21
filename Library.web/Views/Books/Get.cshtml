@@ -11,7 +11,12 @@
     </div>
    
     @await Html.PartialAsync("BookInfo", Model)
-
+    
+    <a class="btn btn-sm btn-primary me-1"
+       asp-controller="Books" asp-action="Update" asp-route-id="@Model.ISBN">
+        <span class="bi-pencil"> Edit</span>
+    </a>
+    
     <div class="row mb-2 mt-2">
         <h4>Instances</h4>
     </div>

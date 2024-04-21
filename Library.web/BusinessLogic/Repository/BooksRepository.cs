@@ -124,4 +124,13 @@ internal class BooksRepository : IBooksRepository
 
 		return true;
 	}
+
+	public async Task UpdateBookAsync(string isbn, string title)
+	{
+		Book book = await GetBookAsync(isbn);
+
+		book.Title = title;
+
+		await _dbContext.SaveChangesAsync();
+	}
 }

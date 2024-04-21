@@ -46,4 +46,8 @@ public interface IBooksRepository
 	/// Assigns book instance to a member (lends a book).
 	/// </summary>
 	Task<bool> LendBookAsync(Guid bookInstanceId, Guid memberId);
+	
+	Task UpdateBookAsync(
+		string id,
+		string title);
 }
