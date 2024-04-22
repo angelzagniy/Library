@@ -11,7 +11,15 @@
     </div>
 
     <form method="post" asp-action="Update" class="g-2">
-        <input type="hidden" asp-for="ISBN"/>
+        <div class="row mb-2">
+            <div class="col-2">
+                <label asp-for="ISBN" class="col-form-label col-form-label-sm"></label>
+            </div>
+            <div class="col-4">
+                <input type="hidden" asp-for="ISBN"/>
+                <span class="form-control form-control-sm">@Model.ISBN</span>
+            </div>
+        </div>
         <div class="row mb-2">
             <div class="col-2">
                 <label asp-for="Title" class="col-form-label col-form-label-sm"></label>

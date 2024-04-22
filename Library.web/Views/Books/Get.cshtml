@@ -9,14 +9,9 @@
     <div class="row mb-3">
         <h2>Manage Book</h2>
     </div>
-   
+
     @await Html.PartialAsync("BookInfo", Model)
-    
-    <a class="btn btn-sm btn-primary me-1"
-       asp-controller="Books" asp-action="Update" asp-route-id="@Model.ISBN">
-        <span class="bi-pencil"> Edit</span>
-    </a>
-    
+
     <div class="row mb-2 mt-2">
         <h4>Instances</h4>
     </div>
@@ -43,7 +38,11 @@
                             {
                                 <span class="text-dark">
                                     Taken by
-                                    <a asp-controller="Members" asp-action="Get" asp-route-id="@instance.MemberId">@instance.Member.Name</a>
+                                    <a asp-controller="Members"
+                                       asp-action="Get"
+                                       asp-route-id="@instance.MemberId">
+                                        @instance.Member.Name
+                                    </a>
                                 </span>
                             }
                             else
@@ -53,7 +52,7 @@
                                 </span>
                             }
                         </td>
-                        <td>
+                        <td class="text-end">
                             @if (instance.Member != null)
                             {
                                 <a class="btn btn-sm btn-primary"
@@ -78,7 +77,14 @@
     </div>
     <div class="row">
         <div class="col-8 g-2 text-end">
-            <a class="btn btn-sm btn-secondary" asp-action="Index">Back to books</a>
+            <a class="btn btn-sm btn-primary"
+               asp-controller="Books" asp-action="Update" asp-route-id="@Model.ISBN">
+                Edit
+            </a>
+            <a class="btn btn-sm btn-secondary"
+               asp-action="Index">
+                Back to books
+            </a>
         </div>
     </div>
 </div>

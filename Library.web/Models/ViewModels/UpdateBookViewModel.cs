@@ -1,8 +1,9 @@
-using System;
 
 namespace Library.Web.Models.ViewModels;
 
-public class UpdateBookViewModel: AddBookViewModel
+/// <summary>
+/// View model for editing a book.
+/// </summary>
+public class UpdateBookViewModel: BookViewModel
 {
-    public string ISBN { get; init; }
 }

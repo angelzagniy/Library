@@ -9,8 +9,8 @@
 <div class="row mb-2">
     <h2>Books</h2>
 </div>
-<div class="row mb-2 align-items-center">
-    <div class="col-10">
+<div class="row col-10 align-items-end">
+    <div class="col-11 mb-3">
         <form class="row" method="get">
             <div class="col-auto">
                 <label class="col-form-label col-form-label-sm" for="title">Title</label>
@@ -38,22 +38,26 @@
                 </select>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-sm btn-outline-success"
-                        asp-action="Index">Search</button>
-                <button type="submit" class="btn btn-sm btn-outline-danger"
-                        asp-action="Reset">Reset</button>
+                <button type="submit" class="btn btn-sm btn-outline-primary me-2" asp-action="Index">
+                    <span class="bi-search"></span>
+                </button>
+                <button type="submit" class="btn btn-sm btn-outline-secondary me-2" asp-action="Reset">
+                    <span class="bi-eraser-fill"></span>
+                </button>
             </div>
         </form>
     </div>
     @if (isAdmin)
     {
-        <div class="col-2 text-end">
-            <a class="btn btn-sm btn-outline-success" asp-controller="Books" asp-action="Add">Add New</a>
+        <div class="col-1 text-end mb-3">
+            <a class="btn btn-sm btn-outline-success" asp-controller="Books" asp-action="Add">
+                <span class="bi-plus-square"></span>
+            </a>
         </div>
     }
-</div>
 
-<div class="row align-content-end">
+</div>
+<div class="row col-10">
     <div class="col">
         <table class="table table-secondary table-hover table-striped">
             <thead>
@@ -77,10 +81,10 @@
                     <td>@Html.DisplayFor(item => book.Genre) </td>
                     <td>@book.Year</td>
                     <td>@book.BookInstances.Count(instance => instance.MemberId is null) / @book.BookInstances.Count</td>
-                    <td>
-                        <a class="btn btn-sm btn-outline-success" 
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-success"
                            asp-controller="Books" asp-action="Get" asp-route-id="@book.ISBN">
-                            <span class="bi-pencil-square"></span>
+                            <span class="bi-building-gear"></span>
                         </a>
                     </td>
                 </tr>

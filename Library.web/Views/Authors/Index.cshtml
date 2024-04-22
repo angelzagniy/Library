@@ -9,21 +9,23 @@
 <div class="row mb-2">
     <h2>Authors</h2>
 </div>
-<div class="row mb-2 align-items-center">
+<div class="row col-8 mb-2 align-items-center">
     @if (isAdmin)
     {
         <div class="col-12 text-end">
-            <a class="btn btn-sm btn-outline-success" asp-controller="Authors" asp-action="Add">Add New</a>
+            <a class="btn btn-sm btn-outline-success" asp-controller="Authors" asp-action="Add">
+                <span class="bi-person-add"></span>
+            </a>
         </div>
     }
 </div>
 
+<div class="row col-8">
     <table class="table table-hover table-striped">
         <thead>
         <tr>
             <th scope="col">Name</th>
-            <th scope="col">Books</th>
-            <th scope="col">Actions</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -31,20 +33,18 @@
         {
             <tr>
                 <td>@author.Name</td>
-                <td>
-                    <a class="btn btn-sm btn-primary me-1"
-                       asp-controller="Books" asp-action="Index">
-                        <span class="bi-book"> Books</span>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-outline-success me-1"
+                       asp-controller="Books" asp-action="Index" asp-route-author="@author.Name">
+                        <span class="bi-book"></span>
                     </a>
-                </td>
-                <td>
-                    <a class="btn btn-sm btn-primary me-1"
+                    <a class="btn btn-sm btn-outline-success me-1"
                        asp-controller="Authors" asp-action="Update" asp-route-id="@author.Id">
                         <span class="bi-pencil"></span>
                     </a>
                 </td>
-            </tr> 
+            </tr>
         }
-
         </tbody>
     </table>
+</div>

@@ -8,36 +8,35 @@
 <div class="row mb-2">
     <h2>Members</h2>
 </div>
-<div class="row mb-2 align-items-center">
-    <div class="col text-end">
+<div class="row col-10">
+    <div class="col text-end mb-2">
         <a class="btn btn-sm btn-outline-success" asp-controller="Members" asp-action="Add">
             <span class="bi-person-add"></span>
         </a>
     </div>
-</div>
-
-<table class="table table-hover table-striped">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (Member member in Model.Members)
-    {
+    <table class="table table-hover table-striped">
+        <thead>
         <tr>
-            <td>@member.Id</td>
-            <td>@member.Name</td>
-            <td>
-                <a class="btn btn-sm btn-outline-success"
-                   asp-controller="Members" asp-action="Get" asp-route-id="@member.Id">
-                    <span class="bi-pencil-square"></span>
-                </a>
-            </td>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
         </tr>
-    }
+        </thead>
+        <tbody>
+        @foreach (Member member in Model.Members)
+        {
+            <tr>
+                <td>@member.Id</td>
+                <td>@member.Name</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-outline-success"
+                       asp-controller="Members" asp-action="Get" asp-route-id="@member.Id">
+                        <span class="bi-pencil-square"></span>
+                    </a>
+                </td>
+            </tr>
+        }
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

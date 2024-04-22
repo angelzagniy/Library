@@ -79,10 +79,6 @@ public class BooksController : Controller
 			InstancesCount = 5,
 			Authors = authors
 				.Select(author => new SelectListItem(author.Name, author.Id.ToString()))
-				.ToArray(),
-			Genres = Enum.GetValues<Genre>()
-				.Where(g => g != Genre.Any)
-				.Select(genre => new SelectListItem(genre.ToString(), genre.ToString()))
 				.ToArray()
 		};
 
@@ -154,9 +150,9 @@ public class BooksController : Controller
 
 	[HttpGet]
 	[Authorize]
-	public async Task<IActionResult> Update(string isbn)
+	public async Task<IActionResult> Update(string id)
 	{
-		Book book = await _booksRepository.GetBookAsync(isbn);
+		Book book = await _booksRepository.GetBookAsync(id);
 		
 		UpdateBookViewModel model = new()
 		{
