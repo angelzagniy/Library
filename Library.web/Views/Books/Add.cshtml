@@ -34,7 +34,7 @@
 			</div>
 			<div class="col-4">
 				<select asp-for="Genre" asp-items="@Model.Genres" class="form-select form-select-sm">
-					<option selected>Select genre...</option>
+					<option selected value="@null">Select genre...</option>
 				</select>
 				<span asp-validation-for="Genre" class="text-danger"></span>
 			</div>
