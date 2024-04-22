@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Repository.Abstract;
 using Library.Web.Models;
@@ -22,7 +23,18 @@ internal class AuthorsRepository : IAuthorsRepository
 	{
 		return await _dbContext.Authors.ToListAsync();
 	}
-	
+
+	/// <inheritdoc />
+	public async Task<IReadOnlyList<Author>> FindAuthorsAsync(
+		string name,
+		int count)
+	{
+		return await _dbContext.Authors
+			.Where(author => author.Name.Contains(name))
+			.Take(count)
+			.ToListAsync();
+	}
+
 	/// <inheritdoc />
 	public async Task AddAuthorAsync(Author author)
 	{

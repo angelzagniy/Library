@@ -125,11 +125,17 @@ internal class BooksRepository : IBooksRepository
 		return true;
 	}
 
-	public async Task UpdateBookAsync(string isbn, string title)
+	/// <inheritdoc />
+	public async Task UpdateBookAsync(string isbn,
+		string title,
+		Genre genre,
+		int year)
 	{
 		Book book = await GetBookAsync(isbn);
 
 		book.Title = title;
+		book.Genre = genre;
+		book.Year = year;
 
 		await _dbContext.SaveChangesAsync();
 	}

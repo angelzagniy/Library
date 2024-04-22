@@ -15,6 +15,13 @@ public interface IAuthorsRepository
 	/// </summary>
 	Task<IReadOnlyList<Author>> ListAuthorsAsync();
 
+	/// <summary>
+	/// Finds author by name.
+	/// </summary>
+	/// <param name="name">Author name pattern.</param>
+	/// <param name="count">Max number of records to return.</param>
+	Task<IReadOnlyList<Author>> FindAuthorsAsync(string name, int count);
+
 	Task AddAuthorAsync(Author author);
 
 	Task<Author> GetAuthorAsync(Guid id);

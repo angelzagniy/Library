@@ -47,7 +47,16 @@ public interface IBooksRepository
 	/// </summary>
 	Task<bool> LendBookAsync(Guid bookInstanceId, Guid memberId);
 	
+	/// <summary>
+	/// Update book in the repository.
+	/// </summary>
+	/// <param name="id">Book ID (ISBN).</param>
+	/// <param name="title">Updated title.</param>
+	/// <param name="genre">update genre.</param>
+	/// <param name="year">Updated year.</param>
 	Task UpdateBookAsync(
 		string id,
-		string title);
+		string title,
+		Genre genre,
+		int year);
 }

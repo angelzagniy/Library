@@ -5,7 +5,11 @@
         <span class="col-form-label col-form-label-sm">ISBN</span>
     </div>
     <div class="col-4">
-        <span class="text-info">@Model.ISBN</span>
+        <span class="text-info me-2">@Model.ISBN</span>
+        <a class="btn btn-sm btn-outline-success"
+           asp-controller="Books" asp-action="Update" asp-route-id="@Model.ISBN">
+            <span class="bi-pencil-fill"></span>
+        </a>
     </div>
 </div>
 <div class="row mb-2">

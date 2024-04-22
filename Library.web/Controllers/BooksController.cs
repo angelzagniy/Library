@@ -71,7 +71,7 @@ public class BooksController : Controller
 	[Authorize(Roles = KnownRoles.Admin)]
 	public async Task<IActionResult> Add()
 	{
-		IReadOnlyCollection<Author> authors = await _authorsRepository.ListAuthorsAsync();
+		IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync();
 
 		AddBookViewModel model = new()
 		{
@@ -97,7 +97,7 @@ public class BooksController : Controller
 					ISBN = newBook.ISBN,
 					Title = newBook.Title,
 					AuthorId = newBook.AuthorId!.Value,
-					Genre = newBook.Genre!.Value,
+					Genre = newBook.Genre,
 					Year = newBook.Year
 				},
 				newBook.InstancesCount);
@@ -158,7 +158,6 @@ public class BooksController : Controller
 		{
 			ISBN = book.ISBN,
 			Title = book.Title,
-			AuthorId = book.AuthorId,
 			Genre = book.Genre,
 			Year = book.Year
 		};
@@ -171,10 +170,24 @@ public class BooksController : Controller
 	{
 		if (ModelState.IsValid)
 		{
-			await _booksRepository.UpdateBookAsync(patch.ISBN, patch.Title);
+			await _booksRepository.UpdateBookAsync(
+				id: patch.ISBN,
+				title: patch.Title,
+				genre: patch.Genre,
+				year: patch.Year);
+			
 			return RedirectToAction(nameof(Index));
 		}
 
 		return View(patch);
 	}
+	
+	[HttpPost]
+	public async Task<JsonResult> AjaxMethod(string name)
+	{
+		IReadOnlyList<Author> authors = await _authorsRepository.FindAuthorsAsync(name, count: 10);
+
+		return Json(authors);
+	}
+	
 }
