@@ -27,7 +27,7 @@ public class BookViewModel
 
     [Display(Name = "Genre")]
     [Required(ErrorMessage = "Genre is required.")]
-    public Genre Genre { get; init; }
+    public Genre? Genre { get; init; }
 
     [Display(Name = "Publish Year")]
     [Range(1900, 2023, ErrorMessage = "Publish year should be between 1800 and 2023.")]

@@ -15,179 +15,187 @@ namespace Library.Web.Controllers;
 
 public class BooksController : Controller
 {
-	private readonly IBooksRepository _booksRepository;
-	private readonly IAuthorsRepository _authorsRepository;
-	private readonly IBooksVMBuilder _booksVmBuilder;
+    private readonly IBooksRepository _booksRepository;
+    private readonly IAuthorsRepository _authorsRepository;
+    private readonly IBooksVMBuilder _booksVmBuilder;
 
-	public BooksController(
-		IBooksRepository booksRepository,
-		IAuthorsRepository authorsRepository,
-		IBooksVMBuilder booksVmBuilder)
-	{
-		_booksRepository = booksRepository;
-		_authorsRepository = authorsRepository;
-		_booksVmBuilder = booksVmBuilder;
-	}
+    public BooksController(
+        IBooksRepository booksRepository,
+        IAuthorsRepository authorsRepository,
+        IBooksVMBuilder booksVmBuilder)
+    {
+        _booksRepository = booksRepository;
+        _authorsRepository = authorsRepository;
+        _booksVmBuilder = booksVmBuilder;
+    }
 
-	[HttpGet]
-	[Authorize]
-	public async Task<ActionResult<BooksPageViewModel>> Index(
-		string title,
-		string author,
-		Genre? genre)
-	{
-		IReadOnlyList<Book> books = await _booksRepository.ListBooksAsync(
-			title: title,
-			author: author,
-			genre: genre ?? Genre.Any);
+    [HttpGet]
+    [Authorize]
+    public async Task<ActionResult<BooksPageViewModel>> Index(
+        string title,
+        string author,
+        Genre? genre)
+    {
+        IReadOnlyList<Book> books = await _booksRepository.ListBooksAsync(
+            title: title,
+            author: author,
+            genre: genre ?? Genre.Any);
 
-		BooksPageViewModel viewModel = new("Books", books)
-		{
-			TitleFilter = title,
-			GenreFilter = genre,
-			AuthorFilter = author
-		};
+        BooksPageViewModel viewModel = new("Books", books)
+        {
+            TitleFilter = title,
+            GenreFilter = genre,
+            AuthorFilter = author
+        };
 
-		return View(viewModel);
-	}
+        return View(viewModel);
+    }
 
-	[HttpGet]
-	[Authorize]
-	public IActionResult Reset()
-	{
-		return RedirectToAction(nameof(Index));
-	}
+    [HttpGet]
+    [Authorize]
+    public IActionResult Reset()
+    {
+        return RedirectToAction(nameof(Index));
+    }
 
-	[HttpGet]
-	[Authorize]
-	public async Task<IActionResult> Get(string id)
-	{
-		Book book = await _booksRepository.GetBookAsync(id);
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> Get(string id)
+    {
+        Book book = await _booksRepository.GetBookAsync(id);
 
-		return View(book);
-	}
+        return View(book);
+    }
 
-	[HttpGet]
-	[Authorize(Roles = KnownRoles.Admin)]
-	public async Task<IActionResult> Add()
-	{
-		IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync();
+    [HttpGet]
+    [Authorize(Roles = KnownRoles.Admin)]
+    public async Task<IActionResult> Add()
+    {
+        IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync();
 
-		AddBookViewModel model = new()
-		{
-			Year = DateTime.Today.Year - 10,
-			InstancesCount = 5,
-			Authors = authors
-				.Select(author => new SelectListItem(author.Name, author.Id.ToString()))
-				.ToArray()
-		};
+        AddBookViewModel model = new()
+        {
+            Year = DateTime.Today.Year - 10,
+            InstancesCount = 5,
+            Authors = authors
+                .Select(author => new SelectListItem(author.Name, author.Id.ToString()))
+                .ToArray()
+        };
 
-		return View(model);
-	}
+        return View(model);
+    }
 
-	[HttpPost]
-	[ValidateAntiForgeryToken]
-	public async Task<IActionResult> Add(AddBookViewModel newBook)
-	{
-		if (ModelState.IsValid)
-		{
-			await _booksRepository.AddBookAsync(
-				new Book
-				{
-					ISBN = newBook.ISBN,
-					Title = newBook.Title,
-					AuthorId = newBook.AuthorId!.Value,
-					Genre = newBook.Genre,
-					Year = newBook.Year
-				},
-				newBook.InstancesCount);
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Add(AddBookViewModel newBook)
+    {
+        if (ModelState.IsValid)
+        {
+            await _booksRepository.AddBookAsync(
+                new Book
+                {
+                    ISBN = newBook.ISBN,
+                    Title = newBook.Title,
+                    AuthorId = newBook.AuthorId!.Value,
+                    Genre = newBook.Genre!.Value,
+                    Year = newBook.Year
+                },
+                newBook.InstancesCount);
 
-			return RedirectToAction(nameof(Index));
-		}
+            return RedirectToAction(nameof(Index));
+        }
 
-		return View(newBook);
-	}
+        return View(newBook);
+    }
 
-	[HttpGet]
-	[Authorize]
-	public async Task<IActionResult> ReturnBook(Guid id)
-	{
-		string isbn = await _booksRepository.ReleaseBookInstance(id);
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> ReturnBook(Guid id)
+    {
+        string isbn = await _booksRepository.ReleaseBookInstance(id);
 
-		return !string.IsNullOrEmpty(isbn)
-			? RedirectToAction(nameof(Get), new { id = isbn })
-			: RedirectToAction(nameof(Index));
-	}
+        return !string.IsNullOrEmpty(isbn)
+            ? RedirectToAction(nameof(Get), new { id = isbn })
+            : RedirectToAction(nameof(Index));
+    }
 
-	[HttpGet]
-	[Authorize]
-	public async Task<IActionResult> LendBook(Guid id)
-	{
-		LendBookViewModel viewModel = await _booksVmBuilder.BuildLendBookViewModelAsync(id);
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> LendBook(Guid id)
+    {
+        LendBookViewModel viewModel = await _booksVmBuilder.BuildLendBookViewModelAsync(id);
 
-		return View(viewModel);
-	}
+        return View(viewModel);
+    }
 
-	[HttpPost]
-	public async Task<IActionResult> LendBook(LendBookViewModel model)
-	{
-		if (ModelState.IsValid)
-		{
-			await _booksRepository.LendBookAsync(model.BookInstance.Id, model.SelectedMemberId!.Value);
+    [HttpPost]
+    public async Task<IActionResult> LendBook(LendBookViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            await _booksRepository.LendBookAsync(model.BookInstance.Id, model.SelectedMemberId!.Value);
 
-			return RedirectToAction(
-				nameof(Get),
-				new
-				{
-					id = model.BookInstance.ISBN
-				});
-		}
+            return RedirectToAction(
+                nameof(Get),
+                new
+                {
+                    id = model.BookInstance.ISBN
+                });
+        }
 
-		LendBookViewModel viewModel = await _booksVmBuilder.BuildLendBookViewModelAsync(model.BookInstance.Id);
+        LendBookViewModel viewModel = await _booksVmBuilder.BuildLendBookViewModelAsync(model.BookInstance.Id);
 
-		return View(viewModel);
-	}
+        return View(viewModel);
+    }
 
-	[HttpGet]
-	[Authorize]
-	public async Task<IActionResult> Update(string id)
-	{
-		Book book = await _booksRepository.GetBookAsync(id);
-		
-		UpdateBookViewModel model = new()
-		{
-			ISBN = book.ISBN,
-			Title = book.Title,
-			Genre = book.Genre,
-			Year = book.Year
-		};
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> Update(string id)
+    {
+        Book book = await _booksRepository.GetBookAsync(id);
 
-		return View(model);
-	}
-    
-	[HttpPost]
-	public async Task<IActionResult> Update(UpdateBookViewModel patch)
-	{
-		if (ModelState.IsValid)
-		{
-			await _booksRepository.UpdateBookAsync(
-				id: patch.ISBN,
-				title: patch.Title,
-				genre: patch.Genre,
-				year: patch.Year);
-			
-			return RedirectToAction(nameof(Index));
-		}
+        UpdateBookViewModel model = new()
+        {
+            ISBN = book.ISBN,
+            Title = book.Title,
+            Genre = book.Genre,
+            Year = book.Year
+        };
 
-		return View(patch);
-	}
-	
-	[HttpPost]
-	public async Task<JsonResult> AjaxMethod(string name)
-	{
-		IReadOnlyList<Author> authors = await _authorsRepository.FindAuthorsAsync(name, count: 10);
+        return View(model);
+    }
 
-		return Json(authors);
-	}
-	
+    [HttpPost]
+    public async Task<IActionResult> Update(UpdateBookViewModel patch)
+    {
+        if (ModelState.IsValid)
+        {
+            await _booksRepository.UpdateBookAsync(
+                id: patch.ISBN,
+                title: patch.Title,
+                genre: patch.Genre!.Value,
+                year: patch.Year);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(patch);
+    }
+
+    [HttpPost]
+    public async Task<JsonResult> FindAuthors(string name)
+    {
+        IReadOnlyList<Author> authors = await _authorsRepository.FindAuthorsAsync(name, count: 10);
+
+        var result = authors
+            .Select(author =>
+                new
+                {
+                    label = author.Name,
+                    val = author.Id
+                })
+            .ToArray();
+
+        return Json(result);
+    }
 }

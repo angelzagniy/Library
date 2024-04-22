@@ -14,6 +14,8 @@ public class AddBookViewModel : BookViewModel
     [Required(ErrorMessage = "Author is required.")]
     public Guid? AuthorId { get; init; }
 
+    public string AuthorName { get; init; }
+
     [Display(Name = "Books Number")]
     [Range(1, 30, ErrorMessage = "The number of books should be between 1 and 30.")]
     public int InstancesCount { get; init; }
