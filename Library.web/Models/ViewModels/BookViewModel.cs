@@ -40,7 +40,7 @@ public class BookViewModel
     {
         Genres = Enum.GetValues<Genre>()
             .Where(g => g != Models.Genre.Any)
-            .Select(genre => new SelectListItem(genre.ToString(), genre.ToString()))
+            .Select(genre => new SelectListItem(text: genre.ToString(), value: genre.ToString()))
             .ToArray();
     }
 }
