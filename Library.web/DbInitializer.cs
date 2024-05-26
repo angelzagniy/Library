@@ -32,15 +32,18 @@ public static class DbInitializer
 		{
 			Member memberOne = new()
 			{
-				Name = "Sylvia R. Torres"
+				Name = "Sylvia R. Torres",
+				PhoneNumber = "+380967778901"
 			};
 			Member memberTwo = new()
 			{
-				Name = "Patricia M. Rook"
+				Name = "Patricia M. Rook",
+				PhoneNumber = "+380977798922"
 			};
 			Member memberThree = new()
 			{
-				Name = "Ellen D. Hollars"
+				Name = "Ellen D. Hollars",
+				PhoneNumber = "+380508893458"
 			};
 
 			context.Members.AddRange(memberOne, memberTwo, memberThree);

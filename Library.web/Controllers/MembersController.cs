@@ -23,15 +23,23 @@ public class MembersController : Controller
 	}
 
 	[Authorize]
-	public async Task<ActionResult<MembersPageViewModel>> Index()
+	public async Task<ActionResult<MembersPageViewModel>> Index(string name)
 	{
-		IReadOnlyList<Member> members = await _membersRepository.ListMembersAsync();
+		IReadOnlyList<Member> members = await _membersRepository.ListMembersAsync(name: name);
 
-		MembersPageViewModel viewModel = new(
-			"Members",
-			members);
+		MembersPageViewModel viewModel = new("Members", members)
+		{
+			NameFilter = name
+		};
 
 		return View(viewModel);
+	}
+	
+	[HttpGet]
+	[Authorize]
+	public IActionResult Reset()
+	{
+		return RedirectToAction(nameof(Index));
 	}
 
 	[HttpGet]
@@ -51,7 +59,8 @@ public class MembersController : Controller
 			await _membersRepository.AddMemberAsync(
 				new Member
 				{
-					Name = newMember.Name
+					Name = newMember.Name,
+					PhoneNumber = newMember.PhoneNumber
 				});
 
 			return RedirectToAction(nameof(Index));

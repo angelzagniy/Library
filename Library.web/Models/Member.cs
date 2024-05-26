@@ -17,6 +17,11 @@ public class Member
     /// Member full name.
     /// </summary>
     public string Name { get; set; }
+    
+    /// <summary>
+    /// Member phone number.
+    /// </summary>
+    public string PhoneNumber { get; set; }
 
     /// <summary>
     /// A collection of the books being taken by the member.

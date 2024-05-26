@@ -23,6 +23,12 @@ public class MembersRepository : IMembersRepository
 	{
 		IQueryable<Member> members = _dbContext.Members;
 
+		// Add filter by member name
+		if (!string.IsNullOrEmpty(name))
+		{
+			members = members.Where(member => member.Name.Contains(name));
+		}
+
 		return await members
 			.ToListAsync();
 	}

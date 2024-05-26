@@ -51,6 +51,9 @@ public class LibraryContext : DbContext
 		modelBuilder.Entity<Member>().Property(member => member.Name)
 			.IsRequired()
 			.HasMaxLength(100);
+		modelBuilder.Entity<Member>().Property(member => member.PhoneNumber)
+			.IsRequired()
+			.HasMaxLength(13);
 
 		// Model Book to BookInstance one-to-many relationship.
 		modelBuilder.Entity<Book>()

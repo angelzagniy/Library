@@ -13,4 +13,5 @@ public class MembersPageViewModel : PageViewModel
     }
 
     public IReadOnlyList<Member> Members { get; }
+    public string NameFilter { get; set; }
 }
