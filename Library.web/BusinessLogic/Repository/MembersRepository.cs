@@ -32,6 +32,21 @@ public class MembersRepository : IMembersRepository
 		return await members
 			.ToListAsync();
 	}
+	
+	public async Task<Member> GetMemberAsync(Guid id)
+	{
+		return await _dbContext.Members.FindAsync(id);
+	}
+	
+	public async Task UpdateMemberAsync(Guid id, string name, string phoneNumber)
+	{
+		Member member = await GetMemberAsync(id);
+
+		member.Name = name;
+		member.PhoneNumber = phoneNumber;
+
+		await _dbContext.SaveChangesAsync();
+	}
 
 	/// <inheritdoc />
 	public async Task AddMemberAsync(Member member)

@@ -17,6 +17,13 @@ public interface IMembersRepository
     /// <param name="name">Optional name filter.</param>
     /// <returns>A collection of books matching filtering criteria, if specified.</returns>
     Task<IReadOnlyList<Member>> ListMembersAsync(string name = null);
+    
+    Task<Member> GetMemberAsync(Guid id);
+    
+    Task UpdateMemberAsync(
+        Guid id,
+        string name,
+        string phoneNumber);
 
     /// <summary>
     /// Adds member.

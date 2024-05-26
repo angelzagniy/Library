@@ -20,15 +20,23 @@ public class AuthorsController: Controller
     }
     
     [Authorize]
-    public async Task<ActionResult<MembersPageViewModel>> Index()
+    public async Task<ActionResult<MembersPageViewModel>> Index(string name)
     {
-        IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync();
+        IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync(name: name);
 		
-        AuthorPageViewModel viewModel = new (
-            "Authors",
-            authors);
+        AuthorPageViewModel viewModel = new ("Authors", authors)
+        {
+            NameFilter = name
+        };
 
         return View(viewModel);
+    }
+    
+    [HttpGet]
+    [Authorize]
+    public IActionResult Reset()
+    {
+        return RedirectToAction(nameof(Index));
     }
     
     [HttpGet]

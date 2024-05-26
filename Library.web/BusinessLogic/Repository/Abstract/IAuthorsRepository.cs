@@ -13,7 +13,7 @@ public interface IAuthorsRepository
 	/// <summary>
 	/// Lists authors.
 	/// </summary>
-	Task<IReadOnlyList<Author>> ListAuthorsAsync();
+	Task<IReadOnlyList<Author>> ListAuthorsAsync(string name = null);
 
 	/// <summary>
 	/// Finds author by name.

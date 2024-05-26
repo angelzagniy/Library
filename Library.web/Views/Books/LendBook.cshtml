@@ -8,7 +8,7 @@
 <div class="container">
 
     <div class="row mb-3">
-        <h2>Lend Book</h2>
+        <h2 class="text-primary">Lend Book</h2>
     </div>
 
     @await Html.PartialAsync("BookInfo", Model.BookInstance.Book)
@@ -35,11 +35,11 @@
         </div>
         <div class="row">
             <div class="col-6 g-2 text-end">
-                <button type="submit" class="btn btn-sm btn-primary"
+                <button type="submit" class="btn btn-sm btn-outline-primary"
                         asp-action="LendBook">
                     Lend Book
                 </button>
-                <a class="btn btn-sm btn-secondary"
+                <a class="btn btn-sm btn-outline-secondary"
                    asp-action="Get"
                    asp-route-id="@Model.BookInstance.ISBN">
                     Cancel

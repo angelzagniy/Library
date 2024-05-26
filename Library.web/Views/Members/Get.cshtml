@@ -3,14 +3,14 @@
 
 <div class="container">
     <div class="row mb-3">
-        <h2>Manage Book</h2>
+        <h2 class="text-primary">Manage Book</h2>
     </div>
     <div class="row mb-2">
         <div class="col-2">
             <span class="col-form-label col-form-label-sm">ID</span>
         </div>
         <div class="col-4">
-            <span class="text-info">@Model.Id</span>
+            <span class="">@Model.Id</span>
         </div>
     </div>
     <div class="row mb-2">
@@ -31,7 +31,7 @@
     </div>
 
     <div class="row mb-2 mt-2">
-        <h4>Taken Books</h4>
+        <h4 class="text-primary">Taken Books</h4>
     </div>
     @foreach (BookInstance instance in Model.BookInstances)
     {
@@ -45,7 +45,7 @@
                 </span>
             </div>
             <div class="col-1 text-end">
-                <a class="btn btn-sm btn-primary"
+                <a class="btn btn-sm btn-outline-primary"
                    asp-action="ReturnBook" asp-route-id="@instance.Id">
                     Return
                 </a>

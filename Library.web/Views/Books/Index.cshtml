@@ -6,7 +6,7 @@
 }
 
 <div class="row mb-2">
-	<h2>Books</h2>
+	<h2 class="text-primary">Books</h2>
 </div>
 <div class="row col-11 align-items-end">
 	<div class="col-12 mb-4">
@@ -43,7 +43,7 @@
 				<button type="submit" class="btn btn-sm btn-outline-secondary me-2" asp-action="Reset">
 					<span class="bi-eraser-fill"></span>
 				</button>
-				<a type="submit" class="btn btn-sm btn-outline-success" asp-controller="Books" asp-action="Add">
+				<a type="submit" class="btn btn-sm btn-outline-primary" asp-controller="Books" asp-action="Add">
 					Add New Book
 				</a>
 			</div>
@@ -51,7 +51,7 @@
 	</div>
 </div>
 <div class="row col-11">
-	<div class="col">
+	<div class="col mt-8">
 		<table class="table table-secondary table-hover table-striped">
 			<thead>
 			<tr>
@@ -75,11 +75,11 @@
 					<td>@book.Year</td>
 					<td>@book.BookInstances.Count(instance => instance.MemberId is null) / @book.BookInstances.Count</td>
 					<td class="text-end">
-						<a class="btn btn-sm btn-outline-success me-2"
+						<a class="btn btn-sm btn-outline-primary me-2"
 						   asp-controller="Books" asp-action="Get" asp-route-id="@book.ISBN">
 							<span class="bi-building-gear"></span>
 						</a>
-						<a class="btn btn-sm btn-outline-success"
+						<a class="btn btn-sm btn-outline-primary"
 						   asp-controller="Books" asp-action="Update" asp-route-id="@book.ISBN">
 							<span class="bi-pencil-fill"></span>
 						</a>

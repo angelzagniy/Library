@@ -3,84 +3,88 @@
 
 @{
     ViewData["Title"] = "Book Info";
+    bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
 }
 
-<div class="container">
-    <div class="row mb-3">
-        <h2>Manage Book</h2>
-    </div>
+@if (isAuthenticated)
+{
+    <div class="container">
+        <div class="row mb-3">
+            <h2 class="text-primary">Manage Book</h2>
+        </div>
 
-    @await Html.PartialAsync("BookInfo", Model)
+        @await Html.PartialAsync("BookInfo", Model)
 
-    <div class="row mb-2 mt-2">
-        <h4>Instances</h4>
-    </div>
+        <div class="row mb-2 mt-2">
+            <h4>Instances</h4>
+        </div>
 
-    <div class="row mb-2">
-        <div class="col-8">
-            <table class="table table-secondary table-hover table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Taken By</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (BookInstance instance in Model.BookInstances)
-                {
+        <div class="row mb-2">
+            <div class="col-8">
+                <table class="table table-secondary table-hover table-striped">
+                    <thead>
                     <tr>
-                        <td>
-                            <span class="col-form-label col-form-label-sm">@instance.Id</span>
-                        </td>
-                        <td>
-                            @if (instance.Member != null)
-                            {
-                                <span class="text-dark">
-                                    Taken by
-                                    <a asp-controller="Members"
-                                       asp-action="Get"
-                                       asp-route-id="@instance.MemberId">
-                                        @instance.Member.Name
-                                    </a>
-                                </span>
-                            }
-                            else
-                            {
-                                <span class="text-dark">
-                                    <i>Available</i>
-                                </span>
-                            }
-                        </td>
-                        <td class="text-end">
-                            @if (instance.Member != null)
-                            {
-                                <a class="btn btn-sm btn-primary"
-                                   asp-action="ReturnBook" asp-route-id="@instance.Id">
-                                    Return
-                                </a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-sm btn-primary"
-                                   asp-action="LendBook" asp-route-id="@instance.Id">
-                                    Lend
-                                </a>
-                            }
-                        </td>
+                        <th scope="col">ID</th>
+                        <th scope="col">Taken By</th>
+                        <th scope="col"></th>
                     </tr>
-                }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                    @foreach (BookInstance instance in Model.BookInstances)
+                    {
+                        <tr>
+                            <td>
+                                <span class="col-form-label col-form-label-sm">@instance.Id</span>
+                            </td>
+                            <td>
+                                @if (instance.Member != null)
+                                {
+                                    <span class="text-dark">
+                                        Taken by
+                                        <a asp-controller="Members"
+                                           asp-action="Get"
+                                           asp-route-id="@instance.MemberId">
+                                            @instance.Member.Name
+                                        </a>
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="text-dark">
+                                        <i>Available</i>
+                                    </span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                @if (instance.Member != null)
+                                {
+                                    <a class="btn btn-sm btn-primary"
+                                       asp-action="ReturnBook" asp-route-id="@instance.Id">
+                                        Return
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-sm btn-primary"
+                                       asp-action="LendBook" asp-route-id="@instance.Id">
+                                        Lend
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
 
-    </div>
-    <div class="row">
-        <div class="col-8 g-2 text-end">
-            <a class="btn btn-sm btn-secondary"
-               asp-action="Index">
-                Back to books
-            </a>
+        </div>
+        <div class="row">
+            <div class="col-8 g-2 text-end">
+                <a class="btn btn-sm btn-outline-secondary"
+                   asp-action="Index">
+                    Back to books
+                </a>
+            </div>
         </div>
     </div>
-</div>
+}

@@ -6,7 +6,7 @@
 }
 
 <div class="row mb-2">
-    <h2>Users</h2>
+    <h2 class="text-primary">Users</h2>
 </div>
 <div class="row mb-2 align-items-center">
     <div class="col-10">
@@ -20,11 +20,11 @@
                        value="@Model.NameFilter">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-sm btn-outline-success"
+                <button type="submit" class="btn btn-sm btn-outline-primary"
                         asp-action="Index">
                     Search
                 </button>
-                <button type="submit" class="btn btn-sm btn-outline-danger"
+                <button type="submit" class="btn btn-sm btn-outline-secondary"
                         asp-action="Reset">
                     Reset
                 </button>
@@ -33,7 +33,7 @@
     </div>
     <div class="row mb-2 align-items-center">
         <div class="col-12 text-end">
-            <a class="btn btn-sm btn-outline-success" asp-controller="Users" asp-action="Add">
+            <a class="btn btn-sm btn-outline-primary" asp-controller="Users" asp-action="Add">
                 <span class="bi-person-add"></span>
             </a>
         </div>
@@ -59,11 +59,11 @@
             <td>
                 @if (!user.IsBuiltIn)
                 {
-                    <a class="btn btn-sm btn-primary me-1"
+                    <a class="btn btn-sm btn-outline-primary me-1"
                        asp-controller="Users" asp-action="Update" asp-route-id="@user.Id">
                         <span class="bi-pencil"></span>
                     </a>
-                    <a class="btn btn-sm btn-danger"
+                    <a class="btn btn-sm btn-outline-danger"
                        asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">
                         <span class="bi-trash"></span>
                     </a>

@@ -19,9 +19,16 @@ internal class AuthorsRepository : IAuthorsRepository
 	}
 
 	/// <inheritdoc />
-	public async Task<IReadOnlyList<Author>> ListAuthorsAsync()
+	public async Task<IReadOnlyList<Author>> ListAuthorsAsync(string name = null)
 	{
-		return await _dbContext.Authors.ToListAsync();
+		IQueryable<Author> authors = _dbContext.Authors;
+		
+		// Add filter by member name
+		if (!string.IsNullOrEmpty(name))
+		{
+			authors = authors.Where(author => author.Name.Contains(name));
+		}
+		return await authors.ToListAsync();
 	}
 
 	/// <inheritdoc />

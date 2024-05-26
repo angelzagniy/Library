@@ -3,48 +3,66 @@
 
 @{
     ViewData["Title"] = Model.Title;
-    bool isAdmin = User.IsInRole("Admin");
+    bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
 }
 
-<div class="row mb-2">
-    <h2>Authors</h2>
-</div>
-<div class="row col-8 mb-2 align-items-center">
-    @if (isAdmin)
-    {
-        <div class="col-12 text-end">
-            <a class="btn btn-sm btn-outline-success" asp-controller="Authors" asp-action="Add">
-                <span class="bi-person-add"></span>
-            </a>
-        </div>
-    }
-</div>
+@if (isAuthenticated)
+{
+    <div class="row mb-2">
+        <h2 class="text-primary">Authors</h2>
+    </div>
 
-<div class="row col-8">
-    <table class="table table-hover table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (Author author in Model.Authors)
-        {
-            <tr>
-                <td>@author.Name</td>
-                <td class="text-end">
-                    <a class="btn btn-sm btn-outline-success me-1"
-                       asp-controller="Books" asp-action="Index" asp-route-author="@author.Name">
-                        <span class="bi-book"></span>
-                    </a>
-                    <a class="btn btn-sm btn-outline-success me-1"
-                       asp-controller="Authors" asp-action="Update" asp-route-id="@author.Id">
-                        <span class="bi-pencil"></span>
-                    </a>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-</div>
+    <div class="row col-8 mt-4">
+        <form class="row" method="get">
+            <div class="col-auto">
+                <label class="col-form-label col-form-label-sm" for="name">Name</label>
+            </div>
+            <div class="col-3">
+                <input id="name" name="name" type="text"
+                       class="form-control form-control-sm"
+                       value="@Model.NameFilter">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-sm btn-outline-primary me-2" asp-action="Index">
+                    <span class="bi-search"></span>
+                </button>
+                <button type="submit" class="btn btn-sm btn-outline-secondary me-2" asp-action="Reset">
+                    <span class="bi-eraser-fill"></span>
+                </button>
+            </div>
+            <div class="col text-end">
+                <a class="btn btn-sm btn-outline-primary" asp-controller="Authors" asp-action="Add">
+                    <span class="bi-person-add"></span>
+                </a>
+            </div>
+        </form>
+        <div class="mt-4">
+            <table class="table table-secondary table-hover table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (Author author in Model.Authors)
+                {
+                    <tr>
+                        <td>@author.Name</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary me-1"
+                               asp-controller="Books" asp-action="Index" asp-route-author="@author.Name">
+                                <span class="bi-book"></span>
+                            </a>
+                            <a class="btn btn-sm btn-outline-primary me-1"
+                               asp-controller="Authors" asp-action="Update" asp-route-id="@author.Id">
+                                <span class="bi-pencil-fill"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

@@ -68,6 +68,34 @@ public class MembersController : Controller
 
 		return View(newMember);
 	}
+	
+	[HttpGet]
+	[Authorize]
+	public async Task<IActionResult> Update(Guid id)
+	{
+		Member member = await _membersRepository.GetMemberAsync(id);
+		
+		UpdateMemberViewModel model = new()
+		{
+			Id = member.Id,
+			Name = member.Name,
+			PhoneNumber = member.PhoneNumber
+		};
+
+		return View(model);
+	}
+    
+	[HttpPost]
+	public async Task<IActionResult> Update(UpdateMemberViewModel patch)
+	{
+		if (ModelState.IsValid)
+		{
+			await _membersRepository.UpdateMemberAsync(patch.Id, patch.Name, patch.PhoneNumber);
+			return RedirectToAction(nameof(Index));
+		}
+
+		return View(patch);
+	}
 
 	[HttpGet]
 	[Authorize]

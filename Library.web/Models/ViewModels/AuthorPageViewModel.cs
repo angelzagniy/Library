@@ -13,4 +13,6 @@ public class AuthorPageViewModel: PageViewModel
     }
 
     public IReadOnlyList<Author> Authors { get; }
+    
+    public string NameFilter { get; set; }
 }

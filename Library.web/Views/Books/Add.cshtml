@@ -3,88 +3,91 @@
 
 @{
 	ViewData["Title"] = "Add Book";
+	bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
 }
 
-<div class="container">
-	<div class="row mb-3">
-		<h2>Add Book</h2>
+@if (isAuthenticated)
+{
+	<div class="container">
+		<div class="row mb-3">
+			<h2 class="text-primary">Add Book</h2>
+		</div>
+		<form method="post" class="g-2">
+			<div class="row mb-2">
+				<div class="col-2">
+					<label asp-for="ISBN" class="col-form-label col-form-label-sm"></label>
+				</div>
+				<div class="col-4">
+					<input asp-for="ISBN" class="form-control form-control-sm">
+					<span asp-validation-for="ISBN" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<div class="col-2">
+					<label asp-for="Title" class="col-form-label col-form-label-sm"></label>
+				</div>
+				<div class="col-4">
+					<input asp-for="Title" class="form-control form-control-sm">
+					<span asp-validation-for="Title" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<div class="col-2">
+					<label asp-for="Genre" class="col-form-label col-form-label-sm"></label>
+				</div>
+				<div class="col-4">
+					<select asp-for="Genre" asp-items="@Model.Genres" class="form-select form-select-sm">
+						<option selected value="@null">Select genre...</option>
+					</select>
+					<span asp-validation-for="Genre" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<div class="col-2">
+					<label asp-for="AuthorId" class="col-sm-2 col-form-label col-form-label-sm"></label>
+				</div>
+				<div class="col-4">
+					<input asp-for="AuthorName"
+					       class="form-control form-control-sm"
+					       placeholder="Type name here..."/>
+					<input asp-for="AuthorId" type="hidden"/>
+					<span asp-validation-for="AuthorId" class="text-danger"></span>
+				</div>
+				<div class="col-1">
+					<a class="btn btn-sm btn-outline-success" asp-controller="Authors" asp-action="Add">
+						<span class="bi-person-add"></span>
+					</a>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<div class="col-2">
+					<label asp-for="Year" class="col-form-label col-form-label-sm"></label>
+				</div>
+				<div class="col-4">
+					<input asp-for="Year" required class="form-control form-control-sm">
+					<span asp-validation-for="Year" class="text-danger"></span>
+
+				</div>
+			</div>
+			<div class="row mb-2">
+				<div class="col-2">
+					<label asp-for="InstancesCount" class="col-form-label col-form-label-sm"></label>
+				</div>
+				<div class="col-4">
+					<input asp-for="InstancesCount" required class="form-control form-control-sm">
+					<span asp-validation-for="InstancesCount" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6 g-2 text-end">
+					<button type="submit" class="btn btn-sm btn-outline-primary">Submit</button>
+					<a class="btn btn-sm btn-outline-secondary" asp-action="Index">Cancel</a>
+				</div>
+			</div>
+		</form>
 	</div>
-	<form method="post" class="g-2">
-		<div class="row mb-2">
-			<div class="col-2">
-				<label asp-for="ISBN" class="col-form-label col-form-label-sm"></label>
-			</div>
-			<div class="col-4">
-				<input asp-for="ISBN" class="form-control form-control-sm">
-				<span asp-validation-for="ISBN" class="text-danger"></span>
-			</div>
-		</div>
-		<div class="row mb-2">
-			<div class="col-2">
-				<label asp-for="Title" class="col-form-label col-form-label-sm"></label>
-			</div>
-			<div class="col-4">
-				<input asp-for="Title" class="form-control form-control-sm">
-				<span asp-validation-for="Title" class="text-danger"></span>
-			</div>
-		</div>
-		<div class="row mb-2">
-			<div class="col-2">
-				<label asp-for="Genre" class="col-form-label col-form-label-sm"></label>
-			</div>
-			<div class="col-4">
-				<select asp-for="Genre" asp-items="@Model.Genres" class="form-select form-select-sm">
-					<option selected value="@null">Select genre...</option>
-				</select>
-				<span asp-validation-for="Genre" class="text-danger"></span>
-			</div>
-		</div>
-		<div class="row mb-2">
-			<div class="col-2">
-				<label asp-for="AuthorId" class="col-sm-2 col-form-label col-form-label-sm"></label>
-			</div>
-			<div class="col-4">
-				<input asp-for="AuthorName"
-				       class="form-control form-control-sm"
-				       placeholder="Type name here..."/>
-				<input asp-for="AuthorId" type="hidden"/>
-				<span asp-validation-for="AuthorId" class="text-danger"></span>
-			</div>
-			<div class="col-1">
-				<a class="btn btn-sm btn-outline-success" asp-controller="Authors" asp-action="Add">
-					<span class="bi-person-add"></span>
-				</a>
-			</div>
-		</div>
-		<div class="row mb-2">
-			<div class="col-2">
-				<label asp-for="Year" class="col-form-label col-form-label-sm"></label>
-			</div>
-			<div class="col-4">
-				<input asp-for="Year" required class="form-control form-control-sm">
-				<span asp-validation-for="Year" class="text-danger"></span>
 
-			</div>
-		</div>
-		<div class="row mb-2">
-			<div class="col-2">
-				<label asp-for="InstancesCount" class="col-form-label col-form-label-sm"></label>
-			</div>
-			<div class="col-4">
-				<input asp-for="InstancesCount" required class="form-control form-control-sm">
-				<span asp-validation-for="InstancesCount" class="text-danger"></span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-6 g-2 text-end">
-				<button type="submit" class="btn btn-sm btn-primary">Submit</button>
-				<a class="btn btn-sm btn-secondary" asp-action="Index">Cancel</a>
-			</div>
-		</div>
-	</form>
-</div>
-
-<script type="text/javascript">
+	<script type="text/javascript">
         $(function () {
             $("#AuthorName").autocomplete({
                 source: function (request, response) {
@@ -113,3 +116,4 @@
             });
         });
     </script>
+}
