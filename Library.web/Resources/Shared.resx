@@ -18,13 +18,16 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="ApplicationName" xml:space="preserve">
-        <value>My App</value>
+    <data name="Title" xml:space="preserve">
+        <value>Title</value>
     </data>
     <data name="BookNumberIsRequired" xml:space="preserve">
         <value>Book number is required</value>
     </data>
     <data name="BookNumberRange" xml:space="preserve">
         <value>The number of books should be between 1 and 30.</value>
+    </data>
+    <data name="Author" xml:space="preserve">
+        <value>Author</value>
     </data>
 </root>

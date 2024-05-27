@@ -60,11 +60,11 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My App.
+        ///   Looks up a localized string similar to Author.
         /// </summary>
-        internal static string ApplicationName {
+        internal static string Author {
             get {
-                return ResourceManager.GetString("ApplicationName", resourceCulture);
+                return ResourceManager.GetString("Author", resourceCulture);
             }
         }
         
@@ -83,6 +83,15 @@ namespace Library.Web.Resources {
         internal static string BookNumberRange {
             get {
                 return ResourceManager.GetString("BookNumberRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

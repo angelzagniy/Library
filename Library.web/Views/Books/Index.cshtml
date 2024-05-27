@@ -2,20 +2,20 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Library.Web.Models.ViewModels.BooksPageViewModel
 
-@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
 	ViewData["Title"] = Model.Title;
 }
 
 <div class="row mb-2">
-	<h2 class="text-primary">Books</h2>
+	<h2 class="text-primary">@SharedLocalizer["Title"] - Books</h2>
 </div>
 <div class="row col-11 align-items-end">
 	<div class="col-12 mb-4">
 		<form class="row" method="get">
 			<div class="col-auto">
-				<label class="col-form-label col-form-label-sm" for="title">@Localizer["Title"]</label>
+				<label class="col-form-label col-form-label-sm" for="title">@SharedLocalizer["Title"]</label>
 			</div>
 			<div class="col-auto">
 				<input id="title" name="title" type="text"
@@ -23,7 +23,7 @@
 				       value="@Model.TitleFilter">
 			</div>
 			<div class="col-auto">
-				<label class="col-form-label col-form-label-sm" for="author">@Localizer["Author"]</label>
+				<label class="col-form-label col-form-label-sm" for="author">@SharedLocalizer["Author"]</label>
 			</div>
 			<div class="col-auto">
 				<input id="author" name="author" type="text"
@@ -59,8 +59,8 @@
 			<thead>
 			<tr>
 				<th scope="col">ISBN</th>
-				<th scope="col">@Localizer["Title"]</th>
-				<th scope="col">@Localizer["Author"]</th>
+				<th scope="col">@SharedLocalizer["Title"]</th>
+				<th scope="col">@SharedLocalizer["Author"]</th>
 				<th scope="col">Genre</th>
 				<th scope="col">Year</th>
 				<th scope="col">Available/Total</th>
