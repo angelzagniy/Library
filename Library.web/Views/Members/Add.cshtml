@@ -2,36 +2,38 @@
 @model Library.Web.Models.ViewModels.AddMemberViewModel
 
 @{
-    ViewData["Title"] = "Add Member";
+	ViewData["Title"] = "Add Member";
 }
 
 <div class="container">
-    <div class="row mb-3">
-        <h2 class="text-primary">Add Library Member</h2>
-    </div>
+	<div class="row mb-3">
+		<h2 class="text-primary">Add Library Member</h2>
+	</div>
 
-    <form method="post" asp-action="Add" class="g-2">
-        <div class="row mb-2">
-            <div class="col-2">
-                <label asp-for="Name" class="col-form-label col-form-label-sm"></label>
-            </div>
-            <div class="col-4">
-                <input asp-for="Name" class="form-control form-control-sm">
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="col-2">
-                <label asp-for="PhoneNumber" class="col-form-label col-form-label-sm"></label>
-            </div>
-            <div class="col-4">
-                <input asp-for="PhoneNumber" class="form-control form-control-sm">
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 g2 text-end">
-                <button type="submit" class="btn btn-sm btn-outline-primary">Submit</button>
-                <a class="btn btn-sm btn-outline-secondary" asp-action="Index">Cancel</a>
-            </div>
-        </div>
-    </form>
+	<form method="post" asp-action="Add" class="g-2">
+		<div class="row mb-2">
+			<div class="col-2">
+				<label asp-for="Name" class="col-form-label col-form-label-sm"></label>
+			</div>
+			<div class="col-4">
+				<input asp-for="Name" class="form-control form-control-sm">
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+		</div>
+		<dev class="row mb-2">
+			<div class="col-2">
+				<label asp-for="PhoneNumber" class="col-form-label col-form-label-sm"></label>
+			</div>
+			<div class="col-4">
+				<input asp-for="PhoneNumber" placeholder="Enter phone in format +380#########" class="form-control form-control-sm">
+				<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+			</div>
+		</dev>
+		<div class="row">
+			<div class="col-6 g2 text-end">
+				<button type="submit" class="btn btn-sm btn-outline-primary">Submit</button>
+				<a class="btn btn-sm btn-outline-secondary" asp-action="Index">Cancel</a>
+			</div>
+		</div>
+	</form>
 </div>

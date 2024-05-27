@@ -46,7 +46,10 @@ public class MembersController : Controller
 	[Authorize]
 	public IActionResult Add()
 	{
-		AddMemberViewModel model = new();
+		AddMemberViewModel model = new()
+		{
+			PhoneNumber = "+38"
+		};
 
 		return View(model);
 	}

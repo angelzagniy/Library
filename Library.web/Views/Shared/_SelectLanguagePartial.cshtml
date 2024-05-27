@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+	string returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+	IRequestCultureFeature requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+
+@if (!requestCulture.RequestCulture.UICulture.Name.StartsWith("en", StringComparison.OrdinalIgnoreCase))
+{
+	<a class="navbar-brand"
+	   asp-area="" asp-controller="Home"
+	   asp-action="SetLanguage" asp-route-culture="en-US" asp-route-returnUrl="@returnUrl">
+		<img src="~/images/united_states_24.png" alt="English"/>
+	</a>
+}
+
+@if (!requestCulture.RequestCulture.UICulture.Name.StartsWith("uk", StringComparison.OrdinalIgnoreCase))
+{
+
+	<a class="navbar-brand"
+	   asp-area="" asp-controller="Home"
+	   asp-action="SetLanguage" asp-route-culture="uk-UA" asp-route-returnUrl="@returnUrl">
+		<img src="~/images/ukraine_24.png" alt="Українська"/>
+	</a>
+}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Library.Web.Resources;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Library.Web.Models.ViewModels;
@@ -17,7 +18,12 @@ public class AddBookViewModel : BookViewModel
     public string AuthorName { get; init; }
 
     [Display(Name = "Books Number")]
-    [Range(1, 30, ErrorMessage = "The number of books should be between 1 and 30.")]
+    [Required(
+        ErrorMessageResourceName = "BookNumberIsRequired",
+        ErrorMessageResourceType = typeof(Shared))]
+    [Range(1, 30,
+        ErrorMessageResourceName = "BookNumberRange",
+        ErrorMessageResourceType = typeof(Shared))]
     public int InstancesCount { get; init; }
 
     public IReadOnlyList<SelectListItem> Authors { get; init; }
