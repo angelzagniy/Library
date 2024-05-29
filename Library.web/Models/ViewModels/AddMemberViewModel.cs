@@ -5,13 +5,16 @@ namespace Library.Web.Models.ViewModels;
 public class AddMemberViewModel
 {
     [Display(Name = "Full Name")]
-    [Required(ErrorMessage = "Member name is required.")]
+    [Required(ErrorMessageResourceName = "MemberNameIsRequired", 
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string Name { get; init; }
 
     [Display(Name = "Phone Number")]
-    [Required(ErrorMessage = "Phone number is required.")]
+    [Required(ErrorMessageResourceName = "PhoneNumberIsRequired", 
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     [RegularExpression(
         pattern:@"^\+380\d{9}$",
-        ErrorMessage = "Phone number should be in format +380#########")]
+        ErrorMessageResourceName = "PhoneNumberShouldBeInFormat", 
+            ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string PhoneNumber { get; init; }
 }

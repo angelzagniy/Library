@@ -1,5 +1,8 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Library.Web.Models.ViewModels.HomePageViewModel
+
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
     ViewData["Title"] = Model.Title;
@@ -7,9 +10,9 @@
 
 <body class="bg-light text-dark">
 <div class="container mt-5">
-<h1 class="text-primary text-center">Інформаційна система "Бібліотека"</h1>
+<h1 class="text-primary text-center">@SharedLocalizer["Інформаційна система \"Бібліотека\""]</h1>
 
-<h4 class="text-secondary text-center mb-10">Деталі проєкту</h4>
+<h4 class="text-secondary text-center mb-10">@SharedLocalizer["Деталі проєкту"]</h4>
 
 <div class="accordion accordion-flush pb-3" id="projectDetails">
     <div class="accordion-item">
@@ -20,7 +23,7 @@
                     data-bs-target="#collapseTwo"
                     aria-expanded="false"
                     aria-controls="collapseTwo">
-                Про систему
+                @SharedLocalizer["Про систему"]
             </button>
         </h2>
         <div id="collapseTwo"
@@ -28,8 +31,8 @@
              aria-labelledby="headingTwo"
              data-bs-parent="#projectDetails">
             <div class="accordion-body">
-                <strong>Проєкт створений для автоматизації роботи бібліотеки.</strong><br/>
-                Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію.
+                <strong>@SharedLocalizer["Проєкт створений для автоматизації роботи бібліотеки."]</strong><br/>
+                @SharedLocalizer["Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію."]
             </div>
         </div>
     </div>
@@ -41,7 +44,7 @@
                     data-bs-target="#collapseThree"
                     aria-expanded="false"
                     aria-controls="collapseThree">
-                Доступ до інформації
+                @SharedLocalizer["Доступ до інформації"]
             </button>
         </h2>
         <div id="collapseThree"
@@ -49,13 +52,13 @@
              aria-labelledby="headingThree"
              data-bs-parent="#projectDetails">
             <div class="accordion-body">
-                <strong>Доступ до даних може бути отримано тільки після авторизації.</strong><br/>
-                Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора.<br/>
-                (Також адміністратор може надавати права адміністрування й іншим користувачам)
+                <strong>@SharedLocalizer["Доступ до даних може бути отримано тільки після авторизації."]</strong><br/>
+                @SharedLocalizer["Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора."]<br/>
+                @SharedLocalizer["(Також адміністратор може надавати права адміністрування й іншим користувачам)"]
                 @if (!User.Identity?.IsAuthenticated ?? true)
                 {
                     <p>
-                        <a class="btn btn-sm btn-link" asp-controller="Home" asp-action="Login">Увійти</a>
+                        <a class="btn btn-sm btn-link" asp-controller="Home" asp-action="Login">@SharedLocalizer["Login"]</a>
                     </p>
                 }
             </div>
@@ -69,7 +72,7 @@
                     data-bs-target="#collapseOne"
                     aria-expanded="false"
                     aria-controls="collapseOne">
-                Модель даних
+                @SharedLocalizer["Модель даних"]
             </button>
         </h2>
         <div id="collapseOne"

@@ -1,4 +1,8 @@
-﻿@model Library.Web.Models.ViewModels.UserViewModel
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Library.Web.Models.ViewModels.UserViewModel
+
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
     ViewData["Title"] = "User Details";
@@ -7,12 +11,12 @@
 
 <div class="container">
     <div class="row mb-3">
-        <h2>User Details - @Model.UserName</h2>
+        <h2>@SharedLocalizer["User Details"] - @Model.UserName</h2>
     </div>
 
     <div class="row mb-2">
         <div class="col-2">
-            <label asp-for="Name" class="col-form-label col-form-label-sm"></label>
+            <label asp-for="Name" class="col-form-label col-form-label-sm">@SharedLocalizer["Name"]</label>
         </div>
         <div class="col-4">
             <span class="form-control form-control-sm">@Model.Name</span>
@@ -20,7 +24,7 @@
     </div>
     <div class="row mb-2">
         <div class="col-2">
-            <label asp-for="Role" class="col-form-label col-form-label-sm"></label>
+            <label asp-for="Role" class="col-form-label col-form-label-sm">@SharedLocalizer["Role"]</label>
         </div>
         <div class="col-4">
             <span class="form-control form-control-sm">@Model.Role</span>
@@ -28,7 +32,7 @@
     </div>
     <div class="row">
         <div class="col-6 g-2 text-end">
-            <a class="btn btn-sm btn-secondary" asp-action="Index">Close</a>
+            <a class="btn btn-sm btn-secondary" asp-action="Index">@SharedLocalizer["Close"]</a>
         </div>
     </div>
 </div>

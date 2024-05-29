@@ -1,6 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<Shared> SharedLocalizer
+
+@{
     ViewData["Title"] = "Privacy Policy";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<p>@SharedLocalizer["You have insufficient privileges to access this page."]</p>

@@ -8,15 +8,18 @@ namespace Library.Web.Models.ViewModels;
 public class UserViewModel
 {
     [Display(Name = "Name")]
-    [Required(ErrorMessage = "User name is required.")]
+    [Required(ErrorMessageResourceName = "UserNameIsRequired", 
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string Name { get; init; }
     
     [Display(Name = "Login name")]
-    [Required(ErrorMessage = "Login name is required.")]
+    [Required(ErrorMessageResourceName = "LoginNameIsRequired", 
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string UserName { get; init; }
     
     [Display(Name = "Role")]
-    [Required(ErrorMessage = "Role is required.")]
+    [Required(ErrorMessageResourceName = "RoleIsRequired", 
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string Role { get; init; }
     
     /// <summary>

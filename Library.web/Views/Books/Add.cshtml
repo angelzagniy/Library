@@ -1,5 +1,8 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Library.Web.Models.ViewModels.AddBookViewModel
+
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
 	ViewData["Title"] = "Add Book";
@@ -10,7 +13,7 @@
 {
 	<div class="container">
 		<div class="row mb-3">
-			<h2 class="text-primary">Add Book</h2>
+			<h2 class="text-primary">@SharedLocalizer["Add Book"]</h2>
 		</div>
 		<form method="post" class="g-2">
 			<div class="row mb-2">
@@ -24,7 +27,7 @@
 			</div>
 			<div class="row mb-2">
 				<div class="col-2">
-					<label asp-for="Title" class="col-form-label col-form-label-sm"></label>
+					<label asp-for="Title" class="col-form-label col-form-label-sm">@SharedLocalizer["Title"]</label>
 				</div>
 				<div class="col-4">
 					<input asp-for="Title" class="form-control form-control-sm">
@@ -33,23 +36,23 @@
 			</div>
 			<div class="row mb-2">
 				<div class="col-2">
-					<label asp-for="Genre" class="col-form-label col-form-label-sm"></label>
+					<label asp-for="Genre" class="col-form-label col-form-label-sm">@SharedLocalizer["Genre"]</label>
 				</div>
 				<div class="col-4">
 					<select asp-for="Genre" asp-items="@Model.Genres" class="form-select form-select-sm">
-						<option selected value="@null">Select genre...</option>
+						<option selected value="@null">@SharedLocalizer["Select genre..."]</option>
 					</select>
 					<span asp-validation-for="Genre" class="text-danger"></span>
 				</div>
 			</div>
 			<div class="row mb-2">
 				<div class="col-2">
-					<label asp-for="AuthorId" class="col-sm-2 col-form-label col-form-label-sm"></label>
+					<label asp-for="AuthorId" class="col-sm-2 col-form-label col-form-label-sm">@SharedLocalizer["Author"]</label>
 				</div>
 				<div class="col-4">
 					<input asp-for="AuthorName"
 					       class="form-control form-control-sm"
-					       placeholder="Type name here..."/>
+					       placeholder="@SharedLocalizer["Type name here..."]"/>
 					<input asp-for="AuthorId" type="hidden"/>
 					<span asp-validation-for="AuthorId" class="text-danger"></span>
 				</div>
@@ -61,7 +64,7 @@
 			</div>
 			<div class="row mb-2">
 				<div class="col-2">
-					<label asp-for="Year" class="col-form-label col-form-label-sm"></label>
+					<label asp-for="Year" class="col-form-label col-form-label-sm">@SharedLocalizer["Year"]</label>
 				</div>
 				<div class="col-4">
 					<input asp-for="Year" required class="form-control form-control-sm">
@@ -71,7 +74,7 @@
 			</div>
 			<div class="row mb-2">
 				<div class="col-2">
-					<label asp-for="InstancesCount" class="col-form-label col-form-label-sm"></label>
+					<label asp-for="InstancesCount" class="col-form-label col-form-label-sm">@SharedLocalizer["Instances Count"]</label>
 				</div>
 				<div class="col-4">
 					<input asp-for="InstancesCount" required class="form-control form-control-sm">
@@ -80,8 +83,8 @@
 			</div>
 			<div class="row">
 				<div class="col-6 g-2 text-end">
-					<button type="submit" class="btn btn-sm btn-outline-primary">Submit</button>
-					<a class="btn btn-sm btn-outline-secondary" asp-action="Index">Cancel</a>
+					<button type="submit" class="btn btn-sm btn-outline-primary">@SharedLocalizer["Submit"]</button>
+					<a class="btn btn-sm btn-outline-secondary" asp-action="Index">@SharedLocalizer["Cancel"]</a>
 				</div>
 			</div>
 		</form>

@@ -9,7 +9,7 @@
 }
 
 <div class="row mb-2">
-	<h2 class="text-primary">@SharedLocalizer["Title"] - Books</h2>
+	<h2 class="text-primary">@SharedLocalizer["Books"]</h2>
 </div>
 <div class="row col-11 align-items-end">
 	<div class="col-12 mb-4">
@@ -31,7 +31,7 @@
 				       value="@Model.AuthorFilter">
 			</div>
 			<div class="col-auto">
-				<label class="col-sm-2 col-form-label col-form-label-sm" for="genreSelect">Genre</label>
+				<label class="col-sm-2 col-form-label col-form-label-sm" for="genreSelect">@SharedLocalizer["Genre"]</label>
 			</div>
 			<div class="col-auto">
 				<select id="genreSelect" name="genre" class="form-select form-select-sm"
@@ -47,7 +47,7 @@
 					<span class="bi-eraser-fill"></span>
 				</button>
 				<a type="submit" class="btn btn-sm btn-outline-primary" asp-controller="Books" asp-action="Add">
-					Add New Book
+					@SharedLocalizer["Add New Book"]
 				</a>
 			</div>
 		</form>
@@ -61,9 +61,9 @@
 				<th scope="col">ISBN</th>
 				<th scope="col">@SharedLocalizer["Title"]</th>
 				<th scope="col">@SharedLocalizer["Author"]</th>
-				<th scope="col">Genre</th>
-				<th scope="col">Year</th>
-				<th scope="col">Available/Total</th>
+				<th scope="col">@SharedLocalizer["Genre"]</th>
+				<th scope="col">@SharedLocalizer["Year"]</th>
+				<th scope="col">@SharedLocalizer["Available/Total"]</th>
 				<th scope="col"></th>
 			</tr>
 			</thead>

@@ -30,4 +30,330 @@
     <data name="Author" xml:space="preserve">
         <value>Author</value>
     </data>
+    <data name="Authors" xml:space="preserve">
+        <value>Authors</value>
+    </data>
+    <data name="Name" xml:space="preserve">
+        <value>Name</value>
+        <comment>Name</comment>
+    </data>
+    <data name="Login" xml:space="preserve">
+        <value>Login</value>
+        <comment>Login</comment>
+    </data>
+    <data name="Members" xml:space="preserve">
+        <value>Members</value>
+        <comment>Members</comment>
+    </data>
+    <data name="Library" xml:space="preserve">
+        <value>Library</value>
+        <comment>Library</comment>
+    </data>
+    <data name="Home" xml:space="preserve">
+        <value>Home</value>
+        <comment>Home</comment>
+    </data>
+    <data name="Books" xml:space="preserve">
+        <value>Books</value>
+        <comment>Books</comment>
+    </data>
+    <data name="Users" xml:space="preserve">
+        <value>Users</value>
+        <comment>Users</comment>
+    </data>
+    <data name="Logout" xml:space="preserve">
+        <value>Logout</value>
+        <comment>Logout</comment>
+    </data>
+    <data name="PhoneNumber" xml:space="preserve">
+        <value>Phone number</value>
+        <comment>Phone number</comment>
+    </data>
+    <data name="Genre" xml:space="preserve">
+        <value>Genre</value>
+        <comment>Genre</comment>
+    </data>
+    <data name="Add New Book" xml:space="preserve">
+        <value>Add New Book</value>
+        <comment>Add New Book</comment>
+    </data>
+    <data name="Year" xml:space="preserve">
+        <value>Year</value>
+        <comment>Year</comment>
+    </data>
+    <data name="Available/Total" xml:space="preserve">
+        <value>Available/Total</value>
+        <comment>Available/Total</comment>
+    </data>
+    <data name="Cancel" xml:space="preserve">
+        <value>Cancel</value>
+        <comment>Cancel</comment>
+    </data>
+    <data name="Submit" xml:space="preserve">
+        <value>Submit</value>
+        <comment>Submit</comment>
+    </data>
+    <data name="Add Author" xml:space="preserve">
+        <value>Add Author</value>
+        <comment>Add Author</comment>
+    </data>
+    <data name="Update Author" xml:space="preserve">
+        <value>Update Author</value>
+        <comment>Update Author</comment>
+    </data>
+    <data name="Instances Count" xml:space="preserve">
+        <value>Instances Count</value>
+        <comment>Instances Count</comment>
+    </data>
+    <data name="Add Book" xml:space="preserve">
+        <value>Add Book</value>
+        <comment>Add Book</comment>
+    </data>
+    <data name="Manage Book" xml:space="preserve">
+        <value>Manage Book</value>
+        <comment>Manage Book</comment>
+    </data>
+    <data name="Lend" xml:space="preserve">
+        <value>Lend</value>
+        <comment>Lend</comment>
+    </data>
+    <data name="Return" xml:space="preserve">
+        <value>Return</value>
+        <comment>Return</comment>
+    </data>
+    <data name="Available" xml:space="preserve">
+        <value>Available</value>
+        <comment>Available</comment>
+    </data>
+    <data name="Taken by" xml:space="preserve">
+        <value>Taken by</value>
+        <comment>Taken by</comment>
+    </data>
+    <data name="Instances" xml:space="preserve">
+        <value>Instances</value>
+        <comment>Instances</comment>
+    </data>
+    <data name="Lend Book" xml:space="preserve">
+        <value>Lend Book</value>
+        <comment>Lend Book</comment>
+    </data>
+    <data name="Select a member" xml:space="preserve">
+        <value>Select a member</value>
+        <comment>Select a member</comment>
+    </data>
+    <data name="Select genre" xml:space="preserve">
+        <value>Select genre</value>
+        <comment>Select genre</comment>
+    </data>
+    <data name="Update Book" xml:space="preserve">
+        <value>Update Book</value>
+        <comment>Update Book</comment>
+    </data>
+    <data name="You have insufficient privileges to access this page." xml:space="preserve">
+        <value>You have insufficient privileges to access this page.</value>
+        <comment>You have insufficient privileges to access this page.</comment>
+    </data>
+    <data name="UserName" xml:space="preserve">
+        <value>UserName</value>
+        <comment>Username</comment>
+    </data>
+    <data name="Password" xml:space="preserve">
+        <value>Password</value>
+        <comment>Password</comment>
+    </data>
+    <data name="Add Library Member" xml:space="preserve">
+        <value>Add Library Member</value>
+        <comment>Add Library Member</comment>
+    </data>
+    <data name="Taken Books" xml:space="preserve">
+        <value>Taken Books</value>
+        <comment>Taken Books</comment>
+    </data>
+    <data name="Update Member" xml:space="preserve">
+        <value>Update Member</value>
+        <comment>Update Member</comment>
+    </data>
+    <data name="Role" xml:space="preserve">
+        <value>Role</value>
+        <comment>Role</comment>
+    </data>
+    <data name="Repeat Password" xml:space="preserve">
+        <value>Repeat Password</value>
+        <comment>Repeat Password</comment>
+    </data>
+    <data name="Add User" xml:space="preserve">
+        <value>Add User</value>
+        <comment>Add User</comment>
+    </data>
+    <data name="Error." xml:space="preserve">
+        <value>Error.</value>
+        <comment>Error.</comment>
+    </data>
+    <data name="An error occurred while processing your request." xml:space="preserve">
+        <value>An error occurred while processing your request.</value>
+        <comment>An error occurred while processing your request.</comment>
+    </data>
+    <data name="Request ID:" xml:space="preserve">
+        <value>Request ID:</value>
+        <comment>Request ID:</comment>
+    </data>
+    <data name="Development" xml:space="preserve">
+        <value>Development</value>
+        <comment>Development</comment>
+    </data>
+    <data name="Swapping to" xml:space="preserve">
+        <value>Swapping to</value>
+        <comment>Swapping to</comment>
+    </data>
+    <data name="Development Mode" xml:space="preserve">
+        <value>Development Mode</value>
+        <comment>Development Mode</comment>
+    </data>
+    <data name="environment will display more detailed information about the error that occurred." xml:space="preserve">
+        <value>environment will display more detailed information about the error that occurred.</value>
+        <comment>environment will display more detailed information about the error that occurred.</comment>
+    </data>
+    <data name="The Development environment shouldn't be enabled for deployed applications." xml:space="preserve">
+        <value>The Development environment shouldn't be enabled for deployed applications.</value>
+        <comment>The Development environment shouldn't be enabled for deployed applications.</comment>
+    </data>
+    <data name="It can result in displaying sensitive information from exceptions to end users." xml:space="preserve">
+        <value>It can result in displaying sensitive information from exceptions to end users.</value>
+        <comment>It can result in displaying sensitive information from exceptions to end users.</comment>
+    </data>
+    <data name="For local debugging, enable the" xml:space="preserve">
+        <value>For local debugging, enable the</value>
+        <comment>For local debugging, enable the</comment>
+    </data>
+    <data name="environment by setting the" xml:space="preserve">
+        <value>environment by setting the</value>
+        <comment>environment by setting the</comment>
+    </data>
+    <data name="environment variable to" xml:space="preserve">
+        <value>environment variable to</value>
+        <comment>environment variable to</comment>
+    </data>
+    <data name="and restarting the app." xml:space="preserve">
+        <value>and restarting the app.</value>
+        <comment>and restarting the app.</comment>
+    </data>
+    <data name="Actions" xml:space="preserve">
+        <value>Actions</value>
+        <comment>Actions</comment>
+    </data>
+    <data name="Update User" xml:space="preserve">
+        <value>Update User</value>
+        <comment>Update User</comment>
+    </data>
+    <data name="User Details" xml:space="preserve">
+        <value>User Details</value>
+        <comment>User Details</comment>
+    </data>
+    <data name="Close" xml:space="preserve">
+        <value>Close</value>
+        <comment>Close</comment>
+    </data>
+    <data name="AuthorIsRequired" xml:space="preserve">
+        <value>AuthorIsRequired</value>
+    </data>
+    <data name="UserNameIsRequired" xml:space="preserve">
+        <value>User Name Is Required.</value>
+    </data>
+    <data name="LoginNameIsRequired" xml:space="preserve">
+        <value>Login Name Is Required</value>
+    </data>
+    <data name="RoleIsRequired" xml:space="preserve">
+        <value>Role is required</value>
+    </data>
+    <data name="PasswordIsRequired" xml:space="preserve">
+        <value>Password Is Required</value>
+    </data>
+    <data name="AuthorNameIsRequired" xml:space="preserve">
+        <value>Author Name Is Required</value>
+    </data>
+    <data name="PhoneNumberShouldBeInFormat" xml:space="preserve">
+        <value>Phone number should be in format +380#########</value>
+    </data>
+    <data name="PhoneNumberIsRequired" xml:space="preserve">
+        <value>Phone Number Is Required</value>
+    </data>
+    <data name="MemberNameIsRequired" xml:space="preserve">
+        <value>Member Name Is Required</value>
+    </data>
+    <data name="Back to members" xml:space="preserve">
+        <value>Back to members</value>
+        <comment>Back to members</comment>
+    </data>
+    <data name="Select genre..." xml:space="preserve">
+        <value>Select genre...</value>
+        <comment>Select genre...</comment>
+    </data>
+    <data name="Type name here..." xml:space="preserve">
+        <value>Type name here...</value>
+        <comment>Type name here...</comment>
+    </data>
+    <data name="Science Fiction" xml:space="preserve">
+        <value>Science Fiction</value>
+    </data>
+    <data name="Authentication failed" xml:space="preserve">
+        <value>Authentication failed</value>
+    </data>
+    <data name="ISBNisRequired" xml:space="preserve">
+        <value>ISBN is required</value>
+    </data>
+    <data name="BookTitleIsRequired" xml:space="preserve">
+        <value>Book title is required</value>
+    </data>
+    <data name="GenreIsRequired" xml:space="preserve">
+        <value>Genre is required</value>
+    </data>
+    <data name="PublishYearShouldBeBetween1800and2024" xml:space="preserve">
+        <value>Publish year should be between 1800 and 2024</value>
+    </data>
+    <data name="TheFormatShouldISBN10or13" xml:space="preserve">
+        <value>The format should ISBN 10 or 13</value>
+    </data>
+    <data name="BookTitleShouldNotExceed100Characters" xml:space="preserve">
+        <value>Book title should not exceed 100 characters</value>
+    </data>
+    <data name="Інформаційна система &quot;Бібліотека&quot;" xml:space="preserve">
+        <value>Information System "Library"</value>
+        <comment>Інформаційна система "Бібліотека"</comment>
+    </data>
+    <data name="Деталі проєкту" xml:space="preserve">
+        <value>General Info</value>
+        <comment>Деталі проєкту</comment>
+    </data>
+    <data name="Проєкт створений для автоматизації роботи бібліотеки." xml:space="preserve">
+        <value>The project was created to automate the work of the library.</value>
+        <comment>Проєкт створений для автоматизації роботи бібліотеки.</comment>
+    </data>
+    <data name="Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію." xml:space="preserve">
+        <value>Employees will be able to replace paper records with digital ones. Data about books, authors and readers will be stored in the database. The convenient and intuitive interface of this system will be an assistant in work and will significantly help to easily keep records and quickly find the necessary information.</value>
+        <comment>Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію.</comment>
+    </data>
+    <data name="Модель даних" xml:space="preserve">
+        <value>Data Model</value>
+        <comment>Модель даних</comment>
+    </data>
+    <data name="Доступ до даних може бути отримано тільки після авторизації." xml:space="preserve">
+        <value>Access to data can be obtained only after authorization.</value>
+        <comment>Доступ до даних може бути отримано тільки після авторизації.</comment>
+    </data>
+    <data name="Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора." xml:space="preserve">
+        <value>A system administrator can register a new user. If you do not have a login and password, contact the administrator.</value>
+        <comment>Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора.</comment>
+    </data>
+    <data name="(Також адміністратор може надавати права адміністрування й іншим користувачам)" xml:space="preserve">
+        <value>(The administrator can also give administration rights to other users)</value>
+        <comment>(Також адміністратор може надавати права адміністрування й іншим користувачам)</comment>
+    </data>
+    <data name="Доступ до інформації" xml:space="preserve">
+        <value>Managed Access</value>
+        <comment>Доступ до інформації</comment>
+    </data>
+    <data name="Про систему" xml:space="preserve">
+        <value>About System</value>
+        <comment>Про систему</comment>
+    </data>
 </root>

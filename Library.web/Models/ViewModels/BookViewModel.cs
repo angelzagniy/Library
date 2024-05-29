@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
+using Library.Web.Resources;
+
 namespace Library.Web.Models.ViewModels;
 
 /// <summary>
@@ -12,25 +14,29 @@ namespace Library.Web.Models.ViewModels;
 /// </summary>
 public class BookViewModel
 {
-    [Display(Name = "ISBN")]
-    [Required(ErrorMessage = "ISBN is required.")]
+    [Display(Name = "ISBN")] 
+    [Required(ErrorMessageResourceName = "ISBNisRequired",
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     [RegularExpression(
         pattern:
         "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$",
-        ErrorMessage = "The format should ISBN 10 or 13.")]
+        ErrorMessageResourceName = "TheFormatShouldISBN10or13", ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string ISBN { get; init; }
 
     [Display(Name = "Book Title")]
-    [Required(ErrorMessage = "Book title is required.")]
-    [MaxLength(100, ErrorMessage = "Book title should not exceed 100 characters.")]
+    [Required(ErrorMessageResourceName = "BookTitleIsRequired",
+        ErrorMessageResourceType = typeof(Resources.Shared))]
+    [MaxLength(100, ErrorMessageResourceName = "BookTitleShouldNotExceed100Characters", ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string Title { get; init; }
 
     [Display(Name = "Genre")]
-    [Required(ErrorMessage = "Genre is required.")]
+    [Required(ErrorMessageResourceName = "GenreIsRequired",
+        ErrorMessageResourceType = typeof(Resources.Shared))]
     public Genre? Genre { get; init; }
 
     [Display(Name = "Publish Year")]
-    [Range(1900, 2023, ErrorMessage = "Publish year should be between 1800 and 2023.")]
+    [Range(1800, 2024, ErrorMessageResourceName = "PublishYearShouldBeBetween1800and2024",
+        ErrorMessageResourceType = typeof(Resources.Shared))]
     [DefaultValue(2000)]
     public int Year { get; init; }
 

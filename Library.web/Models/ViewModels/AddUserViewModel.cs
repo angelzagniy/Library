@@ -5,10 +5,12 @@ namespace Library.Web.Models.ViewModels;
 public class AddUserViewModel : UserViewModel
 {
     [Display(Name = "Password")]
-    [Required(ErrorMessage = "Password is required.")]
+    [Required(ErrorMessageResourceName = "PasswordIsRequired", 
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string Password { get; init; }
 
     [Display(Name = "Repeat password")]
-    [Required(ErrorMessage = "Password is required.")]
+    [Required(ErrorMessageResourceName = "PasswordIsRequired", 
+        ErrorMessageResourceType = typeof(Library.Web.Resources.Shared))]
     public string RepeatPassword { get; init; }
 }

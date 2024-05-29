@@ -62,7 +62,7 @@ public class HomeController : Controller
 
         if (!CryptoUtilities.IsPasswordValid(model.Password, user.Password, user.Salt))
         {
-            ModelState.AddModelError(nameof(model.Password), $"Authentication failed.");
+            ModelState.AddModelError(nameof(model.Password), $"Authentication failed");
             return View(model);
         }
 

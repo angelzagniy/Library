@@ -1,12 +1,16 @@
-﻿@model dynamic
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model dynamic
+
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
     ViewBag.Title = "Access Denied";
     Layout = "_Layout";
 }
 
-<h4>You have insufficient privileges to access this page.</h4>
+<h4>@SharedLocalizer["You have insufficient privileges to access this page."]</h4>
 
 <p>
-    <a class="btn btn-info" asp-controller="Home" asp-action="Index">Home</a>
+    <a class="btn btn-info" asp-controller="Home" asp-action="Index">@SharedLocalizer["Home"]</a>
 </p>

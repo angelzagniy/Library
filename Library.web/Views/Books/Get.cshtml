@@ -1,5 +1,8 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Book
+
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
     ViewData["Title"] = "Book Info";
@@ -10,13 +13,13 @@
 {
     <div class="container">
         <div class="row mb-3">
-            <h2 class="text-primary">Manage Book</h2>
+            <h2 class="text-primary">@SharedLocalizer["Manage Book"]</h2>
         </div>
 
         @await Html.PartialAsync("BookInfo", Model)
 
         <div class="row mb-2 mt-2">
-            <h4>Instances</h4>
+            <h4>@SharedLocalizer["Instances"]</h4>
         </div>
 
         <div class="row mb-2">
@@ -25,7 +28,7 @@
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Taken By</th>
+                        <th scope="col">@SharedLocalizer["Taken By"]</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -40,7 +43,7 @@
                                 @if (instance.Member != null)
                                 {
                                     <span class="text-dark">
-                                        Taken by
+                                        @SharedLocalizer["Taken by"]
                                         <a asp-controller="Members"
                                            asp-action="Get"
                                            asp-route-id="@instance.MemberId">
@@ -51,7 +54,7 @@
                                 else
                                 {
                                     <span class="text-dark">
-                                        <i>Available</i>
+                                        <i>@SharedLocalizer["Available"]</i>
                                     </span>
                                 }
                             </td>
@@ -60,14 +63,14 @@
                                 {
                                     <a class="btn btn-sm btn-primary"
                                        asp-action="ReturnBook" asp-route-id="@instance.Id">
-                                        Return
+                                        @SharedLocalizer["Return"]
                                     </a>
                                 }
                                 else
                                 {
                                     <a class="btn btn-sm btn-primary"
                                        asp-action="LendBook" asp-route-id="@instance.Id">
-                                        Lend
+                                        @SharedLocalizer["Lend"]
                                     </a>
                                 }
                             </td>

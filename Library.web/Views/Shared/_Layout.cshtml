@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 
-@inject IViewLocalizer Localizer
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
 	bool isAuthenticated = User.Identity?.IsAuthenticated ?? false;
@@ -30,7 +30,7 @@
 <header>
 	<nav class="navbar navbar-expand-md fixed-top bg-gradient  bg-primary-subtle text-primary-emphasis mb-3">
 		<div class="container-fluid">
-			<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Library"]</a>
+			<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@SharedLocalizer["Library"]</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 			        aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -38,18 +38,18 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto">
 					<li class="nav-item">
-						<a class="nav-link" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
+						<a class="nav-link" asp-controller="Home" asp-action="Index">@SharedLocalizer["Home"]</a>
 					</li>
 					@if (isAuthenticated)
 					{
 						<li class="nav-item">
-							<a class="nav-link" asp-controller="Books" asp-action="Index">@Localizer["BooksMenu"]</a>
+							<a class="nav-link" asp-controller="Books" asp-action="Index">@SharedLocalizer["Books"]</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" asp-controller="Members" asp-action="Index">Members</a>
+							<a class="nav-link" asp-controller="Members" asp-action="Index">@SharedLocalizer["Members"]</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" asp-controller="Authors" asp-action="Index">Authors</a>
+							<a class="nav-link" asp-controller="Authors" asp-action="Index">@SharedLocalizer["Authors"]</a>
 						</li>
 					}
 				</ul>
@@ -70,7 +70,7 @@
 								<ul class="dropdown-menu">
 									<li>
 										<a class="dropdown-item" asp-controller="Users" asp-action="Index">
-											<span class="bi-people me-1"></span>Users
+											<span class="bi-people me-1"></span>@SharedLocalizer["Users"]
 										</a>
 									</li>
 								</ul>
@@ -84,7 +84,7 @@
 								<li>
 									<form method="post" asp-controller="Home" asp-action="Logout">
 										<button class="dropdown-item">
-											<span class="bi-box-arrow-up-right me-1"></span>Logout
+											<span class="bi-box-arrow-up-right me-1"></span>@SharedLocalizer["Logout"]
 										</button>
 									</form>
 								</li>
@@ -95,7 +95,7 @@
 				else
 				{
 					<a class="navbar-text" asp-controller="Home" asp-action="Login">
-						<span class="bi-box-arrow-in-up-right me-1"></span>Login
+						<span class="bi-box-arrow-in-up-right me-1"></span>@SharedLocalizer["Login"]
 					</a>
 				}
 			</div>

@@ -61,4 +61,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Views\" />
+  </ItemGroup>
+
 </Project>

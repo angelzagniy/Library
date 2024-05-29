@@ -1,5 +1,8 @@
+@using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Library.Web.Models.ViewModels.UpdateBookViewModel
+
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
 	ViewData["Title"] = "Update Book";
@@ -7,7 +10,7 @@
 
 <div class="container">
 	<div class="row mb-3">
-		<h2 class="text-primary">Update Book @Model.Title</h2>
+		<h2 class="text-primary">@SharedLocalizer["Update Book"] @Model.Title</h2>
 	</div>
 
 	<form method="post" asp-action="Update" class="g-2">
@@ -22,7 +25,7 @@
 		</div>
 		<div class="row mb-2">
 			<div class="col-2">
-				<label asp-for="Title" class="col-form-label col-form-label-sm"></label>
+				<label asp-for="Title" class="col-form-label col-form-label-sm">@SharedLocalizer["Title"]</label>
 			</div>
 			<div class="col-4">
 				<input asp-for="Title" class="form-control form-control-sm">
@@ -31,18 +34,18 @@
 		</div>
 		<div class="row mb-2">
 			<div class="col-2">
-				<label asp-for="Genre" class="col-form-label col-form-label-sm"></label>
+				<label asp-for="Genre" class="col-form-label col-form-label-sm">@SharedLocalizer["Genre"]</label>
 			</div>
 			<div class="col-4">
 				<select class="form-select form-select-sm" asp-for="Genre" asp-items="@Model.Genres">
-					<option selected value=@Model.Genre!>Select genre</option>
+					<option selected value=@Model.Genre!>@SharedLocalizer["Select genre"]</option>
 				</select>
 				<span asp-validation-for="Genre" class="text-danger"></span>
 			</div>
 		</div>
 		<div class="row mb-2">
 			<div class="col-2">
-				<label asp-for="Year" class="col-form-label col-form-label-sm"></label>
+				<label asp-for="Year" class="col-form-label col-form-label-sm">@SharedLocalizer["Year"]</label>
 			</div>
 			<div class="col-4">
 				<input asp-for="Year" required class="form-control form-control-sm">
@@ -55,8 +58,8 @@
 		</div>
 		<div class="row">
 			<div class="col-6 g-2 text-end">
-				<button type="submit" class="btn btn-sm btn-outline-primary">Submit</button>
-				<a class="btn btn-sm btn-outline-secondary" asp-action="Index">Cancel</a>
+				<button type="submit" class="btn btn-sm btn-outline-primary">@SharedLocalizer["Submit"]</button>
+				<a class="btn btn-sm btn-outline-secondary" asp-action="Index">@SharedLocalizer["Cancel"]</a>
 			</div>
 		</div>
 	</form>

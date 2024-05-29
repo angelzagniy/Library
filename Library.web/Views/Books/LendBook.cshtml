@@ -1,5 +1,8 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Library.Web.Models.ViewModels.LendBookViewModel
+
+@inject IHtmlLocalizer<Shared> SharedLocalizer
 
 @{
     ViewData["Title"] = "Lend Book";
@@ -8,14 +11,14 @@
 <div class="container">
 
     <div class="row mb-3">
-        <h2 class="text-primary">Lend Book</h2>
+        <h2 class="text-primary">@SharedLocalizer["Lend Book"]</h2>
     </div>
 
     @await Html.PartialAsync("BookInfo", Model.BookInstance.Book)
 
     <form method="post" class="g-2">
         <div class="row mb-1 mt-3">
-            <h5>Select a member</h5>
+            <h5>@SharedLocalizer["Select a member"]</h5>
         </div>
         <div class="row mb-2">
             <input type="hidden" asp-for="@Model.BookInstance.Id"/>
@@ -37,12 +40,12 @@
             <div class="col-6 g-2 text-end">
                 <button type="submit" class="btn btn-sm btn-outline-primary"
                         asp-action="LendBook">
-                    Lend Book
+                    @SharedLocalizer["Lend Book"]
                 </button>
                 <a class="btn btn-sm btn-outline-secondary"
                    asp-action="Get"
                    asp-route-id="@Model.BookInstance.ISBN">
-                    Cancel
+                    @SharedLocalizer["Cancel"]
                 </a>
             </div>
         </div>
