@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Library.Web.Models.ViewModels;
 
@@ -19,5 +20,6 @@ public class BooksPageViewModel : PageViewModel
 	public string AuthorFilter { get; set; }
 	
 	public Genre? GenreFilter { get; set; }
-
+	
+	public IReadOnlyList<SelectListItem> Genres { get; set; }
 }

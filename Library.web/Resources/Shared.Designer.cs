@@ -349,6 +349,60 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Any.
+        /// </summary>
+        internal static string Genre_Any {
+            get {
+                return ResourceManager.GetString("Genre_Any", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crime.
+        /// </summary>
+        internal static string Genre_Crime {
+            get {
+                return ResourceManager.GetString("Genre_Crime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historical Fiction.
+        /// </summary>
+        internal static string Genre_HistoricalFiction {
+            get {
+                return ResourceManager.GetString("Genre_HistoricalFiction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mystery.
+        /// </summary>
+        internal static string Genre_Mystery {
+            get {
+                return ResourceManager.GetString("Genre_Mystery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Novel.
+        /// </summary>
+        internal static string Genre_Novel {
+            get {
+                return ResourceManager.GetString("Genre_Novel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Science Fiction.
+        /// </summary>
+        internal static string Genre_ScienceFiction {
+            get {
+                return ResourceManager.GetString("Genre_ScienceFiction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Genre is required.
         /// </summary>
         internal static string GenreIsRequired {

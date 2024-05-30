@@ -36,18 +36,12 @@ public class BooksController : Controller
         string author,
         Genre? genre)
     {
-        IReadOnlyList<Book> books = await _booksRepository.ListBooksAsync(
+
+        BooksPageViewModel viewModel = await _booksVmBuilder.BuildBooksPageViewModelAsync(
             title: title,
             author: author,
             genre: genre ?? Genre.Any);
-
-        BooksPageViewModel viewModel = new("Books", books)
-        {
-            TitleFilter = title,
-            GenreFilter = genre,
-            AuthorFilter = author
-        };
-
+        
         return View(viewModel);
     }
 
