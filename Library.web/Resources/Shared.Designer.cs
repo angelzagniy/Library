@@ -150,6 +150,15 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authentication failed.
+        /// </summary>
+        internal static string AuthenticationFailedError {
+            get {
+                return ResourceManager.GetString("AuthenticationFailedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Author.
         /// </summary>
         internal static string Author {
@@ -750,6 +759,15 @@ namespace Library.Web.Resources {
         internal static string Type_name_here___ {
             get {
                 return ResourceManager.GetString("Type name here...", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown user..
+        /// </summary>
+        internal static string UnknownUserError {
+            get {
+                return ResourceManager.GetString("UnknownUserError", resourceCulture);
             }
         }
         

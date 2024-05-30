@@ -374,4 +374,10 @@
     <data name="Genre_Crime" xml:space="preserve">
         <value>Crime</value>
     </data>
+    <data name="AuthenticationFailedError" xml:space="preserve">
+        <value>Authentication failed</value>
+    </data>
+    <data name="UnknownUserError" xml:space="preserve">
+        <value>Unknown user.</value>
+    </data>
 </root>

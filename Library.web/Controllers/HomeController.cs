@@ -12,20 +12,15 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.Logging;
 
 namespace Library.Web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly IUserRepository _userRepository;
 
-    public HomeController(
-        ILogger<HomeController> logger,
-        IUserRepository userRepository)
+    public HomeController(IUserRepository userRepository)
     {
-        _logger = logger;
         _userRepository = userRepository;
     }
 
@@ -56,13 +51,19 @@ public class HomeController : Controller
 
         if (user == null)
         {
-            ModelState.AddModelError(nameof(model.Username), $"Unknown user [{model.Username}]");
+            ModelState.AddModelError(
+                key: nameof(model.Username),
+                errorMessage: Resources.Shared.UnknownUserError);
+
             return View(model);
         }
 
         if (!CryptoUtilities.IsPasswordValid(model.Password, user.Password, user.Salt))
         {
-            ModelState.AddModelError(nameof(model.Password), $"Authentication failed");
+            ModelState.AddModelError(
+                key: nameof(model.Password),
+                errorMessage: Resources.Shared.AuthenticationFailedError);
+
             return View(model);
         }
 

@@ -367,4 +367,10 @@
     <data name="Genre_Crime" xml:space="preserve">
         <value>Детектив</value>
     </data>
+    <data name="AuthenticationFailedError" xml:space="preserve">
+        <value>Помилка авторізації</value>
+    </data>
+    <data name="UnknownUserError" xml:space="preserve">
+        <value>Невідомий користувач</value>
+    </data>
 </root>
