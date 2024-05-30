@@ -349,4 +349,28 @@
         <value>Про систему</value>
         <comment>Про систему</comment>
     </data>
+    <data name="Genre_Novel" xml:space="preserve">
+        <value>Новела</value>
+    </data>
+    <data name="Genre_Mystery" xml:space="preserve">
+        <value>Містіка</value>
+    </data>
+    <data name="Genre_Any" xml:space="preserve">
+        <value>Будь-який</value>
+    </data>
+    <data name="Genre_ScienceFiction" xml:space="preserve">
+        <value>Наукова фантастіка</value>
+    </data>
+    <data name="Genre_HistoricalFiction" xml:space="preserve">
+        <value>Історична фантастіка</value>
+    </data>
+    <data name="Genre_Crime" xml:space="preserve">
+        <value>Детектив</value>
+    </data>
+    <data name="AuthenticationFailedError" xml:space="preserve">
+        <value>Помилка авторізації</value>
+    </data>
+    <data name="UnknownUserError" xml:space="preserve">
+        <value>Невідомий користувач</value>
+    </data>
 </root>

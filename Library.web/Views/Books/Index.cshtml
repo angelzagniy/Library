@@ -36,7 +36,7 @@
 			<div class="col-auto">
 				<select id="genreSelect" name="genre" class="form-select form-select-sm"
 				        asp-for="GenreFilter"
-				        asp-items="Html.GetEnumSelectList<Genre>()">
+				        asp-items="@Model.Genres">
 				</select>
 			</div>
 			<div class="col-auto">

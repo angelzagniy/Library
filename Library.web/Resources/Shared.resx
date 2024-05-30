@@ -356,4 +356,28 @@
         <value>About System</value>
         <comment>Про систему</comment>
     </data>
+    <data name="Genre_Novel" xml:space="preserve">
+        <value>Novel</value>
+    </data>
+    <data name="Genre_Mystery" xml:space="preserve">
+        <value>Mystery</value>
+    </data>
+    <data name="Genre_Any" xml:space="preserve">
+        <value>Any</value>
+    </data>
+    <data name="Genre_ScienceFiction" xml:space="preserve">
+        <value>Science Fiction</value>
+    </data>
+    <data name="Genre_HistoricalFiction" xml:space="preserve">
+        <value>Historical Fiction</value>
+    </data>
+    <data name="Genre_Crime" xml:space="preserve">
+        <value>Crime</value>
+    </data>
+    <data name="AuthenticationFailedError" xml:space="preserve">
+        <value>Authentication failed</value>
+    </data>
+    <data name="UnknownUserError" xml:space="preserve">
+        <value>Unknown user.</value>
+    </data>
 </root>
