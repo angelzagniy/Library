@@ -33,6 +33,8 @@ internal class BooksVmBuilder : IBooksVMBuilder
 		{
 			BookInstance = instance,
 			Members = members
+				.Select(member => new SelectListItem(member.Name, member.Id.ToString()))
+				.ToArray()
 		};
 	}
 

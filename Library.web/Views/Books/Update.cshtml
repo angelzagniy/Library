@@ -38,7 +38,6 @@
 			</div>
 			<div class="col-4">
 				<select class="form-select form-select-sm" asp-for="Genre" asp-items="@Model.Genres">
-					<option selected value=@Model.Genre!>@SharedLocalizer["Select genre"]</option>
 				</select>
 				<span asp-validation-for="Genre" class="text-danger"></span>
 			</div>

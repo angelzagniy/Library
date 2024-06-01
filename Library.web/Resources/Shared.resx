@@ -380,4 +380,8 @@
     <data name="UnknownUserError" xml:space="preserve">
         <value>Unknown user.</value>
     </data>
+    <data name="Back to books" xml:space="preserve">
+        <value>Back to books</value>
+        <comment>Back to books</comment>
+    </data>
 </root>

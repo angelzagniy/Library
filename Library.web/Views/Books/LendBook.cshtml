@@ -20,22 +20,22 @@
         <div class="row mb-1 mt-3">
             <h5>@SharedLocalizer["Select a member"]</h5>
         </div>
+
         <div class="row mb-2">
             <input type="hidden" asp-for="@Model.BookInstance.Id"/>
             <input type="hidden" asp-for="@Model.BookInstance.ISBN"/>
-
-            @foreach (Member member in Model.Members)
-            {
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="@member.Id" id="@member.Id"
-                           asp-for="SelectedMemberId">
-                    <label class="form-check-label" for="@member.Id">
-                        @member.Name
-                    </label>
-                </div>
-            }
-            <span asp-validation-for="@Model.SelectedMemberId" class="text-danger"></span>
+            <div class="col-2">
+                <label asp-for="SelectedMemberId" class="col-sm-2 col-form-label col-form-label-sm">@SharedLocalizer["Members"]</label>
+            </div>
+            <div class="col-4">
+                <input asp-for="MemberName"
+                       class="form-control form-control-sm"
+                       placeholder="@SharedLocalizer["Type name here..."]"/>
+                <input asp-for="SelectedMemberId" type="hidden"/>
+                <span asp-validation-for="SelectedMemberId" class="text-danger"></span>
+            </div>
         </div>
+       
         <div class="row">
             <div class="col-6 g-2 text-end">
                 <button type="submit" class="btn btn-sm btn-outline-primary"

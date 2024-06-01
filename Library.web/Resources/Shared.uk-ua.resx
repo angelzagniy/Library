@@ -67,7 +67,7 @@
         <comment>Genre</comment>
     </data>
     <data name="Add New Book" xml:space="preserve">
-        <value>Додати книжку</value>
+        <value>Додати</value>
         <comment>Add New Book</comment>
     </data>
     <data name="Year" xml:space="preserve">
@@ -99,7 +99,7 @@
         <comment>Instances Count</comment>
     </data>
     <data name="Add Book" xml:space="preserve">
-        <value>Додати книжку</value>
+        <value>Додати</value>
         <comment>Add Book</comment>
     </data>
     <data name="Manage Book" xml:space="preserve">
@@ -310,7 +310,7 @@
         <value>Назва не може перевищувати 100 символів</value>
     </data>
     <data name="Інформаційна система &quot;Бібліотека&quot;" xml:space="preserve">
-        <value>Інформаційна система "Бібліотека"</value>
+        <value>Автоматизована система "Бібліотека"</value>
         <comment>Інформаційна система "Бібліотека"</comment>
     </data>
     <data name="Деталі проєкту" xml:space="preserve">
@@ -338,7 +338,7 @@
         <comment>Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора.</comment>
     </data>
     <data name="(Також адміністратор може надавати права адміністрування й іншим користувачам)" xml:space="preserve">
-        <value>(Також адміністратор може надавати права адміністрування й іншим користувачам)</value>
+        <value>(Також адміністратор може змінювати права адміністрування існуючим користувачам)</value>
         <comment>(Також адміністратор може надавати права адміністрування й іншим користувачам)</comment>
     </data>
     <data name="Доступ до інформації" xml:space="preserve">
@@ -353,24 +353,28 @@
         <value>Новела</value>
     </data>
     <data name="Genre_Mystery" xml:space="preserve">
-        <value>Містіка</value>
+        <value>Містика</value>
     </data>
     <data name="Genre_Any" xml:space="preserve">
-        <value>Будь-який</value>
+        <value>Всі</value>
     </data>
     <data name="Genre_ScienceFiction" xml:space="preserve">
-        <value>Наукова фантастіка</value>
+        <value>Наукова фантастика</value>
     </data>
     <data name="Genre_HistoricalFiction" xml:space="preserve">
-        <value>Історична фантастіка</value>
+        <value>Історична фантастика</value>
     </data>
     <data name="Genre_Crime" xml:space="preserve">
         <value>Детектив</value>
     </data>
     <data name="AuthenticationFailedError" xml:space="preserve">
-        <value>Помилка авторізації</value>
+        <value>Помилка авторизації</value>
     </data>
     <data name="UnknownUserError" xml:space="preserve">
         <value>Невідомий користувач</value>
+    </data>
+    <data name="Back to books" xml:space="preserve">
+        <value>До всіх книжок</value>
+        <comment>Back to books</comment>
     </data>
 </root>

@@ -62,7 +62,7 @@ public class BooksController : Controller
     }
 
     [HttpGet]
-    [Authorize(Roles = KnownRoles.Admin)]
+    [Authorize]
     public async Task<IActionResult> Add()
     {
         IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync();

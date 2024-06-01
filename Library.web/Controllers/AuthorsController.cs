@@ -20,7 +20,7 @@ public class AuthorsController: Controller
     }
     
     [Authorize]
-    public async Task<ActionResult<MembersPageViewModel>> Index(string name)
+    public async Task<ActionResult<AuthorPageViewModel>> Index(string name)
     {
         IReadOnlyList<Author> authors = await _authorsRepository.ListAuthorsAsync(name: name);
 		
@@ -40,7 +40,7 @@ public class AuthorsController: Controller
     }
     
     [HttpGet]
-    [Authorize(Roles = KnownRoles.Admin)]
+    [Authorize]
     public IActionResult Add()
     {
         AddAuthorViewModel model = new();

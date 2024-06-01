@@ -213,6 +213,15 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to books.
+        /// </summary>
+        internal static string Back_to_books {
+            get {
+                return ResourceManager.GetString("Back to books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to members.
         /// </summary>
         internal static string Back_to_members {
