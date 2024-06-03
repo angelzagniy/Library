@@ -60,15 +60,6 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (The administrator can also give administration rights to other users).
-        /// </summary>
-        internal static string _Також_адміністратор_може_надавати_права_адміністрування_й_іншим_користувачам_ {
-            get {
-                return ResourceManager.GetString("(Також адміністратор може надавати права адміністрування й іншим користувачам)", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Actions.
         /// </summary>
         internal static string Actions {
@@ -173,6 +164,15 @@ namespace Library.Web.Resources {
         internal static string AuthorIsRequired {
             get {
                 return ResourceManager.GetString("AuthorIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (The administrator can also give administration rights to other users).
+        /// </summary>
+        internal static string AuthorizationDescription {
+            get {
+                return ResourceManager.GetString("AuthorizationDescription", resourceCulture);
             }
         }
         

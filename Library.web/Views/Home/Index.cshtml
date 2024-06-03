@@ -52,9 +52,9 @@
              aria-labelledby="headingThree"
              data-bs-parent="#projectDetails">
             <div class="accordion-body">
-                <strong>@SharedLocalizer["Доступ до даних може бути отримано тільки після авторизації."]</strong><br/>
+                <strong>@SharedLocalizer["AuthorizationDescription"]</strong><br/>
                 @SharedLocalizer["Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора."]<br/>
-                @SharedLocalizer["(Також адміністратор може надавати права адміністрування й іншим користувачам)"]
+                @SharedLocalizer["AuthorizationDescription"]
                 @if (!User.Identity?.IsAuthenticated ?? true)
                 {
                     <p>

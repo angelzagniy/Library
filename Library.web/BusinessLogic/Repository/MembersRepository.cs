@@ -65,4 +65,13 @@ public class MembersRepository : IMembersRepository
 			.ThenInclude(book => book.Author)
 			.FirstOrDefaultAsync();
 	}
+
+	/// <inheritdoc />
+	public async Task<IReadOnlyList<Member>> FindMembersAsync(string name, int count)
+	{
+		return await _dbContext.Members
+			.Where(author => author.Name.Contains(name))
+			.Take(count)
+			.ToListAsync();
+	}
 }

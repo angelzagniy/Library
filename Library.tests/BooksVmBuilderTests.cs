@@ -5,6 +5,7 @@ using Library.Web.BusinessLogic.Managers;
 using Library.Web.BusinessLogic.Repository.Abstract;
 using Library.Web.Models;
 using Library.Web.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Moq;
 using NUnit.Framework;
 
@@ -102,7 +103,8 @@ public class BooksVmBuilderTests
 		Assert.That(viewModel.Members, Is.Not.Null);
 		Assert.That(viewModel.Members, Has.Count.EqualTo(2));
 
-		Member memberOne = viewModel.Members.SingleOrDefault(m => m.Id == memberOneId);
+		SelectListItem memberOne = viewModel.Members
+			.SingleOrDefault(m => m.Value == memberOneId.ToString());
 		Assert.That(memberOne, Is.Not.Null);
 		
 		_bookRepository.Verify(

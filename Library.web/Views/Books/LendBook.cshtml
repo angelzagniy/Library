@@ -50,5 +50,34 @@
             </div>
         </div>
     </form>
-
 </div>
+
+<script type="text/javascript">
+        $(function () {
+            $("#MemberName").autocomplete({
+                source: function (request, response) {
+	                $("#SelectedMemberId").val(null);
+                    $.ajax({
+                        url: '/Books/FindMembers/',
+                        data: { "name": request.term },
+                        type: "POST",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#SelectedMemberId").val(i.item.val);
+                },
+                minLength: 3
+            });
+        });
+    </script>

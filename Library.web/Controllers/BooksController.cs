@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Library.Web.BusinessLogic.Abstract;
 using Library.Web.BusinessLogic.Repository.Abstract;
-using Library.Web.BusinessLogic.Security;
 using Library.Web.Models;
 using Library.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -17,15 +16,18 @@ public class BooksController : Controller
 {
     private readonly IBooksRepository _booksRepository;
     private readonly IAuthorsRepository _authorsRepository;
+    private readonly IMembersRepository _membersRepository;
     private readonly IBooksVMBuilder _booksVmBuilder;
 
     public BooksController(
         IBooksRepository booksRepository,
         IAuthorsRepository authorsRepository,
+        IMembersRepository membersRepository,
         IBooksVMBuilder booksVmBuilder)
     {
         _booksRepository = booksRepository;
         _authorsRepository = authorsRepository;
+        _membersRepository = membersRepository;
         _booksVmBuilder = booksVmBuilder;
     }
 
@@ -182,6 +184,23 @@ public class BooksController : Controller
         IReadOnlyList<Author> authors = await _authorsRepository.FindAuthorsAsync(name, count: 10);
 
         var result = authors
+            .Select(author =>
+                new
+                {
+                    label = author.Name,
+                    val = author.Id
+                })
+            .ToArray();
+
+        return Json(result);
+    }
+    
+    [HttpPost]
+    public async Task<JsonResult> FindMembers(string name)
+    {
+        IReadOnlyList<Member> members = await _membersRepository.FindMembersAsync(name, count: 10);
+
+        var result = members
             .Select(author =>
                 new
                 {

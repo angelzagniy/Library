@@ -344,7 +344,7 @@
         <value>A system administrator can register a new user. If you do not have a login and password, contact the administrator.</value>
         <comment>Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора.</comment>
     </data>
-    <data name="(Також адміністратор може надавати права адміністрування й іншим користувачам)" xml:space="preserve">
+    <data name="AuthorizationDescription" xml:space="preserve">
         <value>(The administrator can also give administration rights to other users)</value>
         <comment>(Також адміністратор може надавати права адміністрування й іншим користувачам)</comment>
     </data>
