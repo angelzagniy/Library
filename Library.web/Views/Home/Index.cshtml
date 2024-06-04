@@ -10,9 +10,9 @@
 
 <body class="bg-light text-dark">
 <div class="container mt-5">
-<h1 class="text-primary text-center">@SharedLocalizer["Інформаційна система \"Бібліотека\""]</h1>
+<h1 class="text-primary text-center">@SharedLocalizer["InformationSystemLibrary"]</h1>
 
-<h4 class="text-secondary text-center mb-10">@SharedLocalizer["Деталі проєкту"]</h4>
+<h4 class="text-secondary text-center mb-10">@SharedLocalizer["ProjectInfo"]</h4>
 
 <div class="accordion accordion-flush pb-3" id="projectDetails">
     <div class="accordion-item">
@@ -23,7 +23,7 @@
                     data-bs-target="#collapseTwo"
                     aria-expanded="false"
                     aria-controls="collapseTwo">
-                @SharedLocalizer["Про систему"]
+                @SharedLocalizer["AboutSystem"]
             </button>
         </h2>
         <div id="collapseTwo"
@@ -31,8 +31,8 @@
              aria-labelledby="headingTwo"
              data-bs-parent="#projectDetails">
             <div class="accordion-body">
-                <strong>@SharedLocalizer["Проєкт створений для автоматизації роботи бібліотеки."]</strong><br/>
-                @SharedLocalizer["Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію."]
+                <strong>@SharedLocalizer["ProjectGoal"]</strong><br/>
+                @SharedLocalizer["EmployeesRights"]
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                     data-bs-target="#collapseThree"
                     aria-expanded="false"
                     aria-controls="collapseThree">
-                @SharedLocalizer["Доступ до інформації"]
+                @SharedLocalizer["Access"]
             </button>
         </h2>
         <div id="collapseThree"
@@ -52,8 +52,8 @@
              aria-labelledby="headingThree"
              data-bs-parent="#projectDetails">
             <div class="accordion-body">
-                <strong>@SharedLocalizer["AuthorizationDescription"]</strong><br/>
-                @SharedLocalizer["Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора."]<br/>
+                <strong>@SharedLocalizer["AccessToDataCanBeObtainedOnlyAfterAuthorization"]</strong><br/>
+                @SharedLocalizer["RegistrationInfo"]<br/>
                 @SharedLocalizer["AuthorizationDescription"]
                 @if (!User.Identity?.IsAuthenticated ?? true)
                 {
@@ -72,7 +72,7 @@
                     data-bs-target="#collapseOne"
                     aria-expanded="false"
                     aria-controls="collapseOne">
-                @SharedLocalizer["Модель даних"]
+                @SharedLocalizer["DataModel"]
             </button>
         </h2>
         <div id="collapseOne"
@@ -80,7 +80,7 @@
              aria-labelledby="headingOne"
              data-bs-parent="#projectDetails">
             <div class="accordion-body">
-                <img src="images/data_model.png" alt="Data model"/>
+                <img src="images/Library.drawio.png" alt="Data model"/>
             </div>
         </div>
     </div>

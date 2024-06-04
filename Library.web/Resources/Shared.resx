@@ -316,31 +316,31 @@
     <data name="BookTitleShouldNotExceed100Characters" xml:space="preserve">
         <value>Book title should not exceed 100 characters</value>
     </data>
-    <data name="Інформаційна система &quot;Бібліотека&quot;" xml:space="preserve">
+    <data name="InformationSystemLibrary" xml:space="preserve">
         <value>Information System "Library"</value>
         <comment>Інформаційна система "Бібліотека"</comment>
     </data>
-    <data name="Деталі проєкту" xml:space="preserve">
+    <data name="ProjectInfo" xml:space="preserve">
         <value>General Info</value>
         <comment>Деталі проєкту</comment>
     </data>
-    <data name="Проєкт створений для автоматизації роботи бібліотеки." xml:space="preserve">
+    <data name="ProjectGoal" xml:space="preserve">
         <value>The project was created to automate the work of the library.</value>
         <comment>Проєкт створений для автоматизації роботи бібліотеки.</comment>
     </data>
-    <data name="Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію." xml:space="preserve">
+    <data name="EmployeesRights" xml:space="preserve">
         <value>Employees will be able to replace paper records with digital ones. Data about books, authors and readers will be stored in the database. The convenient and intuitive interface of this system will be an assistant in work and will significantly help to easily keep records and quickly find the necessary information.</value>
         <comment>Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію.</comment>
     </data>
-    <data name="Модель даних" xml:space="preserve">
+    <data name="DataModel" xml:space="preserve">
         <value>Data Model</value>
         <comment>Модель даних</comment>
     </data>
-    <data name="Доступ до даних може бути отримано тільки після авторизації." xml:space="preserve">
+    <data name="AccessToDataCanBeObtainedOnlyAfterAuthorization" xml:space="preserve">
         <value>Access to data can be obtained only after authorization.</value>
         <comment>Доступ до даних може бути отримано тільки після авторизації.</comment>
     </data>
-    <data name="Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора." xml:space="preserve">
+    <data name="RegistrationInfo" xml:space="preserve">
         <value>A system administrator can register a new user. If you do not have a login and password, contact the administrator.</value>
         <comment>Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте логіна та пароля, зверніться до адміністратора.</comment>
     </data>
@@ -348,11 +348,11 @@
         <value>(The administrator can also give administration rights to other users)</value>
         <comment>(Також адміністратор може надавати права адміністрування й іншим користувачам)</comment>
     </data>
-    <data name="Доступ до інформації" xml:space="preserve">
+    <data name="Access" xml:space="preserve">
         <value>Managed Access</value>
         <comment>Доступ до інформації</comment>
     </data>
-    <data name="Про систему" xml:space="preserve">
+    <data name="AboutSystem" xml:space="preserve">
         <value>About System</value>
         <comment>Про систему</comment>
     </data>

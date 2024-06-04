@@ -60,6 +60,33 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About System.
+        /// </summary>
+        internal static string AboutSystem {
+            get {
+                return ResourceManager.GetString("AboutSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Managed Access.
+        /// </summary>
+        internal static string Access {
+            get {
+                return ResourceManager.GetString("Access", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access to data can be obtained only after authorization..
+        /// </summary>
+        internal static string AccessToDataCanBeObtainedOnlyAfterAuthorization {
+            get {
+                return ResourceManager.GetString("AccessToDataCanBeObtainedOnlyAfterAuthorization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actions.
         /// </summary>
         internal static string Actions {
@@ -294,6 +321,15 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data Model.
+        /// </summary>
+        internal static string DataModel {
+            get {
+                return ResourceManager.GetString("DataModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Development.
         /// </summary>
         internal static string Development {
@@ -308,6 +344,15 @@ namespace Library.Web.Resources {
         internal static string Development_Mode {
             get {
                 return ResourceManager.GetString("Development Mode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees will be able to replace paper records with digital ones. Data about books, authors and readers will be stored in the database. The convenient and intuitive interface of this system will be an assistant in work and will significantly help to easily keep records and quickly find the necessary information..
+        /// </summary>
+        internal static string EmployeesRights {
+            get {
+                return ResourceManager.GetString("EmployeesRights", resourceCulture);
             }
         }
         
@@ -435,6 +480,15 @@ namespace Library.Web.Resources {
         internal static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information System &quot;Library&quot;.
+        /// </summary>
+        internal static string InformationSystemLibrary {
+            get {
+                return ResourceManager.GetString("InformationSystemLibrary", resourceCulture);
             }
         }
         
@@ -610,11 +664,38 @@ namespace Library.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The project was created to automate the work of the library..
+        /// </summary>
+        internal static string ProjectGoal {
+            get {
+                return ResourceManager.GetString("ProjectGoal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General Info.
+        /// </summary>
+        internal static string ProjectInfo {
+            get {
+                return ResourceManager.GetString("ProjectInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Publish year should be between 1800 and 2024.
         /// </summary>
         internal static string PublishYearShouldBeBetween1800and2024 {
             get {
                 return ResourceManager.GetString("PublishYearShouldBeBetween1800and2024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A system administrator can register a new user. If you do not have a login and password, contact the administrator..
+        /// </summary>
+        internal static string RegistrationInfo {
+            get {
+                return ResourceManager.GetString("RegistrationInfo", resourceCulture);
             }
         }
         
@@ -867,88 +948,6 @@ namespace Library.Web.Resources {
         internal static string You_have_insufficient_privileges_to_access_this_page_ {
             get {
                 return ResourceManager.GetString("You have insufficient privileges to access this page.", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to General Info.
-        /// </summary>
-        internal static string Деталі_проєкту {
-            get {
-                return ResourceManager.GetString("Деталі проєкту", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Access to data can be obtained only after authorization..
-        /// </summary>
-        internal static string Доступ_до_даних_може_бути_отримано_тільки_після_авторизації_ {
-            get {
-                return ResourceManager.GetString("Доступ до даних може бути отримано тільки після авторизації.", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Managed Access.
-        /// </summary>
-        internal static string Доступ_до_інформації {
-            get {
-                return ResourceManager.GetString("Доступ до інформації", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A system administrator can register a new user. If you do not have a login and password, contact the administrator..
-        /// </summary>
-        internal static string Зареєструвати_нового_користувача_може_адміністратор_системи__Якщо_Ви_не_маєте_логіна_та_пароля__зверніться_до_адміністратора_ {
-            get {
-                return ResourceManager.GetString("Зареєструвати нового користувача може адміністратор системи. Якщо Ви не маєте лог" +
-                        "іна та пароля, зверніться до адміністратора.", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Information System &quot;Library&quot;.
-        /// </summary>
-        internal static string Інформаційна_система__Бібліотека_ {
-            get {
-                return ResourceManager.GetString("Інформаційна система \"Бібліотека\"", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data Model.
-        /// </summary>
-        internal static string Модель_даних {
-            get {
-                return ResourceManager.GetString("Модель даних", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Employees will be able to replace paper records with digital ones. Data about books, authors and readers will be stored in the database. The convenient and intuitive interface of this system will be an assistant in work and will significantly help to easily keep records and quickly find the necessary information..
-        /// </summary>
-        internal static string Працівники_зможуть_замінити_паперовий_облік_на_цифровий__Дані_про_книжки__авторів_та_читачів_зберігатимуться_у_базі_даних__Зручний_та_інтуїтивний_інтерфейс_даної_системи_буде_помічником_в_роботі_та_значно_допоможе_легко_вести_облік_та_швидко_знаходити_необхідну_інформацію_ {
-            get {
-                return ResourceManager.GetString(@"Працівники зможуть замінити паперовий облік на цифровий. Дані про книжки, авторів та читачів зберігатимуться у базі даних. Зручний та інтуїтивний інтерфейс даної системи буде помічником в роботі та значно допоможе легко вести облік та швидко знаходити необхідну інформацію.", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to About System.
-        /// </summary>
-        internal static string Про_систему {
-            get {
-                return ResourceManager.GetString("Про систему", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The project was created to automate the work of the library..
-        /// </summary>
-        internal static string Проєкт_створений_для_автоматизації_роботи_бібліотеки_ {
-            get {
-                return ResourceManager.GetString("Проєкт створений для автоматизації роботи бібліотеки.", resourceCulture);
             }
         }
     }
