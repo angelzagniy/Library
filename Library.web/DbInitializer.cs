@@ -32,17 +32,17 @@ public static class DbInitializer
 		{
 			Member memberOne = new()
 			{
-				Name = "Sylvia R. Torres",
+				Name = "Кулеба Іван Анатолійович",
 				PhoneNumber = "+380967778901"
 			};
 			Member memberTwo = new()
 			{
-				Name = "Patricia M. Rook",
+				Name = "Петриченко Вікторія Сергіївна",
 				PhoneNumber = "+380977798922"
 			};
 			Member memberThree = new()
 			{
-				Name = "Ellen D. Hollars",
+				Name = "Голик Олена Ігорівна",
 				PhoneNumber = "+380508893458"
 			};
 
@@ -51,15 +51,15 @@ public static class DbInitializer
 			// Create authors
 			Author authorOne = new ()
 			{
-				Name = "Olivia T. Burrow"
+				Name = "Стівен Кінг"
 			};
 			Author authorTwo = new ()
 			{
-				Name = "Erica P. Nelson"
+				Name = "Агата Крісті"
 			};
 			Author authorThree = new ()
 			{
-				Name = "Samantha G. Shaffer"
+				Name = "Сесілія Ахерн"
 			};
 			
 			context.Authors.AddRange(authorOne, authorTwo, authorThree);
@@ -67,29 +67,29 @@ public static class DbInitializer
 			// Create books with references to authors.
 			Book bookOne = new()
 			{
-				ISBN = "0-8566-8267-5",
-				Title = "The Dynasty of Dawn",
-				Genre = Genre.ScienceFiction,
-				AuthorId = authorOne.Id,
-				Year = 1998
+				ISBN = "1-5387-4660-3",
+				Title = "P.S. Я тебе кохаю",
+				Genre = Genre.Novel,
+				AuthorId = authorThree.Id,
+				Year = 2003
 			};
 
 			Book bookTwo = new()
 			{
-				ISBN = "0-7670-5932-8",
-				Title = "Year of Menace",
-				Genre = Genre.Crime,
+				ISBN = "5-0412-4492-8",
+				Title = "Зелена миля",
+				Genre = Genre.Mystery,
 				AuthorId = authorOne.Id,
 				Year = 2001
 			};
 
 			Book bookThree = new()
 			{
-				ISBN = "0-3794-3987-5",
-				Title = "The Gun in the Lake",
+				ISBN = "5-4576-4175-9",
+				Title = "Містер Мерседес",
 				Genre = Genre.Crime,
-				AuthorId = authorTwo.Id,
-				Year = 2013
+				AuthorId = authorOne.Id,
+				Year = 2014
 			};
 
 			context.Books.AddRange(bookOne, bookTwo, bookThree);

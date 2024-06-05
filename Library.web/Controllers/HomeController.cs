@@ -67,17 +67,6 @@ public class HomeController : Controller
             return View(model);
         }
 
-        // if (username == "admin" && password == "admin")
-        // {
-        // 	name = "Admin";
-        // 	role = "Admin";
-        // }
-        // else if (username == "jdoe" && password == "jdoe")
-        // {
-        // 	name = "John Doe";
-        // 	role = "User";
-        // }
-
         List<Claim> claims =
         [
             new Claim(type: ClaimTypes.Name, user.Name),
